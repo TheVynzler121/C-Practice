@@ -67,5 +67,7 @@ public class Tests
         Assert.AreEqual(80, Arith.multiply(20, 4));
         Assert.AreEqual(8, Arith.divide(16, 2));
         Assert.AreEqual(14, Arith.divide(14, 1));
+        Assert.AreEqual("Hi steve", Arith.hello("steve"));
+        Assert.AreEqual("Hi richard", Arith.hello("richard"));
     }
 }

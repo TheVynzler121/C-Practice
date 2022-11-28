@@ -87,4 +87,9 @@ public class Arith
     {
         return x / y;
     }
+
+    public static string hello(string name)
+    {
+        return "Hi " + name;
+    }
 }
