@@ -55,6 +55,23 @@
 //     }
 // }
 
+// namespace C__Practice;
+
+// public class Tests
+// {
+//     [Test]
+//     public void Test_arith()
+//     {
+//         Assert.AreEqual(4, Arith.add(3, 1));
+//         Assert.AreEqual(7, Arith.subtract(10, 3));
+//         Assert.AreEqual(80, Arith.multiply(20, 4));
+//         Assert.AreEqual(8, Arith.divide(16, 2));
+//         Assert.AreEqual(14, Arith.divide(14, 1));
+//         Assert.AreEqual("Hi steve", Arith.hello("steve"));
+//         Assert.AreEqual("Hi richard", Arith.hello("richard"));
+//     }
+// }
+
 namespace C__Practice;
 
 public class Tests
@@ -62,12 +79,10 @@ public class Tests
     [Test]
     public void Test_arith()
     {
-        Assert.AreEqual(4, Arith.add(3, 1));
-        Assert.AreEqual(7, Arith.subtract(10, 3));
-        Assert.AreEqual(80, Arith.multiply(20, 4));
-        Assert.AreEqual(8, Arith.divide(16, 2));
-        Assert.AreEqual(14, Arith.divide(14, 1));
-        Assert.AreEqual("Hi steve", Arith.hello("steve"));
+        Assert.AreEqual(2, Arith.add(1, 1));
+        Assert.AreEqual(4, Arith.subtract(6, 2));
+        Assert.AreEqual(30, Arith.multiply(15, 2));
+        Assert.AreEqual(12, Arith.divide(24, 2));
         Assert.AreEqual("Hi richard", Arith.hello("richard"));
     }
 }
