@@ -1,10 +1,12 @@
 //     // 4D 3H 2S TD QC - high card: queen clubs
 //     // 4D 4H 2S TD QC - pair of fours
 //     // 4D 4H 4S TD QC - three of a kind of fours
+//faces (2-9, T, J, Q, K)
+//suits // D - diamonds // S - spades // C - clubs // H - hearts
 
 namespace C__Practice;
 
-public enum Suit
+public enum Suit // enum = a list of numbers with names
 {
     Hearts,
     Spades,
@@ -12,15 +14,27 @@ public enum Suit
     Clubs,
 }
 
+public class Card  // Template for a new card // Combines two values into one class
+{
+    public Suit suit { get;set;}
+    public int faceValue { get;set;}
+}
+
 public class PokerKata
 {
-    //faces (2-9, T, J, Q, K)
-    //suits // D - diamonds // S - spades // C - clubs // H - hearts
+
+    public static Card parseCard(string cardString) // returns Card with values filled in
+    {
+        var parsedFace = parseFace(cardString);
+        var parsedSuit = parseSuit(cardString);
+        var card = new Card() { faceValue = parsedFace, suit = parsedSuit };
+        return card;
+    }
 
     public static Suit parseSuit(string cardString)
     {
         var cardSuit = cardString[1];
-        if (cardSuit == 'D')
+        if (cardSuit == 'D' || cardSuit == 'd')
         {
             return Suit.Diamonds;
         }

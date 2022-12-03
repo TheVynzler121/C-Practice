@@ -1,7 +1,33 @@
 namespace C__Practice;
 
+// functions and functions calling other functions
+// tests
+// types: class, enum, int, string, char, bool
+// conditionals: if
+
+//       parseCard 
+//      /          \ 
+//  parseFace   parseSuit
 public class PokerKataTests
 {
+    [Test]
+    public void Test_parseCard() //Combines parseFace parseSuit together
+    {
+        // system under test
+        var card = PokerKata.parseCard("4D");
+
+        // asserts
+        Assert.AreEqual(Suit.Diamonds, card.suit);
+        Assert.AreEqual(4, card.faceValue);
+    }
+
+    [Test]
+    public void Test_cardValues()
+    {
+        var aceOfSpades = new Card() { suit = Suit.Spades, faceValue = 14 };
+        Assert.AreEqual(Suit.Spades, aceOfSpades.suit);
+        Assert.AreEqual(14, aceOfSpades.faceValue);
+    }
 
     [Test]
     public void Test_parseSuit()
