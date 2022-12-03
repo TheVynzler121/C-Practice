@@ -4,32 +4,32 @@
 
 namespace C__Practice;
 
-public enum Suit {
+public enum Suit
+{
     Hearts,
     Spades,
     Diamonds,
-    Clubs
+    Clubs,
 }
-
 
 public class PokerKata
 {
     //faces (2-9, T, J, Q, K)
     //suits // D - diamonds // S - spades // C - clubs // H - hearts
 
-    public static Suit parseSuit(string cardString) 
+    public static Suit parseSuit(string cardString)
     {
         var cardSuit = cardString[1];
         if (cardSuit == 'D')
         {
             return Suit.Diamonds;
         }
-        
+
         if (cardSuit == 'S')
         {
             return Suit.Spades;
         }
-        
+
         if (cardSuit == 'C')
         {
             return Suit.Clubs;
@@ -39,11 +39,11 @@ public class PokerKata
         {
             return Suit.Hearts;
         }
-    
-        throw new NotImplementedException();
-    }
 
-    public static int parseFace(string cardString) 
+        throw new NotImplementedException();
+    } 
+
+    public static int parseFace(string cardString)
     {
         var cardFace = cardString[0];
         if (cardFace == 'T')
@@ -60,18 +60,17 @@ public class PokerKata
         {
             return 12;
         }
-        
+
         if (cardFace == 'K')
         {
             return 13;
         }
-        
+
         if (cardFace == 'A')
         {
             return 14;
         }
-        
         // else
-        return Int32.Parse(cardFace.ToString()); 
+        return Int32.Parse(cardFace.ToString());
     }
 }
