@@ -25,6 +25,7 @@ public class PokerKataTests
     public void Test_cardValues()
     {
         var aceOfSpades = new Card() { suit = Suit.Spades, faceValue = 14 };
+        
         Assert.AreEqual(Suit.Spades, aceOfSpades.suit);
         Assert.AreEqual(14, aceOfSpades.faceValue);
     }

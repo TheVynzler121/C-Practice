@@ -28,31 +28,21 @@ public class PokerKata
         var parsedFace = parseFace(cardString);
         var parsedSuit = parseSuit(cardString);
         var card = new Card() { faceValue = parsedFace, suit = parsedSuit };
+        
         return card;
     }
 
     public static Suit parseSuit(string cardString)
     {
         var cardSuit = cardString[1];
-        if (cardSuit == 'D' || cardSuit == 'd')
-        {
-            return Suit.Diamonds;
-        }
 
-        if (cardSuit == 'S')
-        {
-            return Suit.Spades;
-        }
+        if (cardSuit == 'D') { return Suit.Diamonds; }
 
-        if (cardSuit == 'C')
-        {
-            return Suit.Clubs;
-        }
+        if (cardSuit == 'S') { return Suit.Spades; }
 
-        if (cardSuit == 'H')
-        {
-            return Suit.Hearts;
-        }
+        if (cardSuit == 'C') { return Suit.Clubs; }
+
+        if (cardSuit == 'H') { return Suit.Hearts; }
 
         throw new NotImplementedException();
     } 
@@ -60,31 +50,19 @@ public class PokerKata
     public static int parseFace(string cardString)
     {
         var cardFace = cardString[0];
-        if (cardFace == 'T')
-        {
-            return 10;
-        }
 
-        if (cardFace == 'J')
-        {
-            return 11;
-        }
+        if (cardFace == 'T') { return 10; }
 
-        if (cardFace == 'Q')
-        {
-            return 12;
-        }
+        if (cardFace == 'J') { return 11; }
 
-        if (cardFace == 'K')
-        {
-            return 13;
-        }
+        if (cardFace == 'Q') { return 12; }
 
-        if (cardFace == 'A')
-        {
-            return 14;
-        }
+        if (cardFace == 'K') { return 13; }
+
+        if (cardFace == 'A') { return 14; }
+
         // else
+
         return Int32.Parse(cardFace.ToString());
     }
 }
