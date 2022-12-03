@@ -28,11 +28,11 @@ public class PokerKata
         var parsedFace = parseFace(cardString);
         var parsedSuit = parseSuit(cardString);
         var card = new Card() { faceValue = parsedFace, suit = parsedSuit };
-        
+
         return card;
     }
 
-    public static Suit parseSuit(string cardString)
+    public static Suit parseSuit(string cardString) // Get the Suit of the card
     {
         var cardSuit = cardString[1];
 
@@ -47,7 +47,7 @@ public class PokerKata
         throw new NotImplementedException();
     } 
 
-    public static int parseFace(string cardString)
+    public static int parseFace(string cardString) // Get face of the card and change it to an int if its a T,J,Q,K,A
     {
         var cardFace = cardString[0];
 
