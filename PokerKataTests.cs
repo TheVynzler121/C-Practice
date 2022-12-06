@@ -9,6 +9,30 @@ public class PokerKataTests
 {
 
     [Test]
+    public void Test_CountStrings()
+    {
+        var inputStrings = new [] { "A", "A", "D", "C", "A" };
+
+        var finalCounts = PokerKata.countStrings(inputStrings);
+
+        Assert.AreEqual(3, finalCounts["A"]);
+        Assert.AreEqual(1, finalCounts["D"]);
+        Assert.AreEqual(1, finalCounts["C"]);
+    }
+
+    [Test]
+    public void Test_CountStrings1()
+    {
+        var strings = new [] { "D", "A", "D", "C", "A", "D" };
+
+        var counts = PokerKata.countStrings(strings);
+
+        Assert.AreEqual(2, counts["A"]);
+        Assert.AreEqual(3, counts["D"]);
+        Assert.AreEqual(1, counts["C"]);
+    }
+
+    [Test]
     public void Test_extractFace()
     {
         Assert.AreEqual(CardFace.Two, PokerKata.extractFace("2D"));

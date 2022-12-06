@@ -25,8 +25,24 @@ public enum CardFace
 
 public class PokerKata
 {
+    public static Dictionary<string, int> countStrings(string[] keysToCount) {
+        // histogram
+        var counts = new Dictionary<string, int> {
+            {"A", 0},
+            {"D", 0},
+            {"C", 0},
+        };
+
+        foreach(var key in keysToCount) {
+            Console.WriteLine($"key is {key}");
+            counts[key]++;
+        }
+
+        return counts;
+    }
+
     public static CardFace extractFace(string cardString) {
-        var charToCardFace = new Dictionary<char, CardFace> {
+        var charToCardFace = new Dictionary<char, CardFace> { // Makes the dictionary
             {'2', CardFace.Two},
             {'3', CardFace.Three},
             {'4', CardFace.Four},
@@ -41,8 +57,8 @@ public class PokerKata
             {'K', CardFace.King},
             {'A', CardFace.Ace},
         };
-
-        return charToCardFace[cardString[0]];
+        var key = cardString[0];
+        var value = charToCardFace[key]; // Uses the dictionary
+        return value;
     }
-
 }
