@@ -11,25 +11,25 @@ public class PokerKataTests
     [Test]
     public void Test_CountStrings()
     {
-        var inputStrings = new [] { "A", "A", "D", "C", "A" };
+        var inputStrings = new [] { "A", "A", "D", "C", "A", "C", "D", "A"};
 
         var finalCounts = PokerKata.countStrings(inputStrings);
 
-        Assert.AreEqual(3, finalCounts["A"]);
-        Assert.AreEqual(1, finalCounts["D"]);
-        Assert.AreEqual(1, finalCounts["C"]);
+        Assert.AreEqual(4, finalCounts["A"]);
+        Assert.AreEqual(2, finalCounts["D"]);
+        Assert.AreEqual(2, finalCounts["C"]);
     }
 
     [Test]
     public void Test_CountStrings1()
     {
-        var strings = new [] { "D", "A", "D", "C", "A", "D" };
+        var strings = new [] { "D", "A", "D", "C", "A", "D" }; // setting a new array/list
 
-        var counts = PokerKata.countStrings(strings);
+        var counts = PokerKata.countStrings(strings); // Calls the countStrings() function with the array varible strings as its parameter. then assigns the result of countStrings() as a new var called counts
 
-        Assert.AreEqual(2, counts["A"]);
-        Assert.AreEqual(3, counts["D"]);
-        Assert.AreEqual(1, counts["C"]);
+        Assert.AreEqual(2, counts["A"]); // Checks if there are 2 "A"s found in the above array/list
+        Assert.AreEqual(3, counts["D"]); // Checks if there are 3 "D"s in the above array/list
+        Assert.AreEqual(1, counts["C"]); // Checks if there is 1 "C" in the above array/list
     }
 
     [Test]
@@ -50,4 +50,13 @@ public class PokerKataTests
         Assert.AreEqual(CardFace.Ace, PokerKata.extractFace("AH"));
     }
 
+    [Test]
+    public void Test_extractSuit()
+    {
+        Assert.AreEqual(CardSuit.Diamonds, PokerKata.extractSuit("3D"));
+        Assert.AreEqual(CardSuit.Spades, PokerKata.extractSuit("6S"));
+        Assert.AreEqual(CardSuit.Clubs, PokerKata.extractSuit("TC"));
+        Assert.AreEqual(CardSuit.Hearts, PokerKata.extractSuit("2H"));
+        
+    }
 }
