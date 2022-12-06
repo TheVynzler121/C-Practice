@@ -35,7 +35,7 @@ public class PokerKata
 {
     public static Dictionary<string, int> countStrings(string[] keysToCount) {
         // histogram
-        var counts = new Dictionary<string, int> { // storing the count of keys in the array that the foreach loop counted.
+        var counts = new Dictionary<string, int> { // creates the dictionary there the foreach loop will store the counted values
             {"A", 0},
             {"D", 0},
             {"C", 0},
