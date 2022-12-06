@@ -11,7 +11,7 @@ public class PokerKataTests
     [Test]
     public void Test_extractFace()
     {
-        Assert.AreEqual(CardFace.Two, PokerKata.extractFace("2S"));
+        Assert.AreEqual(CardFace.Two, PokerKata.extractFace("2D"));
         Assert.AreEqual(CardFace.Three, PokerKata.extractFace("3S"));
         Assert.AreEqual(CardFace.Four, PokerKata.extractFace("4D"));
         Assert.AreEqual(CardFace.Five, PokerKata.extractFace("5H"));
