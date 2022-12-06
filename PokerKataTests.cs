@@ -23,7 +23,7 @@ public class PokerKataTests
         Assert.AreEqual(CardFace.Jack, PokerKata.extractFace("JS"));
         Assert.AreEqual(CardFace.Queen, PokerKata.extractFace("QH"));
         Assert.AreEqual(CardFace.King, PokerKata.extractFace("KC"));
-        Assert.AreEqual(CardFace.Ace, PokerKata.extractFace("AS"));
+        Assert.AreEqual(CardFace.Ace, PokerKata.extractFace("AH"));
     }
 
 }
