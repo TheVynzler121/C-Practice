@@ -65,8 +65,7 @@ public class PokerKata
             {'K', CardFace.King},
             {'A', CardFace.Ace},
         };
-        var key = cardString[0]; // sets a var with the first position of the cardString index and turns it into a char from a string
-        var value = charToCardFace[key]; // Searches the dictionary for the provided key and assigns the keys value to var value.
+        var value = charToCardFace[cardString[0]]; // Searches the dictionary for the provided key and assigns the keys value to var value.
         return value; // Returns the value set above by var value
     }
 
@@ -77,8 +76,7 @@ public class PokerKata
             {'C', CardSuit.Clubs},
             {'H', CardSuit.Hearts},
         };
-        var key = cardString[1];
-        var value = charToCardSuit[key];
+        var value = charToCardSuit[cardString[1]];
         return value;
     }
 }
