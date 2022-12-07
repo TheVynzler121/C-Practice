@@ -2,8 +2,37 @@ namespace C__Practice;
 
 // functions and functions calling other functions
 // tests
-// types: class, enum, int, string, char, bool
+// types: class, enum, int, string, char, bool, array
 // conditionals: if, Dictionary
+
+// array - homogenous data (all exact same type)
+// class - heterogenous data (all types allowed)
+
+// class      Organization
+//    string  Name
+//    class   Address
+//       string Street
+//       string City
+//       string State
+//       int ZipCode
+
+//    class   MTGPlayfield
+//       Card[] Monsters
+//          string Name
+//          string Flavor
+//          string Rarity
+//          int Mana
+//       string Lands
+//       string Artifacts
+//       int Health
+
+// var aceofSpades = new Card() {
+//     face = CardFace.Ace,
+//     suit = CardSuit.Spades
+// };
+
+// var theSuit = aceofSpades.suit;
+
 
 public class PokerKataTests
 {

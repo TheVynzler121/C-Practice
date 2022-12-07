@@ -8,7 +8,7 @@ namespace C__Practice;
 
 public enum CardFace // This is the enum list for the card faces, which is a list of numbers with names
 {
-    Two = 2,
+    Two = 2, 
     Three = 3,
     Four = 4,
     Five = 5,
@@ -31,9 +31,15 @@ public enum CardSuit
     Hearts = 4,
 }
 
+public class Card {
+    public CardFace face {get;set;} 
+    public CardSuit suit {get;set;}
+}
+
 public class PokerKata
 {
     public static Dictionary<string, int> countStrings(string[] keysToCount) {
+
         // histogram
         var counts = new Dictionary<string, int> { // creates the dictionary there the foreach loop will store the counted values
             {"A", 0},
@@ -64,9 +70,8 @@ public class PokerKata
             {'Q', CardFace.Queen},
             {'K', CardFace.King},
             {'A', CardFace.Ace},
-        };
-        var value = charToCardFace[cardString[0]]; // Searches the dictionary for the provided key and assigns the keys value to var value.
-        return value; // Returns the value set above by var value
+        }; 
+        return charToCardFace[cardString[0]]; // Searches the dictionary for the provided key and assigns the keys value to var value then Returns the value set above by var value
     }
 
     public static CardSuit extractSuit(string cardString){
@@ -76,7 +81,6 @@ public class PokerKata
             {'C', CardSuit.Clubs},
             {'H', CardSuit.Hearts},
         };
-        var value = charToCardSuit[cardString[1]];
-        return value;
+        return charToCardSuit[cardString[1]];
     }
 }
