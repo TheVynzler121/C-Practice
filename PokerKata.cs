@@ -32,7 +32,7 @@ public enum CardSuit
 }
 
 public class Card {
-    public CardFace face {get;set;} 
+    public CardFace face {get;set;} // public = everyone can access it. get; = everyone can get it. set; = everyone can set it.
     public CardSuit suit {get;set;}
 }
 
