@@ -38,6 +38,25 @@ public class Card {
 
 public class PokerKata
 {
+
+    public static Card parseCard(string cardString) {
+       
+       var Card = new Card (){
+            face = extractFace(cardString),
+            suit = extractSuit(cardString)
+       };
+       
+        return Card;
+        
+        // var twoOfDiamonds = new Card () {
+        //     face = CardFace.Two,
+        //     suit = CardSuit.Diamonds
+        // };
+        
+        
+        // return twoOfDiamonds;
+    }
+
     public static Dictionary<string, int> countStrings(string[] keysToCount) {
 
         // histogram
@@ -48,7 +67,6 @@ public class PokerKata
         };
 
         foreach(var key in keysToCount) { // Counts the keys in the array keysToCount. It will go through this loop until it reaches the end of the given array.
-            Console.WriteLine($"key is {key}");
             counts[key]++; // Adds 1 to the key Value in the counts Dictionary. i.e  It looks for an "A", finds the "A" in the given array, adds 1 for the value of "A" in the dictionary
         }
 
