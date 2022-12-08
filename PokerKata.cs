@@ -31,6 +31,31 @@ public enum CardSuit
     Hearts = 4,
 }
 
+public class WarriorSet {
+    public string name {get;set;} // "Worldbreaker"
+    public int strBonus {get;set;} 
+    public int dmgBonus {get; set;}
+}
+
+public class Player {
+    public Helm HelmWorn {get;set;}
+    public string PlayerClass {get;set;} // "Warrior", ...
+}
+
+public class Helm {
+    public string name {get; set;}
+    public string rarity {get; set;}  // "Epic", "Common"
+    public string armorClass {get; set;} // "Plate", "Mail", "Cloth"
+    public int armorValue {get; set;}
+    public WarriorSet set {get; set;}  // "Worldbreaker"
+    public int levelReq {get; set;}
+    
+    public string flavorText {get; set;}
+
+
+}
+
+
 public class Card {
     public CardFace face {get;set;} // public = everyone can access it. get; = everyone can get it. set; = everyone can set it.
     public CardSuit suit {get;set;}
@@ -39,22 +64,15 @@ public class Card {
 public class PokerKata
 {
 
-    public static Card parseCard(string cardString) {
+    //         parseCard
+    //       /           \
+    // extractFace     extractSuit
+    public static Card parseCard(string cardInput) {
        
-       var Card = new Card (){
-            face = extractFace(cardString),
-            suit = extractSuit(cardString)
+       return new Card (){
+            face = extractFace(cardInput),
+            suit = extractSuit(cardInput)
        };
-       
-        return Card;
-        
-        // var twoOfDiamonds = new Card () {
-        //     face = CardFace.Two,
-        //     suit = CardSuit.Diamonds
-        // };
-        
-        
-        // return twoOfDiamonds;
     }
 
     public static Dictionary<string, int> countStrings(string[] keysToCount) {
