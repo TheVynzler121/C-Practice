@@ -4,6 +4,7 @@ namespace C__Practice;
 // tests
 // types: class, enum, int, string, char, bool, array
 // conditionals: if, Dictionary
+// iteratiors: foreach
 
 // array - homogenous data (all exact same type)
 // class - heterogenous data (all types allowed)
@@ -52,6 +53,20 @@ public class PokerKataTests
         Assert.That(finalCounts["A"], Is.EqualTo(4));
         Assert.That(finalCounts["D"], Is.EqualTo(2));
         Assert.That(finalCounts["C"], Is.EqualTo(2));
+    }
+
+    [Test]
+    public void Test_ParseCards()
+    {
+        var cardsString = "4D 3H 2S TD QC 5D"; // new [] { "4D", "3H", "2S", "TD", "QC" }
+        var cards = PokerKata.parseCards(cardsString);
+        Assert.That(cards.Count, Is.EqualTo(6));
+        Assert.That(cards[0].face, Is.EqualTo(CardFace.Four)); 
+        Assert.That(cards[0].suit, Is.EqualTo(CardSuit.Diamonds)); 
+        Assert.That(cards[4].face, Is.EqualTo(CardFace.Queen)); 
+        Assert.That(cards[4].suit, Is.EqualTo(CardSuit.Clubs)); 
+        Assert.That(cards[5].face, Is.EqualTo(CardFace.Five)); 
+        Assert.That(cards[5].suit, Is.EqualTo(CardSuit.Diamonds)); 
     }
 
     [Test]

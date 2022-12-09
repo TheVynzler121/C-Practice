@@ -38,8 +38,15 @@ public class WarriorSet {
 }
 
 public class Player {
-    public Helm HelmWorn {get;set;}
+    public string playerName;
     public string PlayerClass {get;set;} // "Warrior", ...
+    public int playerLevel;
+    public int playerHp;
+    public string playerTitle;
+    public string playerStr;
+    public int strength;
+    public string playerDex;
+    public int dexterity;
 }
 
 public class Helm {
@@ -49,10 +56,11 @@ public class Helm {
     public int armorValue {get; set;}
     public WarriorSet set {get; set;}  // "Worldbreaker"
     public int levelReq {get; set;}
-    
+    public string mainStat;
+    public int mainStatValue;
+    public string secondStat;
+    public int secStatValue;
     public string flavorText {get; set;}
-
-
 }
 
 
@@ -63,6 +71,20 @@ public class Card {
 
 public class PokerKata
 {
+
+    public static List<Card> parseCards(string cardInput) {
+        var cards = new List<Card>();
+
+        var s = cardInput;
+
+        string[] subs = s.Split(' ');
+
+        foreach(var sub in subs) {
+            cards.Add(parseCard(sub));
+        }
+
+        return cards;
+    }
 
     //         parseCard
     //       /           \
