@@ -94,6 +94,9 @@ public class PokerKata
         return cards;
     }
 
+    //          PARSING                  DETECT-HAND                  RANK-HANDS            PRINT-WINNER
+    //         parseCards
+    //             |
     //         parseCard
     //       /           \
     // extractFace     extractSuit
