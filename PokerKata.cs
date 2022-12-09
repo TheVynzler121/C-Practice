@@ -72,15 +72,23 @@ public class Card {
 public class PokerKata
 {
 
+
+    // public static List<X> dummyFunc(string cardInput) {
+        // remembered list
+
+        // foreach(var cardString in splitCards) {
+            // remembered list .Add(....)
+        // }
+
+        // return remembered list
+    // }
+
     public static List<Card> parseCards(string cardInput) {
         var cards = new List<Card>();
 
-        var s = cardInput;
-
-        string[] subs = s.Split(' ');
-
-        foreach(var sub in subs) {
-            cards.Add(parseCard(sub));
+        
+        foreach(var cardString in cardInput.Split(' ')) {
+            cards.Add(parseCard(cardString));
         }
 
         return cards;
