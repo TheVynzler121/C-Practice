@@ -83,16 +83,18 @@ public class PokerKata
         // return remembered list
     // }
 
-    public static List<Card> parseCards(string cardInput) {
+    public static List<Card> parseCards(string cardInput)
+    {
         var cards = new List<Card>();
 
-        
-        foreach(var cardString in cardInput.Split(' ')) {
+        foreach(var cardString in cardInput.Split(' '))
+        {
             cards.Add(parseCard(cardString));
         }
-
         return cards;
     }
+
+    
 
     //          PARSING                  DETECT-HAND                  RANK-HANDS            PRINT-WINNER
     //         parseCards
