@@ -11,4 +11,20 @@ public class Arith
     {
         return x - y;
     }
+
+    public static Dictionary<string, int> countNumbers(string[] numbersToCount){
+        var counts = new Dictionary<string, int>{
+            {"1", 0},
+            {"2", 0},
+            {"3", 0},
+        };
+
+        foreach (var number in numbersToCount)
+        {
+            counts[number]++;
+        }
+
+        return counts;
+    }
+
 }

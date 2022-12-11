@@ -11,4 +11,15 @@ public class ArithTests
         Assert.That(Arith.subtract(3, 2), Is.EqualTo(1));
 
     }
+
+    [Test]
+    public void Test_countNumbers(){
+        var numberInput = new[] {"1", "2", "2", "3", "3", "1", "3"};
+
+        var finalNumberCount = Arith.countNumbers(numberInput);
+
+        Assert.That(finalNumberCount["1"], Is.EqualTo(2));
+        Assert.That(finalNumberCount["2"], Is.EqualTo(2));
+        Assert.That(finalNumberCount["3"], Is.EqualTo(3));
+    }
 }
