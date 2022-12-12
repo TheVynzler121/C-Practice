@@ -50,7 +50,7 @@ public class Player {
     public int dexterity;
     public string playerCon;
     public int consitution;
-    public string playerInt;
+    public const string intelligenceDisplayName = "Intelligence";
     public int intelligence;
 }
 
@@ -70,11 +70,12 @@ public class Helm {
 
 
 public class Card {
+
     public CardFace face {get;set;} // public = everyone can access it. get; = everyone can get it. set; = everyone can set it.
     public CardSuit suit {get;set;}
 }
 
-public class PokerKata
+public class Parsers
 {
 
 
@@ -108,8 +109,11 @@ public class PokerKata
     //       /           \
     // extractFace     extractSuit
 
-   public static Card parseCard(string cardInput){
-        return new Card () {
+    // when you "instantiate" a class, you have to call (one) if it's constructors
+    // if it has none it will call the implicit constructor + default all properties, 
+    // unless if you use the object intialization syntax
+   public static Card parseCard(string cardInput){  
+        return new Card {
             face = extractFace(cardInput),
             suit = extractSuit(cardInput),
         };
