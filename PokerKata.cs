@@ -107,14 +107,13 @@ public class PokerKata
     //         parseCard
     //       /           \
     // extractFace     extractSuit
-    public static Card parseCard(string cardInput)
-    {
-        return new Card ()
-        {
+
+   public static Card parseCard(string cardInput){
+        return new Card () {
             face = extractFace(cardInput),
-            suit = extractSuit(cardInput)
+            suit = extractSuit(cardInput),
         };
-    }
+   }
 
 
     public static Dictionary<string, int> countStrings(string[] keysToCount) {
