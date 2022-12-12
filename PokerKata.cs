@@ -43,10 +43,15 @@ public class Player {
     public int playerLevel;
     public int playerHp;
     public string playerTitle;
+    public int armorClass;
     public string playerStr;
     public int strength;
     public string playerDex;
     public int dexterity;
+    public string playerCon;
+    public int consitution;
+    public string playerInt;
+    public int intelligence;
 }
 
 public class Helm {
