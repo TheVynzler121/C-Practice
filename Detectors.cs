@@ -10,21 +10,13 @@ public class Detectors
         foreach(var faceAndCount in faceCounts) {
             var face = faceAndCount.Key;
             var count = faceAndCount.Value;
-
-            if (count == 2)
-            {
-                return $"Pair: {face}";
-            }
-            
-            if (count == 3)
-            {
-                return $"Three of a kind: {face}";
+            switch(count) {
+                case 2: return $"Pair: {face}";
+                case 3: return $"Three of a kind: {face}";
+                case 4: return $"Four of a kind: {face}";
             }
 
-            if (count == 4)
-            {
-                return $"Four of a kind: {face}";
-            }
+            //ToDo : detect a full house
         }
 
 
