@@ -2,7 +2,7 @@ namespace C__Practice;
 
 // functions and functions calling other functions
 // tests
-// types: class, enum, int, string, char, bool, array
+// types: class, enum, int, string, char, bool, array, function
 // conditionals: if, Dictionary
 // iteratiors: foreach
 
