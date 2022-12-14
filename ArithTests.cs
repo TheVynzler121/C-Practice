@@ -22,4 +22,10 @@ public class ArithTests
         Assert.That(finalNumberCount["2"], Is.EqualTo(2));
         Assert.That(finalNumberCount["3"], Is.EqualTo(3));
     }
+
+    [Test]
+    public void Test_extractNumber(){
+        
+        Assert.That(Arith.extractNumber("4"), Is.EqualTo(NumbersList.Four));
+    }
 }
