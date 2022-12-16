@@ -102,12 +102,6 @@ public class Parsers
 
     
 
-    //          PARSING                  DETECT-HAND                  RANK-HANDS            PRINT-WINNER
-    //         parseCards
-    //             |
-    //         parseCard
-    //       /           \
-    // extractFace     extractSuit
 
     // when you "instantiate" a class, you have to call (one) if it's constructors
     // if it has none it will call the implicit constructor + default all properties, 

@@ -2,14 +2,22 @@ namespace C__Practice;
 
 public class DetectorsTests
 {
-      [Test]
+
+    [Test]
+    public void Test_detectHand_FullHouse()
+    {
+        var hand = Parsers.parseCards("KD KH KS TD TC");
+        Assert.That(Detectors.detectHand(hand), Is.EqualTo("Full House: King Ten"));
+    }
+
+    [Test]
     public void Test_detectHand_FourKings()
     {
         var hand = Parsers.parseCards("KD KH KS TD KC");
         Assert.That(Detectors.detectHand(hand), Is.EqualTo("Four of a kind: King"));
     }
 
-      [Test]
+    [Test]
     public void Test_detectHand_ThreeKings()
     {
         var hand = Parsers.parseCards("KD KH KS TD QC");
