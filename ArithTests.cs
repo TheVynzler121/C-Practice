@@ -33,6 +33,6 @@ public class ArithTests
     public void Test_extractNumber2(){
         
         Assert.That(Arith.extractNumber2("5"), Is.EqualTo(NumbersListTwo.Five));
-        Assert.That(Arith.extractNumber2("9"), Is.EqualTo(NumbersListTwo.Nine))
+        Assert.That(Arith.extractNumber2("9"), Is.EqualTo(NumbersListTwo.Nine));
     }
 }
