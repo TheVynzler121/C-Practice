@@ -1,12 +1,20 @@
 namespace C__Practice;
 
 
- public enum NumbersList{
-        One = 1,
-        Two = 2,
-        Three = 3,
-        Four = 4,
-    }
+public enum NumbersList{
+    One = 1,
+    Two = 2,
+    Three = 3,
+    Four = 4,
+}
+
+public enum NumbersListTwo{
+    Five = 5,
+    Six = 6,
+    Seven = 7,
+    Eight = 8,
+    Nine = 9,
+}
 
 public class Arith
 {
@@ -45,6 +53,17 @@ public class Arith
             {'4', NumbersList.Four}
         };
         return charToNumber[numberString[0]];
+    }
+
+    public static NumbersListTwo extractNumber2(string anotherNumberString){
+        var charToNumberAgain = new Dictionary<char, NumbersListTwo>{
+            {'5', NumbersListTwo.Five},
+            {'6', NumbersListTwo.Six},
+            {'7', NumbersListTwo.Seven},
+            {'8', NumbersListTwo.Eight},
+            {'9', NumbersListTwo.Nine},
+        };
+        return charToNumberAgain[anotherNumberString[0]];
     }
 
 }
