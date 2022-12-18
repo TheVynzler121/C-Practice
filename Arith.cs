@@ -28,6 +28,14 @@ public class Arith
         return x - y;
     }
 
+    public static int addEnum()
+    {
+        int enumOne = (int) NumbersList.Two;
+        int enumTwo = (int) NumbersListTwo.Eight;
+
+        return enumOne + enumTwo;
+    }
+
     public static Dictionary<string, int> countNumbers(string[] numbersToCount){
         var counts = new Dictionary<string, int>{
             {"1", 0},

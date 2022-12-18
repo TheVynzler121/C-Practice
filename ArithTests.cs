@@ -35,4 +35,12 @@ public class ArithTests
         Assert.That(Arith.extractNumber2("5"), Is.EqualTo(NumbersListTwo.Five));
         Assert.That(Arith.extractNumber2("9"), Is.EqualTo(NumbersListTwo.Nine));
     }
+    [Test]
+    public void Test_addEnum(){
+        
+        Assert.That(Arith.addEnum(), Is.EqualTo(10));
+        
+    }
+
+
 }
