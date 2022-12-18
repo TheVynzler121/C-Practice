@@ -4,7 +4,6 @@ public class ArithTests
 {
 
     [Test]
-
     public void Test_Arith()
     {
         Assert.That(Arith.add(2, 3), Is.EqualTo(5));
