@@ -30,7 +30,7 @@ public class Arith
 
     public static int addEnum()
     {
-        int enumOne = (int) NumbersList.Two;
+        int enumOne = (int) NumbersList.Two; //cast the enum into an int
         int enumTwo = (int) NumbersListTwo.Eight;
 
         return enumOne + enumTwo;
