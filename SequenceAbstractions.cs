@@ -2,24 +2,13 @@ namespace C__Practice;
 
 public class SequenceAbstraction
 {
-    public static int SumNumbers(List<int> ys) // 1,2,3,4
+    public static int SumNumbers(List<int> numbs)
     {
-        var x = 0; // use a variable on the outside to remember something
-        foreach (var y in ys)
+        var x = 0;
+        foreach (var numb in numbs)
         {
-            x = x + y;
-        }
-        return x;
-    }
-    
-    public static string MergeStrings(List<string> ys)
-    {
-        var x = ""; // seed
-        foreach (var y in ys)
-        {
-            x = x + y;
-        }
-
+            x = x + numb;
+        }    
         return x;
     }
 
@@ -32,7 +21,16 @@ public class SequenceAbstraction
         }
         return nameCount;
     }
-
+    
+    public static string MergeStrings(List<string> words)
+    {
+        var x = "";
+        foreach (var word in words)
+        {
+            x = x + word;
+        }
+        return x;
+    }
     public static string FirstLetters(List<string> words)
     {
         var x = "";
