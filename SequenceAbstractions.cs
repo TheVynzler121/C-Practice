@@ -14,12 +14,13 @@ public class SequenceAbstraction
 
     public static int CountStrings(List<string> names)
     {
-        var nameCount = 0;
+        var stringCount = 0;
+
         foreach (var name in names)
         {
-            nameCount++;
+            stringCount++;
         }
-        return nameCount;
+        return stringCount;
     }
     
     public static string MergeStrings(List<string> words)
@@ -43,12 +44,13 @@ public class SequenceAbstraction
 
     public static int CountWordLengths(List<string> words)
     {
-        var x = 0;
+        var lengthCount = 0;
+
         foreach (var word in words)
         {
-            x = x + word.Length;
+            lengthCount = lengthCount + word.Length;
         }
-        return x;
+        return lengthCount;
     }
 
     public static bool AreAllMoreThanThreeLength(List<string> words)
