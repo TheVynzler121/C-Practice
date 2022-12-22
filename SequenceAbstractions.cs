@@ -14,7 +14,7 @@ public class SequenceAbstraction
 
     public static int CountStrings(List<string> names)
     {
-        var stringCount = 0;
+        var stringCount = 0; // thing to remember
 
         foreach (var name in names)
         {
