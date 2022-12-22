@@ -2,8 +2,102 @@ namespace C__Practice;
 
 public class SequenceAbstractionTests
 {
+	// level 1 - foreach, Select, Where
+	// level 2 - compound transformations
+
 // MAP, FILTER, FOLD/REDUCE
 // FOLDS/REDUCE- take a list, return one thing (that isn't a list)
+// List<T>    - T is a placeholder for the generic
+// fold/reduce - List<T> => U          Func<List<T>, U>      - always collapses the whole list into one thing
+// map         - List<T> => List<U>    Func<List<T>, List<U> - list always the same size
+
+    [Test]
+    public void Test_WordsStartWithS() {
+	var items = new List<string> {"steve", "ta", "s", "horseface"};
+
+	var actual = SequenceAbstraction.WordsStartWithS(items);
+
+	Assert.That(actual, Is.EquivalentTo(new List<string> { "steve", "s"}));
+    }
+
+    [Test]
+    public void Test_WordsLongEnough() {
+	var items = new List<string> {"steve", "sa", "s", "horseface"};
+
+	var actual = SequenceAbstraction.WordsLongEnough(items);
+
+	Assert.That(actual, Is.EquivalentTo(new List<string> { "steve", "horseface"}));
+    }
+
+    [Test]
+    public void Test_GameItemsICanAfford() {
+	var items = new List<int> { 400, 800, 200 };
+
+	var actual = SequenceAbstraction.NumbersUnder500(items);
+
+	Assert.That(actual, Is.EquivalentTo(new List<int> { 400, 200 }));
+    }
+
+    [Test]
+    public void Test_GameItemTotal() {
+	var items = new List<GameItem> {
+		new GameItem { Name = "Orb of Uh", GoldCost = 400},
+		new GameItem { Name = "Sword Of Fire", GoldCost = 800}
+	};
+
+	var actual = SequenceAbstraction.TotalCost(items);
+
+	Assert.That(actual, Is.EqualTo(1200));
+    }
+
+    [Test]
+    public void Test_GetGoldCosts() {
+	var items = new List<GameItem> {
+		new GameItem { Name = "Orb of Uh", GoldCost = 400},
+		new GameItem { Name = "Sword Of Fire", GoldCost = 800}
+	};
+
+	var actual = SequenceAbstraction.GetGoldCosts(items);
+
+	Assert.That(actual, Is.EquivalentTo(new List<int> { 400, 800 }));
+    }
+
+    [Test]
+    public void Test_SumOfSquares() {
+	var numbs = new List<int> {4, 5};  // (4*4)*2 , (5*5)*2
+
+	var actual = SequenceAbstraction.SumOfSquares(numbs);
+
+	Assert.That(actual, Is.EquivalentTo(new List<int> { 32, 50 }));
+    }
+
+    [Test]
+    public void Test_FirstLetterCapitalized() {
+	var numbs = new List<string> {"steve", "horseface"}; 
+
+	var actual = SequenceAbstraction.FirstLetterCapitalized(numbs);
+
+	Assert.That(actual, Is.EquivalentTo(new List<string> { "S", "H" }));
+    }
+
+    [Test]
+    public void Test_IntToString() {
+	var numbs = new List<int> { 1, 2, 3, 4};
+
+	var actual = SequenceAbstraction.IntsToStrings(numbs);
+
+	Assert.That(actual, Is.EquivalentTo(new List<string> { "1", "2", "3", "4"}));
+    }
+
+    [Test]
+    public void Test_AddsTen() {
+	var numbs = new List<int> { 1, 2, 3, 4};
+
+	var actual = SequenceAbstraction.AddsTen(numbs);
+
+	Assert.That(actual, Is.EquivalentTo(new List<int> { 11, 12, 13, 14}));
+    }
+
     [Test]
     public void Test_SumNumbers() {
 	var numbs = new List<int> { 1, 2, 3, 4};

@@ -1,5 +1,10 @@
 namespace C__Practice;
 
+public class GameItem {
+    public string Name { get;set;}
+    public int GoldCost { get;set;}
+}
+
 public class SequenceAbstraction
 {
     public static int SumNumbers(List<int> numbs)
@@ -10,6 +15,127 @@ public class SequenceAbstraction
             x = x + numb;
         }    
         return x;
+    }
+
+    public static List<int> GetGoldCosts(List<GameItem> ys)
+    {
+        return ys.Select(y => y.GoldCost).ToList();
+    }
+
+    public static int TotalCost(List<GameItem> ys)
+    {
+        var xs = 0;
+        foreach (var y in ys)
+        {
+            xs = xs + y.GoldCost;
+        }
+        return xs;
+    }
+
+    public static List<int> NumbersUnder500(List<int> ys) {
+        return ys.Where(y => y < 500).ToList();
+        // var xs = new List<int>();
+        // foreach (var y in ys)
+        // {
+        //     if(y < 500) {
+        //         xs.Add(y);
+        //     }
+        // }
+
+        // return xs;
+    }
+
+    public static List<string> WordsLongEnough(List<string> ys)
+    {
+        var xs = new List<string>();
+        foreach (var y in ys)
+        {
+            if(y.Length > 4)
+            {
+                xs.Add(y);
+            }
+        }
+        return xs;
+    }
+
+    public static List<string> WordsStartWithS(List<string> ys)
+    {
+        var xs = new List<string>();
+        foreach (var y in ys)
+        {
+            if(y[0] == 's')
+            {
+                xs.Add(y);
+            }
+        }
+        return xs;
+    }
+
+    /*
+
+    // reduce "shape"
+
+    public static U NAME<T, U>(List<T> ys) {
+        var x = U empty;
+        foreach (var y in ys)
+        {
+             x = CHANGE Y and add to x; 
+        }
+
+        return x;
+    }
+
+    // filter "shape"
+
+    public static List<T> NAME<T>(List<T> ys) {
+        var xs = new List<T>();
+        foreach (var y in ys)
+        {
+            if(CONDITION HERE) {
+                xs.Add(y);
+            }
+        }
+
+        return xs;
+    }
+
+
+
+    // map "shape"
+
+    public static List<U> NAME(List<T> ys)
+    {
+        var xs = new List<U>();
+        foreach(var y in ys) {
+            xs.Add(DO SOMETHING TO Y);
+        }
+        return xs;
+    }
+    */
+
+    public static List<int> AddsTen(List<int> ys)
+    {
+        var xs = new List<int>();
+        foreach (var y in ys)
+        {
+            xs.Add(y + 10);
+        }
+        return xs;
+    }
+
+    public static List<int> SumOfSquares(List<int> ys)
+    {
+        return ys.Select(y => (y * y)*2).ToList();
+    }
+
+    public static List<string> IntsToStrings(List<int> ys)
+    {
+       return ys.Select(y => y.ToString()).ToList();
+    }
+
+    public static List<string> FirstLetterCapitalized(List<string> ys)
+    {
+        return ys.Select(y => y[0].ToString().ToUpper()).ToList();
     }
 
     public static int CountStrings(List<string> names)
