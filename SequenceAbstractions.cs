@@ -140,18 +140,19 @@ public class SequenceAbstraction
 
     public static int CountStrings(List<string> names)
     {
-        var stringCount = 0; // thing to remember
+        var x = 0;
 
         foreach (var name in names)
         {
-            stringCount++;
+            x++;
         }
-        return stringCount;
+        return x;
     }
     
     public static string MergeStrings(List<string> words)
     {
         var x = "";
+
         foreach (var word in words)
         {
             x = x + word;
