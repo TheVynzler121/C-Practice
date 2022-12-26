@@ -115,12 +115,12 @@ public class SequenceAbstraction
 
     public static List<int> AddsTen(List<int> ys)
     {
-        var xs = new List<int>();
+        var x = new List<int>();
         foreach (var y in ys)
         {
-            xs.Add(y + 10);
+            x.Add(y + 10);
         }
-        return xs;
+        return x;
     }
 
     public static List<int> SumOfSquares(List<int> ys)
@@ -171,13 +171,12 @@ public class SequenceAbstraction
 
     public static int CountWordLengths(List<string> words)
     {
-        var lengthCount = 0;
-
+        var seed = 0;
         foreach (var word in words)
         {
-            lengthCount = lengthCount + word.Length;
+            seed = seed + word.Length;
         }
-        return lengthCount;
+        return seed;
     }
 
     public static bool AreAllMoreThanThreeLength(List<string> words)
