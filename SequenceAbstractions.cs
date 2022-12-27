@@ -18,19 +18,19 @@ public class SequenceAbstraction
         return sum;
     }
 
-    public static List<int> GetGoldCosts(List<GameItem> ys)
+    public static List<int> GetGoldCosts(List<GameItem> costs)
     {
-        return ys.Select(y => y.GoldCost).ToList();
+        return costs.Select(cost => cost.GoldCost).ToList();
     }
 
-    public static int TotalCost(List<GameItem> ys)
+    public static int TotalCost(List<GameItem> items)
     {
-        var xs = 0;
-        foreach (var y in ys)
+        var cost = 0;
+        foreach (var item in items)
         {
-            xs = xs + y.GoldCost;
+            cost = cost + item.GoldCost;
         }
-        return xs;
+        return cost;
     }
 
     public static List<int> NumbersUnder500(List<int> ys) {
@@ -51,7 +51,7 @@ public class SequenceAbstraction
         var xs = new List<string>();
         foreach (var y in ys)
         {
-            if(y.Length > 4)
+            if (y.Length < 5)
             {
                 xs.Add(y);
             }
