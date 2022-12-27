@@ -9,12 +9,13 @@ public class SequenceAbstraction
 {
     public static int SumNumbers(List<int> numbs)
     {
-        var x = 0;
+        var sum = 0;
         foreach (var numb in numbs)
         {
-            x = x + numb;
-        }    
-        return x;
+            sum = sum + numb;
+
+        }
+        return sum;
     }
 
     public static List<int> GetGoldCosts(List<GameItem> ys)
@@ -151,13 +152,13 @@ public class SequenceAbstraction
     
     public static string MergeStrings(List<string> words)
     {
-        var x = "";
+        var merge = "";
 
         foreach (var word in words)
         {
-            x = x + word;
+            merge = merge + word;
         }
-        return x;
+        return merge;
     }
     public static string FirstLetters(List<string> words)
     {
