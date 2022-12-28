@@ -9,13 +9,12 @@ public class SequenceAbstraction
 {
     public static int SumNumbers(List<int> numbs)
     {
-        var sum = 0;
+        var sumOfNumbs = 0;
         foreach (var numb in numbs)
         {
-            sum = sum + numb;
-
+            sumOfNumbs = sumOfNumbs + numb;
         }
-        return sum;
+        return sumOfNumbs;
     }
 
     public static List<int> GetGoldCosts(List<GameItem> costs)
@@ -59,17 +58,17 @@ public class SequenceAbstraction
         return xs;
     }
 
-    public static List<string> WordsStartWithS(List<string> ys)
+    public static List<string> WordsStartWithS(List<string> words)
     {
-        var xs = new List<string>();
-        foreach (var y in ys)
+        var sWords = new List<string>();
+        foreach (var word in words)
         {
-            if(y[0] == 's')
+            if(word[0] == 's')
             {
-                xs.Add(y);
+                sWords.Add(word);
             }
         }
-        return xs;
+        return sWords;
     }
 
     /*
@@ -141,13 +140,12 @@ public class SequenceAbstraction
 
     public static int CountStrings(List<string> names)
     {
-        var x = 0;
-
+        var countedStrings = 0;
         foreach (var name in names)
         {
-            x++;
+            countedStrings++;
         }
-        return x;
+        return countedStrings;
     }
     
     public static string MergeStrings(List<string> words)
@@ -162,12 +160,12 @@ public class SequenceAbstraction
     }
     public static string FirstLetters(List<string> words)
     {
-        var x = "";
+        var firstLettersString = "";
         foreach (var word in words)
         {
-            x = x + word[0];
+            firstLettersString = firstLettersString + word[0];
         }
-       return x;
+        return firstLettersString;
     }
 
     public static int CountWordLengths(List<string> words)
@@ -182,6 +180,7 @@ public class SequenceAbstraction
 
     public static bool AreAllMoreThanThreeLength(List<string> words)
     {
+        var x = true;
         foreach (var word in words)
         {
             if (word.Length < 3)
@@ -189,6 +188,6 @@ public class SequenceAbstraction
                 return false;
             }
         }
-        return true;
+        return x;
     }
 }
