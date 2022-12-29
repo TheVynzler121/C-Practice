@@ -9,7 +9,18 @@ public class SequenceAbstractionTests
 // FOLDS/REDUCE- take a list, return one thing (that isn't a list)
 // List<T>    - T is a placeholder for the generic
 // fold/reduce - List<T> => U          Func<List<T>, U>      - always collapses the whole list into one thing
-// map         - List<T> => List<U>    Func<List<T>, List<U> - list always the same size
+// map         - List<T> => List<U>    Func<List<T>, List<U> - list always the same size (one shape of a list to another shape thats the same size)
+// filter      - returns the same type and keeps certain elements. (also has an if statement)
+
+    [Test]
+    public void Test_NumbersAreSmallerThan5() {
+	var items = new List<int> {1, 55, 2, 6};
+
+	var actual = SequenceAbstraction.NumbersSmallerThan5(items);
+
+	Assert.That(actual, Is.EquivalentTo(new List<int> {1, 2}));
+    }
+
 
     [Test]
     public void Test_WordsStartWithS() {
@@ -78,6 +89,15 @@ public class SequenceAbstractionTests
 	var actual = SequenceAbstraction.FirstLetterCapitalized(numbs);
 
 	Assert.That(actual, Is.EquivalentTo(new List<string> { "S", "H" }));
+    }
+
+    [Test]
+    public void Test_CountDigits() {
+	var numbs = new List<int> { 1, 200, 12345, 24};
+
+	var actual = SequenceAbstraction.CountDigits(numbs);
+
+	Assert.That(actual, Is.EquivalentTo(new List<int> {1, 3, 5, 2}));
     }
 
     [Test]

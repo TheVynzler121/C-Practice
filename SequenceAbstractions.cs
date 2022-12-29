@@ -45,30 +45,37 @@ public class SequenceAbstraction
         // return xs;
     }
 
-    public static List<string> WordsLongEnough(List<string> ys)
+    public static List<string> WordsLongEnough(List<string> words)
     {
-        var xs = new List<string>();
-        foreach (var y in ys)
+        // return words.Where(word => word.Length > 4).ToList();
+        var wordsLongEnough = new List<string>();
+        foreach (var word in words)
         {
-            if (y.Length < 5)
+            if(word.Length > 4)
             {
-                xs.Add(y);
+                wordsLongEnough.Add(word);
             }
         }
-        return xs;
+        return wordsLongEnough;
     }
 
     public static List<string> WordsStartWithS(List<string> words)
     {
-        var sWords = new List<string>();
-        foreach (var word in words)
-        {
-            if(word[0] == 's')
-            {
-                sWords.Add(word);
-            }
-        }
-        return sWords;
+        return words.Where(word => word[0] == 's').ToList();
+        // var sWords = new List<string>();
+        // foreach (var word in words)
+        // {
+        //     if(word[0] == 's')
+        //     {
+        //         sWords.Add(word);
+        //     }
+        // }
+        // return sWords;
+    }
+
+    public static List<int> NumbersSmallerThan5(List<int> numbList)
+    {
+        return numbList.Where(numb => numb < 5).ToList();
     }
 
     /*
@@ -115,17 +122,30 @@ public class SequenceAbstraction
 
     public static List<int> AddsTen(List<int> ys)
     {
-        var x = new List<int>();
-        foreach (var y in ys)
+        // 1,2,3,4,5,6
+        // 1,2,3,4,5,6 => 11, 12, 13, 14, 15,16
+        // 1 => 11
+        return ys.Select(y => y + 10).ToList();
+    }
+
+    public static List<int> CountDigits(List<int> numbs)
+    {
+        var countedList = new List<int>();
+        foreach (var numb in numbs)
         {
-            x.Add(y + 10);
+            countedList.Add(numb.ToString().Length);
         }
-        return x;
+        return countedList;
     }
 
     public static List<int> SumOfSquares(List<int> ys)
     {
-        return ys.Select(y => (y * y)*2).ToList();
+        var xs = new List<int>();
+        foreach (var y in ys)
+        {
+            xs.Add((y * y) * 2);
+        }
+        return xs;
     }
 
     public static List<string> IntsToStrings(List<int> ys)
@@ -180,7 +200,7 @@ public class SequenceAbstraction
 
     public static bool AreAllMoreThanThreeLength(List<string> words)
     {
-        var x = true;
+        var ret = true;
         foreach (var word in words)
         {
             if (word.Length < 3)
@@ -188,6 +208,6 @@ public class SequenceAbstraction
                 return false;
             }
         }
-        return x;
+        return ret;
     }
 }
