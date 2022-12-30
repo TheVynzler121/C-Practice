@@ -4,13 +4,24 @@
 // conditionals: if, Dictionary
 // iteratiors: foreach
 
-// array - homogenous data (all exact same type)
-// class - heterogenous data (all types allowed) (can hold data and/or functions)
+// array/List - homogenous data (all exact same type)
+// class/tuple - heterogenous data (all types allowed) (can hold data and/or functions)
 
 namespace C__Practice;
 
 public class ParsersTests
 {
+
+     [Test]
+    public void Test_parseCard()
+    {
+        var inputString = "3D";
+
+        var card = Parsers.parseCard(inputString); 
+
+        Assert.That(card.Face, Is.EqualTo(3));
+        Assert.That(card.Suit, Is.EqualTo((false, false)));
+    }
 
     [Test]
     public void Test_canFormatASuit()
@@ -61,10 +72,6 @@ public class ParsersTests
 
         Assert.That(cardStrings, Is.EquivalentTo(new List<string>(){"4D", "3H", "2S", "TD", "QC"}));
     }
-    // "3D"  => (true, true)
-    // "4H"  => (false, true)
-    // "5C"  => (true, false)
-    // "6S"  => (false, false)
 
     [TestCase("4D", 4)]
     [TestCase("5D", 5)]

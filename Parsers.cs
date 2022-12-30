@@ -4,10 +4,29 @@
 // faces (2-9, T, J, Q, K, A)
 // suits  D - diamonds  S - spades  C - clubs  H - hearts
 
+
+
+// parseFace(string)  => int
+// parseSuit(string) => (bool, bool)
+// handSplitter(string)  => List<string>
+// 
+// List<string> => List<Card>
+// string ("3D") => Card
+
+
 namespace C__Practice;
+
+public class Card
+{
+    public int Face {get;set;}
+    public (bool, bool) Suit {get;set;}
+}
 
 public class Parsers
 {
+    public static Card parseCard(string cardString) {
+        return new Card();
+    }
 
     public static string formatSuit((bool, bool) suitValue) {
         if(suitValue == (true, true))
@@ -29,7 +48,6 @@ public class Parsers
         return "";
     }
 
-//  parseSuit -> TYPE -> formatSuit
     public static (bool, bool) parseSuit(string card) {
         if(card[1] == 'H')
         {
