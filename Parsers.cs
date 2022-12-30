@@ -8,6 +8,48 @@ namespace C__Practice;
 
 public class Parsers
 {
+
+    public static string formatSuit((bool, bool) suitValue) {
+        if(suitValue == (true, true))
+        {
+            return "Hearts";
+        }
+        if(suitValue == (true, false))
+        {
+            return "Spades";
+        }
+        if(suitValue == (false, true))
+        {
+            return "Clubs";
+        }
+        if(suitValue == (false, false))
+        {
+            return "Diamonds";
+        }
+        return "";
+    }
+
+//  parseSuit -> TYPE -> formatSuit
+    public static (bool, bool) parseSuit(string card) {
+        if(card[1] == 'H')
+        {
+            return (true, true);
+        }
+        if(card[1] == 'S')
+        {
+            return (true, false);
+        }
+        if(card[1] == 'C')
+        {
+            return (false, true);
+        }
+        if(card[1] == 'D')
+        {
+            return (false, false);
+        }
+        return (false, false);
+    }
+
     //       Split       ToList         
     // string => string[]  => List<string> 
     public static List<string> handSplitter(string inputString)
