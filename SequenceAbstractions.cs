@@ -19,7 +19,7 @@ public class SequenceAbstraction
 
     public static List<int> GetGoldCosts(List<GameItem> costs)
     {
-        return costs.Select(cost => cost.GoldCost).ToList();
+        return costs.Select(costs => costs.GoldCost).ToList();
     }
 
     public static int TotalCost(List<GameItem> items)
@@ -33,7 +33,8 @@ public class SequenceAbstraction
     }
 
     public static List<int> NumbersUnder500(List<int> ys) {
-        return ys.Where(y => y < 500).ToList();
+        
+        return ys.Where(ys => ys < 500).ToList();
         // var xs = new List<int>();
         // foreach (var y in ys)
         // {
@@ -61,7 +62,7 @@ public class SequenceAbstraction
 
     public static List<string> WordsStartWithS(List<string> words)
     {
-        return words.Where(word => word[0] == 's').ToList();
+        return words.Where(words => words[0] =='s').ToList();
         // var sWords = new List<string>();
         // foreach (var word in words)
         // {
@@ -75,7 +76,7 @@ public class SequenceAbstraction
 
     public static List<int> NumbersSmallerThan5(List<int> numbList)
     {
-        return numbList.Where(numb => numb < 5).ToList();
+        return numbList.Where(numbList => numbList < 5).ToList();
     }
 
     /*
@@ -125,7 +126,7 @@ public class SequenceAbstraction
         // 1,2,3,4,5,6
         // 1,2,3,4,5,6 => 11, 12, 13, 14, 15,16
         // 1 => 11
-        return ys.Select(y => y + 10).ToList();
+        return ys.Select(ys => ys + 10).ToList();
     }
 
     public static List<int> CountDigits(List<int> numbs)
@@ -150,12 +151,12 @@ public class SequenceAbstraction
 
     public static List<string> IntsToStrings(List<int> ys)
     {
-       return ys.Select(y => y.ToString()).ToList();
+       return ys.Select(ys => ys.ToString()).ToList();
     }
 
     public static List<string> FirstLetterCapitalized(List<string> ys)
     {
-        return ys.Select(y => y[0].ToString().ToUpper()).ToList();
+        return ys.Select(ys => ys[0].ToString().ToUpper()).ToList();
     }
 
     public static int CountStrings(List<string> names)
@@ -170,14 +171,14 @@ public class SequenceAbstraction
     
     public static string MergeStrings(List<string> words)
     {
-        var merge = "";
-
+        var seed = "";
         foreach (var word in words)
         {
-            merge = merge + word;
+            seed = seed + word;
         }
-        return merge;
+        return seed;
     }
+
     public static string FirstLetters(List<string> words)
     {
         var firstLettersString = "";
@@ -190,12 +191,12 @@ public class SequenceAbstraction
 
     public static int CountWordLengths(List<string> words)
     {
-        var seed = 0;
+        var wordsLength = 0;
         foreach (var word in words)
         {
-            seed = seed + word.Length;
+            wordsLength = wordsLength + word.Length;
         }
-        return seed;
+        return wordsLength;
     }
 
     public static bool AreAllMoreThanThreeLength(List<string> words)
