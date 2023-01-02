@@ -24,17 +24,17 @@ public class SequenceAbstraction
 
     public static int TotalCost(List<GameItem> items)
     {
-        var cost = 0;
-        foreach (var item in items)
+        var totalGoldCost = 0;
+        foreach (var cost in items)
         {
-            cost = cost + item.GoldCost;
+            totalGoldCost = totalGoldCost + cost.GoldCost;
         }
-        return cost;
+        return totalGoldCost;
     }
 
-    public static List<int> NumbersUnder500(List<int> ys) {
+    public static List<int> NumbersUnder500(List<int> numbList) {
         
-        return ys.Where(ys => ys < 500).ToList();
+        return numbList.Where(numbList => numbList < 500).ToList();
         // var xs = new List<int>();
         // foreach (var y in ys)
         // {
@@ -62,7 +62,7 @@ public class SequenceAbstraction
 
     public static List<string> WordsStartWithS(List<string> words)
     {
-        return words.Where(words => words[0] =='s').ToList();
+        return words.Where(words => words[0] == 's').ToList();
         // var sWords = new List<string>();
         // foreach (var word in words)
         // {
@@ -171,12 +171,12 @@ public class SequenceAbstraction
     
     public static string MergeStrings(List<string> words)
     {
-        var seed = "";
+        var mergedString = "";
         foreach (var word in words)
         {
-            seed = seed + word;
+            mergedString = mergedString + word;
         }
-        return seed;
+        return mergedString;
     }
 
     public static string FirstLetters(List<string> words)
@@ -191,24 +191,24 @@ public class SequenceAbstraction
 
     public static int CountWordLengths(List<string> words)
     {
-        var wordsLength = 0;
+        var stringLength = 0;
         foreach (var word in words)
         {
-            wordsLength = wordsLength + word.Length;
+            stringLength = stringLength + word.Length;
         }
-        return wordsLength;
+        return stringLength;
     }
 
     public static bool AreAllMoreThanThreeLength(List<string> words)
     {
-        var ret = true;
-        foreach (var word in words)
-        {
-            if (word.Length < 3)
+       var lessThanThree = true;
+       foreach (var word in words)
+       {
+            if(word.Length < 4)
             {
                 return false;
             }
-        }
-        return ret;
+       }
+       return lessThanThree;
     }
 }
