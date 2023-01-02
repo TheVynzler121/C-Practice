@@ -7,7 +7,16 @@ public class CompundSequenceAbstractions
 {
     public static IEnumerable<int> AddTenIfBigEnough(IEnumerable<int> numbList)
     {
-        return numbList.Where(number => number > 3)
-                       .Select(number => number + 10);
+        // return numbList.Where(number => number > 3)
+        //                .Select(number => number + 10);
+        var outputList = new List<int>();
+        foreach (var x in numbList)
+        {
+            if(x > 3)
+            {
+                outputList.Add(x + 10);
+            }
+        }
+        return outputList;
     }
 }
