@@ -2,6 +2,23 @@ namespace C__Practice;
 
 public class CompundSequenceTests
 {
+
+    [Test]
+    public void Test_GetNamesOfItemsICanAfford()
+    {
+        var items = new List<GameItem>() {
+            new GameItem{ GoldCost = 200, Name = "Scream'n Sword"},
+            new GameItem{ GoldCost = 700, Name = "Fragile Hammer"},
+            new GameItem{ GoldCost = 800, Name = "Can of Whoop Ass"},
+        };
+
+        var actual = CompundSequenceAbstractions.ItemsICanAfford(items, 300);
+
+        var output = new List<string>() { "Scream'n Sword" };
+
+        Assert.That(actual, Is.EquivalentTo(output));
+    }
+
     [Test]
     public void Test_AddTenIfBigEnough()
     {

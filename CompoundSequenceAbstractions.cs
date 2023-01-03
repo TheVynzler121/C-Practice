@@ -37,28 +37,16 @@ public class CompundSequenceAbstractions
         return outputList;
     }
 
+    // LINQ - helper functions for sequence abstractions
+    // Select, Where, Count, Average
     public static IEnumerable<int> ReturnNumbersGreaterThanAverage(IEnumerable<int> numbList)
     {
-        // average add them all together and divide by the total count
-        // var numbAverage = numbList.Average();
-        // return numbList.Where(x => x > numbAverage);
+        var average = numbList.Average();
+        return numbList.Where(x => x > average);
+    }
 
-        var sum = 0;
-        foreach (var x in numbList)
-        {
-            sum = sum + x;
-        }
-
-        var average = sum/numbList.Count();
-
-        var outputList = new List<int>();
-        foreach (var x in numbList)
-        {
-            if(x > average)
-            {
-                outputList.Add(x);
-            }
-        }
-        return outputList;
+    public static IEnumerable<string> ItemsICanAfford(IEnumerable<GameItem> items, int budget)
+    {
+        return items.Where(x => x.GoldCost < budget).Select(x => x.Name);
     }
 }
