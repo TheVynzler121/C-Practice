@@ -22,8 +22,6 @@ public class Card
     public (bool, bool) Suit { get; set; }
 }
 
-
-
 public class Parsers
 {
 
