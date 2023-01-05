@@ -18,50 +18,43 @@ namespace C__Practice;
 
 public class Card
 {
-    public int Face {get;set;}
-    public (bool, bool) Suit {get;set;}
+    public int Face { get; set; }
+    public (bool, bool) Suit { get; set; }
 }
+
+
 
 public class Parsers
 {
-    public static Card parseCard(string cardString) {
-        return new Card();
+
+    // "3D"
+    public static Card parseCard(string cardString)
+    {
+        var x = new Card()
+        {
+            Face = parseFace(cardString),
+            Suit = parseSuit(cardString)
+        };
+        return x;
     }
 
-    public static string formatSuit((bool, bool) suitValue) {
-        if(suitValue == (true, true))
-        {
-            return "Hearts";
-        }
-        if(suitValue == (true, false))
-        {
-            return "Spades";
-        }
-        if(suitValue == (false, true))
-        {
-            return "Clubs";
-        }
-        if(suitValue == (false, false))
-        {
-            return "Diamonds";
-        }
-        return "";
-    }
 
-    public static (bool, bool) parseSuit(string card) {
-        if(card[1] == 'H')
+
+    public static (bool, bool) parseSuit(string card)
+    {
+        if (card[1] == 'H')
         {
             return (true, true);
         }
-        if(card[1] == 'S')
+        if (card[1] == 'S')
         {
             return (true, false);
         }
-        if(card[1] == 'C')
+        if (card[1] == 'C')
         {
             return (false, true);
         }
-        if(card[1] == 'D')
+        if (card[1] == 'D')
         {
             return (false, false);
         }
@@ -86,13 +79,16 @@ public class Parsers
             {"K", 13},
             {"A", 14},
         };
-        
-        var firstLetter = inputString[0].ToString();
 
-        if(faceToNumb.ContainsKey(firstLetter)) {
-            return faceToNumb[firstLetter];
-        } else {
-            return Int32.Parse(firstLetter);
+        var faceString = inputString[0].ToString();
+
+        if (faceToNumb.ContainsKey(faceString))
+        {
+            return faceToNumb[faceString];
+        }
+        else
+        {
+            return Int32.Parse(faceString);
         }
     }
 }

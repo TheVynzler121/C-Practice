@@ -12,30 +12,29 @@ namespace C__Practice;
 public class ParsersTests
 {
 
-     [Test]
+    [Test]
     public void Test_parseCard()
     {
         var inputString = "3D";
 
-        var card = Parsers.parseCard(inputString); 
+        var card = Parsers.parseCard(inputString);
 
         Assert.That(card.Face, Is.EqualTo(3));
         Assert.That(card.Suit, Is.EqualTo((false, false)));
     }
 
     [Test]
-    public void Test_canFormatASuit()
+    public void Test_parseCard2()
     {
-        var hearts = (true, true);
-        var spades = (true, false);
-        var clubs = (false, true);
-        var diamonds = (false, false);
+        var inputString = "QH";
 
-        Assert.That(Parsers.formatSuit(hearts), Is.EqualTo("Hearts"));
-        Assert.That(Parsers.formatSuit(spades), Is.EqualTo("Spades"));
-        Assert.That(Parsers.formatSuit(clubs), Is.EqualTo("Clubs"));
-        Assert.That(Parsers.formatSuit(diamonds), Is.EqualTo("Diamonds"));
+        var card = Parsers.parseCard(inputString);
+
+        Assert.That(card.Face, Is.EqualTo(12));
+        Assert.That(card.Suit, Is.EqualTo((true, true)));
     }
+
+    
 
     [Test]
     public void Test_parseSuit()
@@ -49,17 +48,17 @@ public class ParsersTests
     [Test]
     public void Test_tuplePractice()
     {
-        var t1 = (1,3);
-        var t2 = (2,1);
+        var t1 = (1, 3);
+        var t2 = (2, 1);
 
-        var areEqual = (1,3) == (1,3);
+        var areEqual = (1, 3) == (1, 3);
 
         Assert.That(areEqual, Is.True);
 
-        Assert.That(t1, Is.EqualTo((1,3)));
+        Assert.That(t1, Is.EqualTo((1, 3)));
         Assert.That(t1, Is.Not.EqualTo(t2));
 
-        Assert.That(t2, Is.EqualTo((2,1)));
+        Assert.That(t2, Is.EqualTo((2, 1)));
         Assert.That(t2, Is.Not.EqualTo(t1));
     }
 
@@ -70,7 +69,7 @@ public class ParsersTests
 
         var cardStrings = Parsers.handSplitter(inputString);
 
-        Assert.That(cardStrings, Is.EquivalentTo(new List<string>(){"4D", "3H", "2S", "TD", "QC"}));
+        Assert.That(cardStrings, Is.EquivalentTo(new List<string>() { "4D", "3H", "2S", "TD", "QC" }));
     }
 
     [TestCase("4D", 4)]
