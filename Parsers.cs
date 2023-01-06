@@ -9,9 +9,8 @@
 // parseFace(string)  => int
 // parseSuit(string) => (bool, bool)
 // handSplitter(string)  => List<string>
-// 
-// List<string> => List<Card>
-// string ("3D") => Card
+// parseCard(string)  => Card
+// parseHand(string) => List<Card>
 
 
 namespace C__Practice;
@@ -36,6 +35,10 @@ public class Parsers
         return x;
     }
 
+    public static IEnumerable<Card> parseHand(string handString)
+    {
+        return handSplitter(handString).Select(parseCard);           
+    }
 
 
     public static (bool, bool) parseSuit(string card)

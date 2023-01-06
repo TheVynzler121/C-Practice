@@ -12,6 +12,24 @@ namespace C__Practice;
 public class ParsersTests
 {
 
+
+    [Test]
+    public void Test_parseHand()
+    {
+        var inputString = "3D 4H 7C TS 2D";
+
+        var hand = Parsers.parseHand(inputString).ToList();
+
+        
+        var firstCard = hand[0];
+        Assert.That(firstCard.Face, Is.EqualTo(3));
+        Assert.That(firstCard.Suit, Is.EqualTo((false, false)));
+
+        var lastCard = hand[4];
+        Assert.That(lastCard.Face, Is.EqualTo(2));
+        Assert.That(lastCard.Suit, Is.EqualTo((false, false)));
+    }
+
     [Test]
     public void Test_parseCard()
     {
