@@ -76,7 +76,7 @@ public class SequenceAbstraction
 
     public static List<int> NumbersSmallerThan5(List<int> numbList)
     {
-        return numbList.Where(numbList => numbList < 5).ToList();
+       return numbList.Where(numb => numb < 5).ToList();
     }
 
     /*
@@ -131,12 +131,13 @@ public class SequenceAbstraction
 
     public static List<int> CountDigits(List<int> numbs)
     {
-        var countedList = new List<int>();
-        foreach (var numb in numbs)
-        {
-            countedList.Add(numb.ToString().Length);
-        }
-        return countedList;
+        return numbs.Select(numb => numb.ToString().Length).ToList();
+        // var countedList = new List<int>();
+        // foreach (var numb in numbs)
+        // {
+        //     countedList.Add(numb.ToString().Length);
+        // }
+        // return countedList;
     }
 
     public static List<int> SumOfSquares(List<int> ys)
@@ -154,9 +155,9 @@ public class SequenceAbstraction
        return ys.Select(ys => ys.ToString()).ToList();
     }
 
-    public static List<string> FirstLetterCapitalized(List<string> ys)
+    public static IEnumerable<string> FirstLetterCapitalized(List<string> inputList)
     {
-        return ys.Select(ys => ys[0].ToString().ToUpper()).ToList();
+        return inputList.Select(input => input[0].ToString().ToUpper());
     }
 
     public static int CountStrings(List<string> names)
