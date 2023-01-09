@@ -7,16 +7,16 @@ public class CompundSequenceAbstractions
 {
     public static IEnumerable<int> AddTenIfBigEnough(IEnumerable<int> numbList)
     {
-
-        var outputList = new List<int>();
-        foreach (var x in numbList)
-        {
-            if (x > 3)
-            {
-                outputList.Add(x + 10);
-            }
-        }
-        return outputList;
+        return numbList.Where(x => x > 3).Select(x => x + 10);
+        // var outputList = new List<int>();
+        // foreach (var x in numbList)
+        // {
+        //     if (x > 3)
+        //     {
+        //         outputList.Add(x + 10);
+        //     }
+        // }
+        // return outputList;
     }
 
     public static string Capitalize(string x)

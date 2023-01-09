@@ -37,7 +37,22 @@ public class CompundSequenceTests
 
         Assert.That(actual, Is.EquivalentTo(output));
     }
+    
+    [Test]
+    public void Test_ItemsICanAfford()
+    {
+        var items = new List<GameItem>() {
+            new GameItem{ GoldCost = 200, Name = "Scream'n Sword"},
+            new GameItem{ GoldCost = 700, Name = "Fragile Hammer"},
+            new GameItem{ GoldCost = 100, Name = "Can of Whoop Ass"},
+        };
 
+        var actual = CompundSequenceAbstractions.ItemsICanAfford(items, 300);
+
+        var output = new List<string>() { "Scream'n Sword", "Can of Whoop Ass" };
+
+        Assert.That(actual, Is.EquivalentTo(output));
+    }
 
     [Test]
     public void Test_AddTenIfBigEnough()
