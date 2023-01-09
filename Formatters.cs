@@ -2,9 +2,14 @@ namespace C__Practice;
 
 public class Formatters
 {
-    public static string printCard(string inputString)
+    //           parseCard             formatSuit/formatFace
+    // string    ->        Card                 ->      string
+
+    //           formatSuit/formatFace
+    //  Card                 ->      string
+    public static string printCard(Card card)
     {
-        var card = Parsers.parseCard(inputString);
+        
         var cardSuit = formatSuit(card.Suit);
         var cardFace = formatFace(card.Face);
         var formatedCard = $"{cardFace} {cardSuit}";

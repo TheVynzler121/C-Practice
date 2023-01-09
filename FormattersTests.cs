@@ -16,7 +16,7 @@ public class FormattersTests
     [Test]
     public void Test_printCard3D()
     {
-        var inputString = "3D";
+        var inputString = Parsers.parseCard("3D");
 
         var card = Formatters.printCard(inputString);
 
@@ -26,7 +26,7 @@ public class FormattersTests
     [Test]
     public void Test_printCard()
     {
-        var inputString = "QH";
+        var inputString = Parsers.parseCard("QH");
 
         var card = Formatters.printCard(inputString);
 
