@@ -12,6 +12,7 @@ public class DetectorsTests
     }
 
     [TestCase("4D 3H 4S TD QC", "Pair of : Four")]
+    [TestCase("2D 3H 4S TD QC", null)]
     public void Test_DetectPair(string input, string output)
     {
         var actual = Detectors.DectectPair(input);
@@ -19,5 +20,23 @@ public class DetectorsTests
         Assert.That(actual, Is.EqualTo(output));
     }
 
-    
+    [TestCase("3D 3H 3S TD QC", "Three of a kind : Three")]
+    [TestCase("2D 3H 4S TD QC", null)]
+    public void Test_DetectThreeOfAKind(string input, string output)
+    {
+        var actual = Detectors.DectectThreeOfAKind(input);
+
+        Assert.That(actual, Is.EqualTo(output));
+    }
+
+    [TestCase("3D QH QS QD QC", "Four of a kind : Queen")]
+    [TestCase("2D 3H 4S TD QC", null)]
+    public void Test_DetectFourOfAKind(string input, string output)
+    {
+        var actual = Detectors.DectectFourOfAKind(input);
+
+        Assert.That(actual, Is.EqualTo(output));
+    }
+
+    //TO DO: Make DetectHand tests and function. Make Full House function.
 }
