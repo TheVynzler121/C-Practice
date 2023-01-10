@@ -28,6 +28,15 @@ public class Detectors
             counts[card.Face]++;
         }
 
+        foreach (var count in counts)
+        {
+            if(count == 2)
+            {
+
+                return $"Pair of : ";
+            }
+        }
+
         return toString(counts);
     }
 
