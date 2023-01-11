@@ -90,5 +90,5 @@ public class Detectors
    // raw data     ->    core logic / formatter    ->   core logic 
 
 
-   // raw data     ->    core logic   ->   core logic 
+   // raw data     ->    core logic   ->   formatting
 }
