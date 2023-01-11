@@ -1,5 +1,15 @@
 namespace C__Practice;
 
+public class DetectionResults {
+    public bool IsMatch { get;set;}
+    public int TieBreaker { get;set;}
+}
+
+public class DetectionResultsSuit {
+    public bool IsMatch { get;set;}
+    public (bool, bool) TieBreaker { get;set;}
+}
+
 public class Detectors
 {
     public static string DetectHighCard(string inputHand)
@@ -17,34 +27,34 @@ public class Detectors
         return $"High card is : {Formatters.printCard(highCard)}";
     }
 
-    public static string DectectPair(string inputHand)
+    public static DetectionResults DectectPair(string inputHand)
     {
         var counts = CountFaces(inputHand).ToList();
 
         for(var face = 0; face < counts.Count; face++) 
         {
-            var value = counts[face];
-            if(value == 2)
+            var count = counts[face];
+            if(count == 2)
             {
-                return $"Pair of : {Formatters.formatFace(face)}";
+                return new DetectionResults(){IsMatch = true, TieBreaker = face};
             }
         }
-        return null;
+        return new DetectionResults(){IsMatch = false, TieBreaker = 0};
     }
 
-    public static string DectectThreeOfAKind(string inputHand)
+    public static DetectionResults DectectThreeOfAKind(string inputHand)
     {
         var counts = CountFaces(inputHand).ToList();
 
         for(var face = 0; face < counts.Count; face++) 
         {
-            var value = counts[face];
-            if(value == 3)
+            var count = counts[face];
+            if(count == 3)
             {
-                return $"Three of a kind : {Formatters.formatFace(face)}";
+                return new DetectionResults(){IsMatch = true, TieBreaker = face};
             }
         }
-        return null;
+        return new DetectionResults(){IsMatch = false, TieBreaker = 0};
     }
 
     public static string DectectFourOfAKind(string inputHand)
@@ -75,20 +85,21 @@ public class Detectors
         return counts;
     }
     
-    public static string DetectFullHouse(string inputHand)
+    public static DetectionResults DetectFullHouse(string inputHand)
     {
         var pair = DectectPair(inputHand);
         var threeOfAKind = DectectThreeOfAKind(inputHand);
 
-        if (pair != null && threeOfAKind != null)
+        if (pair.IsMatch && threeOfAKind.IsMatch)
         {
-            return $"Full House : {threeOfAKind.Split(" ")[5]}";
+            return new DetectionResults(){IsMatch = true, TieBreaker = threeOfAKind.TieBreaker};
         }
-        return null;
+        return new DetectionResults(){IsMatch = false, TieBreaker = 0};
     }
    //          parser                            Split 
    // raw data     ->    core logic / formatter    ->   core logic 
 
 
    // raw data     ->    core logic   ->   formatting
+
 }

@@ -11,22 +11,24 @@ public class DetectorsTests
         Assert.That(actual, Is.EqualTo(output));
     }
 
-    [TestCase("4D 3H 4S TD QC", "Pair of : Four")]
-    [TestCase("2D 3H 4S TD QC", null)]
-    public void Test_DetectPair(string input, string output)
+    [TestCase("4D 3H 4S TD QC", true, 4)]
+    [TestCase("4D 3H 2S TD QC", false, 0)]
+    public void Test_DetectPair(string input, bool isMatch, int tieBreakerFace)
     {
         var actual = Detectors.DectectPair(input);
 
-        Assert.That(actual, Is.EqualTo(output));
+        Assert.That(actual.IsMatch, Is.EqualTo(isMatch));
+        Assert.That(actual.TieBreaker, Is.EqualTo(tieBreakerFace));
     }
 
-    [TestCase("3D 3H 3S TD QC", "Three of a kind : Three")]
-    [TestCase("2D 3H 4S TD QC", null)]
-    public void Test_DetectThreeOfAKind(string input, string output)
+    [TestCase("3D 3H 3S TD QC", true, 3)]
+    [TestCase("2D 3H 4S TD QC", false, 0)]
+    public void Test_DetectThreeOfAKind(string input, bool isMatch, int tieBreakerFace)
     {
         var actual = Detectors.DectectThreeOfAKind(input);
 
-        Assert.That(actual, Is.EqualTo(output));
+        Assert.That(actual.IsMatch, Is.EqualTo(isMatch));
+        Assert.That(actual.TieBreaker, Is.EqualTo(tieBreakerFace));
     }
 
     [TestCase("3D QH QS QD QC", "Four of a kind : Queen")]
@@ -38,15 +40,26 @@ public class DetectorsTests
         Assert.That(actual, Is.EqualTo(output));
     }
 
-    [TestCase("3D 3H 2C 2S 2H", "Full House : Two")]
-    [TestCase("3D 3H 3C 2S 2H", "Full House : Three")]
-    [TestCase("4D 4H 4C 5S 5H", "Full House : Four")]
-    [TestCase("4D 3H 2C 5S 6H", null)]
-    public void Test_DetectFullHouse(string input, string output)
+    [TestCase("3D 3H 2C 2S 2H", true, 2)]
+    [TestCase("3D 3H 3C 2S 2H", true, 3)]
+    [TestCase("4D 4H 4C 5S 5H", true, 4)]
+    [TestCase("4D 3H 2C 5S 6H", false, 0)]
+    public void Test_DetectFullHouse(string input, bool isMatch, int tieBreakerFace)
     {
         var actual = Detectors.DetectFullHouse(input);
 
-        Assert.That(actual, Is.EqualTo(output));
+        Assert.That(actual.IsMatch, Is.EqualTo(isMatch));
+        Assert.That(actual.TieBreaker, Is.EqualTo(tieBreakerFace));
     }
-    //TO DO: Make DetectHand tests and function. Make Full House function.
+    //TO DO: Make DetectHand tests and function.
 }
+
+// X high card
+// X pair
+// X three of a kind
+// straight
+// four of a kind
+// X full house
+// flush
+// straight flush 
+// royal flush (straight flush + high card is Ace)
