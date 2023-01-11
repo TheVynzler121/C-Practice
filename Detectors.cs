@@ -75,5 +75,20 @@ public class Detectors
         return counts;
     }
     
-    
+    public static string DetectFullHouse(string inputHand)
+    {
+        var pair = DectectPair(inputHand);
+        var threeOfAKind = DectectThreeOfAKind(inputHand);
+
+        if (pair != null && threeOfAKind != null)
+        {
+            return $"Full House : {threeOfAKind.Split(" ")[5]}";
+        }
+        return null;
+    }
+   //          parser                            Split 
+   // raw data     ->    core logic / formatter    ->   core logic 
+
+
+   // raw data     ->    core logic   ->   core logic 
 }

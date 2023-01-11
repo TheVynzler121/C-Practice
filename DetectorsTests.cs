@@ -38,5 +38,15 @@ public class DetectorsTests
         Assert.That(actual, Is.EqualTo(output));
     }
 
+    [TestCase("3D 3H 2C 2S 2H", "Full House : Two")]
+    [TestCase("3D 3H 3C 2S 2H", "Full House : Three")]
+    [TestCase("4D 4H 4C 5S 5H", "Full House : Four")]
+    [TestCase("4D 3H 2C 5S 6H", null)]
+    public void Test_DetectFullHouse(string input, string output)
+    {
+        var actual = Detectors.DetectFullHouse(input);
+
+        Assert.That(actual, Is.EqualTo(output));
+    }
     //TO DO: Make DetectHand tests and function. Make Full House function.
 }
