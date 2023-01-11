@@ -31,13 +31,14 @@ public class DetectorsTests
         Assert.That(actual.TieBreaker, Is.EqualTo(tieBreakerFace));
     }
 
-    [TestCase("3D QH QS QD QC", "Four of a kind : Queen")]
-    [TestCase("2D 3H 4S TD QC", null)]
-    public void Test_DetectFourOfAKind(string input, string output)
+    [TestCase("3D QH QS QD QC", true, 12)]
+    [TestCase("2D 3H 4S TD QC", false, 0)]
+    public void Test_DetectFourOfAKind(string input, bool isMatch, int tieBreakerFace)
     {
         var actual = Detectors.DectectFourOfAKind(input);
 
-        Assert.That(actual, Is.EqualTo(output));
+        Assert.That(actual.IsMatch, Is.EqualTo(isMatch));
+        Assert.That(actual.TieBreaker, Is.EqualTo(tieBreakerFace));
     }
 
     [TestCase("3D 3H 2C 2S 2H", true, 2)]

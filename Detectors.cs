@@ -57,7 +57,7 @@ public class Detectors
         return new DetectionResults(){IsMatch = false, TieBreaker = 0};
     }
 
-    public static string DectectFourOfAKind(string inputHand)
+    public static DetectionResults DectectFourOfAKind(string inputHand)
     {
         var counts = CountFaces(inputHand).ToList();
 
@@ -66,10 +66,10 @@ public class Detectors
             var value = counts[face];
             if(value == 4)
             {
-                return $"Four of a kind : {Formatters.formatFace(face)}";
+                return new DetectionResults(){IsMatch = true, TieBreaker = face};
             }
         }
-        return null;
+        return new DetectionResults(){IsMatch = false, TieBreaker = 0};
     }
     
     public static IEnumerable<int> CountFaces(string inputHand)
