@@ -5,14 +5,10 @@ public class DetectionResults {
     public int TieBreaker { get;set;}
 }
 
-public class DetectionResultsSuit {
-    public bool IsMatch { get;set;}
-    public (bool, bool) TieBreaker { get;set;}
-}
 
 public class Detectors
 {
-    public static string DetectHighCard(string inputHand)
+    public static int DetectHighCard(string inputHand)
     {
         var hand = Parsers.parseHand(inputHand);
         var highCard = hand.ToList()[0];
@@ -24,10 +20,10 @@ public class Detectors
                 highCard = card;
             }
         }
-        return $"High card is : {Formatters.printCard(highCard)}";
+        return highCard.Face;
     }
 
-    public static DetectionResults DectectPair(string inputHand)
+    public static DetectionResults DetectPair(string inputHand)
     {
         var counts = CountFaces(inputHand).ToList();
 
@@ -42,7 +38,7 @@ public class Detectors
         return new DetectionResults(){IsMatch = false, TieBreaker = 0};
     }
 
-    public static DetectionResults DectectThreeOfAKind(string inputHand)
+    public static DetectionResults DetectThreeOfAKind(string inputHand)
     {
         var counts = CountFaces(inputHand).ToList();
 
@@ -57,7 +53,7 @@ public class Detectors
         return new DetectionResults(){IsMatch = false, TieBreaker = 0};
     }
 
-    public static DetectionResults DectectFourOfAKind(string inputHand)
+    public static DetectionResults DetectFourOfAKind(string inputHand)
     {
         var counts = CountFaces(inputHand).ToList();
 
@@ -84,11 +80,30 @@ public class Detectors
         }
         return counts;
     }
+
+    public static Dictionary<(bool, bool), int> CountSuit(string inputHand)
+    {
+        var hand = Parsers.parseHand(inputHand);
+
+        var counts = new Dictionary<(bool, bool), int>
+        {
+            {(true, true), 0},
+            {(true, false), 0},
+            {(false, true), 0},
+            {(false, false), 0},
+        };
+
+        foreach (var card in hand)
+        {
+            counts[card.Suit]++;
+        }
+        return counts;
+    }
     
     public static DetectionResults DetectFullHouse(string inputHand)
     {
-        var pair = DectectPair(inputHand);
-        var threeOfAKind = DectectThreeOfAKind(inputHand);
+        var pair = DetectPair(inputHand);
+        var threeOfAKind = DetectThreeOfAKind(inputHand);
 
         if (pair.IsMatch && threeOfAKind.IsMatch)
         {
@@ -96,6 +111,39 @@ public class Detectors
         }
         return new DetectionResults(){IsMatch = false, TieBreaker = 0};
     }
+
+    public static DetectionResults DetectFlush(string inputHand)
+    {
+        var countedsuit = CountSuit(inputHand);
+        
+        foreach (var suitCount in countedsuit)
+        {
+            var suit = suitCount.Key;  // (bool,bool)
+            var count = suitCount.Value; // int
+
+            if(count == 5)
+            {
+                return new DetectionResults() {IsMatch = true, TieBreaker = DetectHighCard(inputHand)};
+            }
+        }
+        return new DetectionResults() {IsMatch = false, TieBreaker = 0};
+    }
+
+    public static DetectionResults DetectStraight(string inputHand)
+    {
+        var hand = Parsers.parseHand(inputHand).OrderBy(card => card.Face).ToList();
+
+        var nextFace = hand[0].Face;
+        foreach(var card in hand) {
+            if (card.Face != nextFace)
+            {
+                return new DetectionResults(){IsMatch = false, TieBreaker = 0};
+            }
+            nextFace = card.Face + 1;
+        }               
+        return new DetectionResults(){IsMatch = true, TieBreaker = DetectHighCard(inputHand)};
+    }
+
    //          parser                            Split 
    // raw data     ->    core logic / formatter    ->   core logic 
 

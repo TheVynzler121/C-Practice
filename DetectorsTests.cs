@@ -2,9 +2,9 @@ namespace C__Practice;
 
 public class DetectorsTests
 {
-    [TestCase("4D 3H 2S TD QC", "High card is : Queen Clubs")]
-    [TestCase("4D KH 2S TD QC", "High card is : King Hearts")]
-    public void Test_DetectHighCard(string input, string output)
+    [TestCase("4D 3H 2S TD QC", 12)]
+    [TestCase("4D KH 2S TD QC", 13)]
+    public void Test_DetectHighCard(string input, int output)
     {
         var actual = Detectors.DetectHighCard(input);
 
@@ -15,7 +15,7 @@ public class DetectorsTests
     [TestCase("4D 3H 2S TD QC", false, 0)]
     public void Test_DetectPair(string input, bool isMatch, int tieBreakerFace)
     {
-        var actual = Detectors.DectectPair(input);
+        var actual = Detectors.DetectPair(input);
 
         Assert.That(actual.IsMatch, Is.EqualTo(isMatch));
         Assert.That(actual.TieBreaker, Is.EqualTo(tieBreakerFace));
@@ -25,7 +25,7 @@ public class DetectorsTests
     [TestCase("2D 3H 4S TD QC", false, 0)]
     public void Test_DetectThreeOfAKind(string input, bool isMatch, int tieBreakerFace)
     {
-        var actual = Detectors.DectectThreeOfAKind(input);
+        var actual = Detectors.DetectThreeOfAKind(input);
 
         Assert.That(actual.IsMatch, Is.EqualTo(isMatch));
         Assert.That(actual.TieBreaker, Is.EqualTo(tieBreakerFace));
@@ -35,7 +35,7 @@ public class DetectorsTests
     [TestCase("2D 3H 4S TD QC", false, 0)]
     public void Test_DetectFourOfAKind(string input, bool isMatch, int tieBreakerFace)
     {
-        var actual = Detectors.DectectFourOfAKind(input);
+        var actual = Detectors.DetectFourOfAKind(input);
 
         Assert.That(actual.IsMatch, Is.EqualTo(isMatch));
         Assert.That(actual.TieBreaker, Is.EqualTo(tieBreakerFace));
@@ -52,15 +52,36 @@ public class DetectorsTests
         Assert.That(actual.IsMatch, Is.EqualTo(isMatch));
         Assert.That(actual.TieBreaker, Is.EqualTo(tieBreakerFace));
     }
-    //TO DO: Make DetectHand tests and function.
+    
+    [TestCase("3H QH TH 4H 7H", true, 12)]
+    [TestCase("2D 3H 4S TD QC", false, 0)]
+    public void Test_DetectFlush(string input, bool isMatch, int tieBreakerFace)
+    {
+        var actual = Detectors.DetectFlush(input);
+
+        Assert.That(actual.IsMatch, Is.EqualTo(isMatch));
+        Assert.That(actual.TieBreaker, Is.EqualTo(tieBreakerFace));
+    }
+
+    [TestCase("3H 4H 5H 2H 6H", true, 6)]
+    [TestCase("2D 3H 4S TD QC", false, 0)]
+    public void Test_DetectStraight(string input, bool isMatch, int tieBreakerFace)
+    {
+        var actual = Detectors.DetectStraight(input);
+
+        Assert.That(actual.IsMatch, Is.EqualTo(isMatch));
+        Assert.That(actual.TieBreaker, Is.EqualTo(tieBreakerFace));
+    }
 }
 
 // X high card
 // X pair
 // X three of a kind
-// straight
-// four of a kind
+// X straight
+// X four of a kind
 // X full house
-// flush
+// X flush
 // straight flush 
 // royal flush (straight flush + high card is Ace)
+
+//TO DO: Make DetectHand tests and function.
