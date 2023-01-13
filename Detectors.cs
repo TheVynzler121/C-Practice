@@ -144,10 +144,23 @@ public class Detectors
         return new DetectionResults(){IsMatch = true, TieBreaker = DetectHighCard(inputHand)};
     }
 
-   //          parser                            Split 
-   // raw data     ->    core logic / formatter    ->   core logic 
+    public static DetectionResults DetectStraightFlush(string inputHand)
+    {
+        var straight = DetectStraight(inputHand);
+        var flush = DetectFlush(inputHand);
 
+        if(straight.IsMatch && flush.IsMatch)
+        {
+            return new DetectionResults(){IsMatch = true, TieBreaker = straight.TieBreaker};
+        }
+        return new DetectionResults(){IsMatch = false, TieBreaker = 0};
+    }
 
-   // raw data     ->    core logic   ->   formatting
+    public static bool DetectRoyalFlush(string inputHand)
+    {
+        var straightFlush = DetectStraightFlush(inputHand);
+
+        return straightFlush.IsMatch && straightFlush.TieBreaker == 14;
+    }
 
 }

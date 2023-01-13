@@ -63,7 +63,7 @@ public class DetectorsTests
         Assert.That(actual.TieBreaker, Is.EqualTo(tieBreakerFace));
     }
 
-    [TestCase("3H 4H 5H 2H 6H", true, 6)]
+    [TestCase("3H 4D 5H 2H 6H", true, 6)]
     [TestCase("2D 3H 4S TD QC", false, 0)]
     public void Test_DetectStraight(string input, bool isMatch, int tieBreakerFace)
     {
@@ -71,6 +71,25 @@ public class DetectorsTests
 
         Assert.That(actual.IsMatch, Is.EqualTo(isMatch));
         Assert.That(actual.TieBreaker, Is.EqualTo(tieBreakerFace));
+    }
+
+    [TestCase("3H 4H 5H 2H 6H", true, 6)]
+    [TestCase("2D 3H 4S TD QC", false, 0)]
+    public void Test_DetectStraightFlush(string input, bool isMatch, int tieBreakerFace)
+    {
+        var actual = Detectors.DetectStraightFlush(input);
+
+        Assert.That(actual.IsMatch, Is.EqualTo(isMatch));
+        Assert.That(actual.TieBreaker, Is.EqualTo(tieBreakerFace));
+    }
+
+    [TestCase("AH KH QH TH JH", true)]
+    [TestCase("2D 3H 4S TD QC", false)]
+    public void Test_DetectRoyalFlush(string input, bool isMatch)
+    {
+        bool actuallyIsMatch = Detectors.DetectRoyalFlush(input);
+
+        Assert.That(actuallyIsMatch, Is.EqualTo(isMatch));
     }
 }
 
@@ -81,7 +100,7 @@ public class DetectorsTests
 // X four of a kind
 // X full house
 // X flush
-// straight flush 
-// royal flush (straight flush + high card is Ace)
+// X straight flush 
+// X royal flush (straight flush + high card is Ace)
 
 //TO DO: Make DetectHand tests and function.
