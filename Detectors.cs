@@ -15,7 +15,6 @@ public enum HandRank {
     FourOfAKind,
     StraightFlush,
     RoyalFlush,
-    
 }
 
 public class RankResults
@@ -182,7 +181,6 @@ public class Detectors
         return straightFlush.IsMatch && straightFlush.TieBreaker == 14;
     }
 
-
     public static RankResults DetectHand(string inputHand)
     {
         if(DetectRoyalFlush(inputHand))
@@ -190,48 +188,25 @@ public class Detectors
             return new RankResults(){Rank = HandRank.RoyalFlush, TieBreaker = 14};
         }
 
-        var straightFlushResults = DetectStraightFlush(inputHand);
-        if(straightFlushResults.IsMatch)
-        {
-            return new RankResults(){Rank = HandRank.StraightFlush, TieBreaker = straightFlushResults.TieBreaker};
-        }
+        var detectors = new List<(Func<string, DetectionResults>, HandRank)>(){
+            (DetectStraightFlush, HandRank.StraightFlush),
+            (DetectFourOfAKind, HandRank.FourOfAKind),
+            (DetectFullHouse, HandRank.FullHouse),
+            (DetectFlush, HandRank.Flush),
+            (DetectStraight, HandRank.Straight),
+            (DetectThreeOfAKind, HandRank.ThreeOfAKind),
+            (DetectPair, HandRank.Pair)
+        };
 
-        var fourOfAKindResult = DetectFourOfAKind(inputHand);
-        if(fourOfAKindResult.IsMatch)
+        foreach(var detector in detectors)
         {
-            return new RankResults(){Rank = HandRank.FourOfAKind, TieBreaker = fourOfAKindResult.TieBreaker};
+            var result = detector.Item1(inputHand);
+            if(result.IsMatch)
+            {
+                return new RankResults(){Rank = detector.Item2, TieBreaker = result.TieBreaker};
+            }
         }
-
-        var fullHouseResults = DetectFullHouse(inputHand);
-        if(fullHouseResults.IsMatch)
-        {           
-            return new RankResults(){Rank = HandRank.FullHouse, TieBreaker = fullHouseResults.TieBreaker};
-        }
-
-        var flushResults = DetectFlush(inputHand);
-        if(flushResults.IsMatch)
-        {
-            return new RankResults(){Rank = HandRank.Flush, TieBreaker = flushResults.TieBreaker};
-        }
-
-        var straightResults = DetectStraight(inputHand);
-        if(straightResults.IsMatch)
-        {
-            return new RankResults(){Rank = HandRank.Straight, TieBreaker = straightResults.TieBreaker};
-        }
-
-        var threeOfAKindResults = DetectThreeOfAKind(inputHand);
-        if(threeOfAKindResults.IsMatch)
-        {
-            return new RankResults(){Rank = HandRank.ThreeOfAKind, TieBreaker = threeOfAKindResults.TieBreaker};
-        }
-       
-        var pairResults = DetectPair(inputHand);
-        if(pairResults.IsMatch)
-        {
-            return new RankResults(){Rank = HandRank.Pair, TieBreaker = pairResults.TieBreaker};
-        }
-      
+            
         return new RankResults(){Rank = HandRank.HighCard, TieBreaker = DetectHighCard(inputHand)};
     }
 
