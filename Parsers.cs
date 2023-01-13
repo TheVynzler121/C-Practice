@@ -5,6 +5,8 @@
 // suits  D - diamonds  S - spades  C - clubs  H - hearts
 
 
+// ("4D 3H 2S TD QC", "4D 4H 2S TD QC") -> "Player 2 wins: Pair of Four"
+
 
 // parseFace(string)  => int
 // parseSuit(string) => (bool, bool)

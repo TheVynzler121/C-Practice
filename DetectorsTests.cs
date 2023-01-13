@@ -91,16 +91,24 @@ public class DetectorsTests
 
         Assert.That(actuallyIsMatch, Is.EqualTo(isMatch));
     }
-}
 
-// X high card
-// X pair
-// X three of a kind
-// X straight
-// X four of a kind
-// X full house
-// X flush
-// X straight flush 
-// X royal flush (straight flush + high card is Ace)
+    [TestCase("AH KH QH TH JH", HandRank.RoyalFlush, 14)]
+    [TestCase("4H 5H 2H 6H 3H", HandRank.StraightFlush, 6)]
+    [TestCase("5H 5H 5H 5H 2H", HandRank.FourOfAKind, 5)]
+    [TestCase("3D 3H 3C 2S 2H", HandRank.FullHouse, 3)]
+    [TestCase("4D 4H 4C 2S 2H", HandRank.FullHouse, 4)]
+    [TestCase("4H 5H 2H 2H 2H", HandRank.Flush, 5)]
+    [TestCase("4D 5D 2H 6H 3H", HandRank.Straight, 6)]
+    [TestCase("4D 5H 2C 2S 2H", HandRank.ThreeOfAKind, 2)]
+    [TestCase("4D 5H TC 2S 2H", HandRank.Pair, 2)]
+    [TestCase("4D 9H 2H 6H 3H", HandRank.HighCard, 9)]
+    public void Test_DetectHand(string input, HandRank rank, int tieBreaker)
+    {
+        var rankResults = Detectors.DetectHand(input);
+
+        Assert.That(rankResults.Rank, Is.EqualTo(rank));
+        Assert.That(rankResults.TieBreaker, Is.EqualTo(tieBreaker));
+    }
+}
 
 //TO DO: Make DetectHand tests and function.

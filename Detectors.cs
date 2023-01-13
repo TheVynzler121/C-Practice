@@ -5,6 +5,25 @@ public class DetectionResults {
     public int TieBreaker { get;set;}
 }
 
+public enum HandRank {
+    HighCard,
+    Pair,
+    ThreeOfAKind,
+    Straight,
+    Flush,
+    FullHouse,
+    FourOfAKind,
+    StraightFlush,
+    RoyalFlush,
+    
+}
+
+public class RankResults
+{
+    public HandRank Rank {get;set;}
+    public int TieBreaker {get;set;}
+}
+
 
 public class Detectors
 {
@@ -161,6 +180,59 @@ public class Detectors
         var straightFlush = DetectStraightFlush(inputHand);
 
         return straightFlush.IsMatch && straightFlush.TieBreaker == 14;
+    }
+
+
+    public static RankResults DetectHand(string inputHand)
+    {
+        if(DetectRoyalFlush(inputHand))
+        {
+            return new RankResults(){Rank = HandRank.RoyalFlush, TieBreaker = 14};
+        }
+
+        var straightFlushResults = DetectStraightFlush(inputHand);
+        if(straightFlushResults.IsMatch)
+        {
+            return new RankResults(){Rank = HandRank.StraightFlush, TieBreaker = straightFlushResults.TieBreaker};
+        }
+
+        var fourOfAKindResult = DetectFourOfAKind(inputHand);
+        if(fourOfAKindResult.IsMatch)
+        {
+            return new RankResults(){Rank = HandRank.FourOfAKind, TieBreaker = fourOfAKindResult.TieBreaker};
+        }
+
+        var fullHouseResults = DetectFullHouse(inputHand);
+        if(fullHouseResults.IsMatch)
+        {           
+            return new RankResults(){Rank = HandRank.FullHouse, TieBreaker = fullHouseResults.TieBreaker};
+        }
+
+        var flushResults = DetectFlush(inputHand);
+        if(flushResults.IsMatch)
+        {
+            return new RankResults(){Rank = HandRank.Flush, TieBreaker = flushResults.TieBreaker};
+        }
+
+        var straightResults = DetectStraight(inputHand);
+        if(straightResults.IsMatch)
+        {
+            return new RankResults(){Rank = HandRank.Straight, TieBreaker = straightResults.TieBreaker};
+        }
+
+        var threeOfAKindResults = DetectThreeOfAKind(inputHand);
+        if(threeOfAKindResults.IsMatch)
+        {
+            return new RankResults(){Rank = HandRank.ThreeOfAKind, TieBreaker = threeOfAKindResults.TieBreaker};
+        }
+       
+        var pairResults = DetectPair(inputHand);
+        if(pairResults.IsMatch)
+        {
+            return new RankResults(){Rank = HandRank.Pair, TieBreaker = pairResults.TieBreaker};
+        }
+      
+        return new RankResults(){Rank = HandRank.HighCard, TieBreaker = DetectHighCard(inputHand)};
     }
 
 }
