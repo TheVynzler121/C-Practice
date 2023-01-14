@@ -19,6 +19,7 @@ public enum HandRank {
 
 public class RankResults
 {
+    // field / property
     public HandRank Rank {get;set;}
     public int TieBreaker {get;set;}
 }
@@ -26,9 +27,18 @@ public class RankResults
 
 public class Detectors
 {
-    public static int DetectHighCard(string inputHand)
+    // field / property
+    public IEnumerable<Card> hand;
+
+    // contructor
+    public Detectors(string inputHand)
     {
-        var hand = Parsers.parseHand(inputHand);
+        hand = Parsers.parseHand(inputHand);
+    }
+
+    // (class) member function / methods
+    public int DetectHighCard()
+    {
         var highCard = hand.ToList()[0];
 
         foreach (var card in hand)
@@ -41,9 +51,9 @@ public class Detectors
         return highCard.Face;
     }
 
-    public static DetectionResults DetectPair(string inputHand)
+    public DetectionResults DetectPair()
     {
-        var counts = CountFaces(inputHand).ToList();
+        var counts = CountFaces().ToList();
 
         for(var face = 0; face < counts.Count; face++) 
         {
@@ -56,9 +66,9 @@ public class Detectors
         return new DetectionResults(){IsMatch = false, TieBreaker = 0};
     }
 
-    public static DetectionResults DetectThreeOfAKind(string inputHand)
+    public DetectionResults DetectThreeOfAKind()
     {
-        var counts = CountFaces(inputHand).ToList();
+        var counts = CountFaces().ToList();
 
         for(var face = 0; face < counts.Count; face++) 
         {
@@ -71,9 +81,9 @@ public class Detectors
         return new DetectionResults(){IsMatch = false, TieBreaker = 0};
     }
 
-    public static DetectionResults DetectFourOfAKind(string inputHand)
+    public DetectionResults DetectFourOfAKind()
     {
-        var counts = CountFaces(inputHand).ToList();
+        var counts = CountFaces().ToList();
 
         for(var face = 0; face < counts.Count; face++) 
         {
@@ -86,10 +96,8 @@ public class Detectors
         return new DetectionResults(){IsMatch = false, TieBreaker = 0};
     }
     
-    public static IEnumerable<int> CountFaces(string inputHand)
-    {
-        var hand = Parsers.parseHand(inputHand);
-
+    public IEnumerable<int> CountFaces()
+    {       
         var counts = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
         foreach (var card in hand)
@@ -99,10 +107,8 @@ public class Detectors
         return counts;
     }
 
-    public static Dictionary<(bool, bool), int> CountSuit(string inputHand)
-    {
-        var hand = Parsers.parseHand(inputHand);
-
+    public Dictionary<(bool, bool), int> CountSuit()
+    {       
         var counts = new Dictionary<(bool, bool), int>
         {
             {(true, true), 0},
@@ -118,10 +124,10 @@ public class Detectors
         return counts;
     }
     
-    public static DetectionResults DetectFullHouse(string inputHand)
+    public DetectionResults DetectFullHouse()
     {
-        var pair = DetectPair(inputHand);
-        var threeOfAKind = DetectThreeOfAKind(inputHand);
+        var pair = DetectPair();
+        var threeOfAKind = DetectThreeOfAKind();
 
         if (pair.IsMatch && threeOfAKind.IsMatch)
         {
@@ -130,9 +136,9 @@ public class Detectors
         return new DetectionResults(){IsMatch = false, TieBreaker = 0};
     }
 
-    public static DetectionResults DetectFlush(string inputHand)
+    public DetectionResults DetectFlush()
     {
-        var countedsuit = CountSuit(inputHand);
+        var countedsuit = CountSuit();
         
         foreach (var suitCount in countedsuit)
         {
@@ -141,31 +147,31 @@ public class Detectors
 
             if(count == 5)
             {
-                return new DetectionResults() {IsMatch = true, TieBreaker = DetectHighCard(inputHand)};
+                return new DetectionResults() {IsMatch = true, TieBreaker = DetectHighCard()};
             }
         }
         return new DetectionResults() {IsMatch = false, TieBreaker = 0};
     }
 
-    public static DetectionResults DetectStraight(string inputHand)
+    public DetectionResults DetectStraight()
     {
-        var hand = Parsers.parseHand(inputHand).OrderBy(card => card.Face).ToList();
+        var orderedHand = hand.OrderBy(card => card.Face).ToList();
 
-        var nextFace = hand[0].Face;
-        foreach(var card in hand) {
+        var nextFace = orderedHand[0].Face;
+        foreach(var card in orderedHand) {
             if (card.Face != nextFace)
             {
                 return new DetectionResults(){IsMatch = false, TieBreaker = 0};
             }
             nextFace = card.Face + 1;
         }               
-        return new DetectionResults(){IsMatch = true, TieBreaker = DetectHighCard(inputHand)};
+        return new DetectionResults(){IsMatch = true, TieBreaker = DetectHighCard()};
     }
 
-    public static DetectionResults DetectStraightFlush(string inputHand)
+    public DetectionResults DetectStraightFlush()
     {
-        var straight = DetectStraight(inputHand);
-        var flush = DetectFlush(inputHand);
+        var straight = DetectStraight();
+        var flush = DetectFlush();
 
         if(straight.IsMatch && flush.IsMatch)
         {
@@ -174,21 +180,21 @@ public class Detectors
         return new DetectionResults(){IsMatch = false, TieBreaker = 0};
     }
 
-    public static bool DetectRoyalFlush(string inputHand)
+    public bool DetectRoyalFlush()
     {
-        var straightFlush = DetectStraightFlush(inputHand);
+        var straightFlush = DetectStraightFlush();
 
         return straightFlush.IsMatch && straightFlush.TieBreaker == 14;
     }
 
-    public static RankResults DetectHand(string inputHand)
+    public RankResults DetectHand()
     {
-        if(DetectRoyalFlush(inputHand))
+        if(DetectRoyalFlush())
         {
             return new RankResults(){Rank = HandRank.RoyalFlush, TieBreaker = 14};
         }
 
-        var detectors = new List<(Func<string, DetectionResults>, HandRank)>(){
+        var detectors = new List<(Func<DetectionResults>, HandRank)>(){
             (DetectStraightFlush, HandRank.StraightFlush),
             (DetectFourOfAKind, HandRank.FourOfAKind),
             (DetectFullHouse, HandRank.FullHouse),
@@ -200,14 +206,13 @@ public class Detectors
 
         foreach(var detector in detectors)
         {
-            var result = detector.Item1(inputHand);
+            var result = detector.Item1();
             if(result.IsMatch)
             {
                 return new RankResults(){Rank = detector.Item2, TieBreaker = result.TieBreaker};
             }
         }
             
-        return new RankResults(){Rank = HandRank.HighCard, TieBreaker = DetectHighCard(inputHand)};
+        return new RankResults(){Rank = HandRank.HighCard, TieBreaker = DetectHighCard()};
     }
-
 }

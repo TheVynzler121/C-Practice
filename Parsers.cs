@@ -39,6 +39,7 @@ public class Parsers
 
     public static IEnumerable<Card> parseHand(string handString)
     {
+        System.Threading.Thread.Sleep(1000);
         return handSplitter(handString).Select(parseCard);           
     }
 
