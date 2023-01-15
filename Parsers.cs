@@ -6,6 +6,7 @@
 
 
 // ("4D 3H 2S TD QC", "4D 4H 2S TD QC") -> "Player 2 wins: Pair of Four"
+// ("4D 3H 2S TD QC", "4D KH 2S TD QC") -> "Player 2 wins: High Card King Hearts"
 
 
 // parseFace(string)  => int

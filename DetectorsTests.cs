@@ -109,6 +109,25 @@ public class DetectorsTests
         Assert.That(rankResults.Rank, Is.EqualTo(rank));
         Assert.That(rankResults.TieBreaker, Is.EqualTo(tieBreaker));
     }
+
+    [Test]
+    public void Test_DetectWinner() {
+        var (actualWinner, results) = new WinningDetector().DetectWinner("4D 3H 2S TD QC", "4D 4H 2S TD QC");
+
+        Assert.That(actualWinner, Is.EqualTo(2));
+        Assert.That(results.Rank, Is.EqualTo(HandRank.Pair));
+        Assert.That(results.TieBreaker, Is.EqualTo(4));
+    }
+
+    [TestCase("4D 3H 2S TD QC", "4D 4H 2S TD QC", "Player 2 wins: Pair Four")]
+    [TestCase("4D 3H 2S 5D 6C", "4D 4H 2S TD QC", "Player 1 wins: Straight Six")]
+    public void Test_PrintWinner(string hand1, string hand2, string output)
+    {
+        var actual = new WinningDetector().PrintWinner(hand1, hand2);
+
+        Assert.That(actual, Is.EqualTo(output));
+    }
+
 }
 
 //TO DO: Make CompareHand tests and function.

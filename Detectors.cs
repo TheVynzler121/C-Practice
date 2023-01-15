@@ -24,6 +24,41 @@ public class RankResults
     public int TieBreaker {get;set;}
 }
 
+public class WinningDetector
+{
+    public (int, RankResults) DetectWinner(string inputHand, string inputHand2)
+    {
+        var hand1 = new Detectors(inputHand).DetectHand();
+        var hand2 = new Detectors(inputHand2).DetectHand();
+
+        if(hand1.Rank > hand2.Rank)
+        {
+            return (1, hand1);
+        }
+        else if(hand1.Rank < hand2.Rank)
+        {
+            return (2, hand2);
+        }
+        return (0, null);
+    }
+
+    public string PrintWinner(string inputHand, string inputHand2)
+    {
+        var winningHand = new WinningDetector().DetectWinner(inputHand, inputHand2);
+        var winningPlayer = winningHand.Item1;
+        var handName = "";
+        var formattedFace = Formatters.formatFace(winningHand.Item2.TieBreaker);
+        if(winningHand.Item2.Rank == HandRank.Pair)
+        {
+            handName = "Pair";
+        }
+        if(winningHand.Item2.Rank == HandRank.Straight)
+        {
+            handName = "Straight";
+        }
+        return $"Player {winningPlayer} wins: {handName} {formattedFace}";
+    }
+}
 
 public class Detectors
 {
