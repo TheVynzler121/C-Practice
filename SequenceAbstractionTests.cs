@@ -21,6 +21,14 @@ public class SequenceAbstractionTests
 	Assert.That(actual, Is.EquivalentTo(new List<int> {1, 2}));
     }
 
+	[Test]
+    public void Test_NumbersAreSmallerThan5Two() {
+	var items = new List<int> {1, 55, 2, 6, 3, 7, 4, 20};
+
+	var actual = SequenceAbstraction.NumbersSmallerThan5(items);
+
+	Assert.That(actual, Is.EquivalentTo(new List<int> {1, 2, 3, 4}));
+    }
 
     [Test]
     public void Test_WordsStartWithS() {
@@ -90,6 +98,15 @@ public class SequenceAbstractionTests
 
 	Assert.That(actual, Is.EquivalentTo(new List<string> { "S", "H" }));
     }
+
+	[Test]
+    public void Test_FirstLetterCapitalized2() {
+	var numbs = new List<string> {"jim", "nukedem", "honeybadger"}; 
+
+	var actual = SequenceAbstraction.FirstLetterCapitalized(numbs);
+
+	Assert.That(actual, Is.EquivalentTo(new List<string> { "J", "N", "H" }));
+	}
 
     [Test]
     public void Test_CountDigits() {

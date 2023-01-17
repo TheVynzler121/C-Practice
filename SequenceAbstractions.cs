@@ -26,9 +26,9 @@ public class SequenceAbstraction
     public static int TotalCost(List<GameItem> items)
     {
         var totalGoldCost = 0;
-        foreach (var cost in items)
+        foreach (var item in items)
         {
-            totalGoldCost = totalGoldCost + cost.GoldCost;
+            totalGoldCost = totalGoldCost + item.GoldCost;
         }
         return totalGoldCost;
     }
@@ -36,7 +36,7 @@ public class SequenceAbstraction
     public static List<int> NumbersUnder500(List<int> numbList)
     {
 
-        return numbList.Where(numbList => numbList < 500).ToList();
+        return numbList.Where(numb => numb < 500).ToList();
         // var xs = new List<int>();
         // foreach (var y in ys)
         // {
@@ -76,9 +76,9 @@ public class SequenceAbstraction
         // return sWords;
     }
 
-    public static List<int> NumbersSmallerThan5(List<int> numbList)
+    public static IEnumerable<int> NumbersSmallerThan5(List<int> numbList)
     {
-        return numbList.Where(numb => numb < 5).ToList();
+        return numbList.Where(x => x < 5);
     }
 
     /*
@@ -125,10 +125,7 @@ public class SequenceAbstraction
 
     public static List<int> AddsTen(List<int> ys)
     {
-        // 1,2,3,4,5,6
-        // 1,2,3,4,5,6 => 11, 12, 13, 14, 15,16
-        // 1 => 11
-        return ys.Select(ys => ys + 10).ToList();
+        return ys.Select(ys => ys + 10).ToList();       
     }
 
     public static List<int> CountDigits(List<int> numbs)
@@ -159,7 +156,7 @@ public class SequenceAbstraction
 
     public static IEnumerable<string> FirstLetterCapitalized(List<string> inputList)
     {
-        return inputList.Select(input => input[0].ToString().ToUpper());
+        return inputList.Select(x => x[0].ToString().ToUpper());
     }
 
     public static int CountStrings(List<string> names)
@@ -204,13 +201,13 @@ public class SequenceAbstraction
 
     public static bool AreAllMoreThanThreeLength(List<string> words)
     {       
-        foreach (var word in words)
-        {
-            if (word.Length < 3)
+       foreach (var word in words)
+       {
+            if(word.Length < 3)
             {
                 return false;
             }
-        }
-        return true;
+       }
+       return true;
     }
 }
