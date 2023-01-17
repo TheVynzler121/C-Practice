@@ -19,6 +19,19 @@ public class CompundSequenceAbstractions
         // return outputList;
     }
 
+    public static int SumOfNumbersLargerThanSeven(List<int> inputNumbs)
+    {
+        var totalSum = 0;
+        foreach (var numb in inputNumbs)
+        {
+            if (numb > 7)
+            {
+                totalSum = totalSum + numb;
+            }
+        }
+        return totalSum;
+    }
+
     public static string Capitalize(string x)
     {
         return x[0].ToString().ToUpper() + x.Substring(1);
@@ -60,5 +73,10 @@ public class CompundSequenceAbstractions
     public static IEnumerable<string> FirstWordIfStartsWith(IEnumerable<GameItem> items, char firstLetter)
     {
         return items.Where(x => x.Name[0] == firstLetter).Select(x => GetFirstWord(x.Name));
+    }
+
+    public static IEnumerable<string> NumbersLargerThanFiveToString(List<int> numbList)
+    {
+        return numbList.Where(numb => numb > 5).Select(numb => numb.ToString());
     }
 }

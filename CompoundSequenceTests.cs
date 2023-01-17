@@ -84,6 +84,30 @@ public class CompundSequenceTests
     }
 
     [Test]
+    public void Test_NumbersLargerThanFiveToString()
+    {
+        var input = new List<int>() {1, 2, 6, 3, 77, 5, 4, 8};
+
+        var actual = CompundSequenceAbstractions.NumbersLargerThanFiveToString(input);
+
+        var output = new List<string>() {"6", "77", "8"};
+
+        Assert.That(actual, Is.EquivalentTo(output));
+    }
+
+    [Test]
+    public void Test_SumOfNumbersLargerThanSeven()
+    {
+        var input = new List<int> {2, 3, 1, 5, 8, 88, 9, 10, 6};
+
+        var actual = CompundSequenceAbstractions.SumOfNumbersLargerThanSeven(input);
+
+        var output = 115;
+
+        Assert.That(actual, Is.EqualTo(output));
+    }
+
+    [Test]
     public void Test_ReturnNumbersGreaterThanAverage()
     {
         var numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
