@@ -37,6 +37,24 @@ public class CompundSequenceTests
 
         Assert.That(actual, Is.EquivalentTo(output));
     }
+
+    
+    [Test]
+    public void Test_GoldCostIfStartsWithS()
+    {
+        var items = new List<GameItem>() {
+            new GameItem{ GoldCost = 200, Name = "Scream'n Sword"},
+            new GameItem{ GoldCost = 700, Name = "Fragile Hammer"},
+            new GameItem{ GoldCost = 100, Name = "Can of Whoop Ass"},
+            new GameItem{ GoldCost = 4000, Name = "Sphere of Power"}
+        };
+
+        var actual = CompundSequenceAbstractions.GoldCostIfStartsWithS(items, 'S');
+
+        var output = new List<int>() { 200, 4000 };
+
+        Assert.That(actual, Is.EquivalentTo(output));
+    }
     
     [Test]
     public void Test_ItemsICanAfford()
