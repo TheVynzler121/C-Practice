@@ -181,22 +181,22 @@ public class SequenceAbstraction
 
     public static string FirstLetters(List<string> inputString)
     {
-        var outputString = "";
+        var x = "";
         foreach (var word in inputString)
         {
-            outputString = outputString + word[0];
+            x = x + word[0];
         }
-        return outputString;
+        return x;
     }
 
     public static int CountWordLengths(List<string> words)
     {
-        var stringLength = 0;
+        var lengthSum = 0;
         foreach (var word in words)
         {
-            stringLength = stringLength + word.Length;
+            lengthSum = lengthSum + word.Length;
         }
-        return stringLength;
+        return lengthSum;
     }
 
     public static bool AreAllMoreThanThreeLength(List<string> words)

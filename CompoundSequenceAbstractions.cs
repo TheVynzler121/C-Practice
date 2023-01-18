@@ -7,16 +7,8 @@ public class CompundSequenceAbstractions
 {
     public static IEnumerable<int> AddTenIfBigEnough(IEnumerable<int> numbList)
     {
-        return numbList.Where(x => x > 3).Select(x => x + 10);
-        // var outputList = new List<int>();
-        // foreach (var x in numbList)
-        // {
-        //     if (x > 3)
-        //     {
-        //         outputList.Add(x + 10);
-        //     }
-        // }
-        // return outputList;
+        return numbList.Where(numb => numb > 3).Select(numb => numb + 10);
+        
     }
 
     public static int SumOfNumbersLargerThanSeven(List<int> inputNumbs)
@@ -55,14 +47,14 @@ public class CompundSequenceAbstractions
     // Select, Where, Count, Average
     public static IEnumerable<int> ReturnNumbersGreaterThanAverage(IEnumerable<int> numbList)
     {
-        var average = numbList.Average();
-        return numbList.Where(x => x > average);
+        var numbAverage = numbList.Average();
+        return numbList.Where(numb => numb > numbAverage);
     }
 
     // List<T> is-a IEnumerable<T>
     public static IEnumerable<string> ItemsICanAfford(IEnumerable<GameItem> items, int budget)
     {
-        return items.Where(x => x.GoldCost < budget).Select(x => x.Name);
+        return items.Where(item => item.GoldCost < budget).Select(item => item.Name);
     }
 
     public static string GetFirstWord(string sentence)
@@ -72,7 +64,7 @@ public class CompundSequenceAbstractions
 
     public static IEnumerable<string> FirstWordIfStartsWith(IEnumerable<GameItem> items, char firstLetter)
     {
-        return items.Where(x => x.Name[0] == firstLetter).Select(x => GetFirstWord(x.Name));
+        return items.Where(item => item.Name[0] == firstLetter).Select(item => GetFirstWord(item.Name));
     }
 
     public static IEnumerable<string> NumbersLargerThanFiveToString(List<int> numbList)
