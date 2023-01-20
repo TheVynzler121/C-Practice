@@ -76,4 +76,52 @@ public class CompundSequenceAbstractions
     {
         return itemList.Where(item => item.Name[0] == firstLetter).Select(item => item.GoldCost);
     }
+
+    public static void PrintList(IEnumerable<char> input) {
+        Console.WriteLine("[");
+        foreach(var x in input) {
+            Console.WriteLine(x);
+        }
+        Console.WriteLine("]");
+    }
+
+    public static void PrintDictionary(Dictionary<char, int> input) {
+        Console.WriteLine("[");
+        foreach(var x in input) {
+            Console.WriteLine($"{x.Key} : {x.Value}");
+        }
+        Console.WriteLine("]");
+    }
+
+    // solution 1 : group/order by value, then count groups
+    // solution 2 : count how many of each value there is (one at a time) by keeping a tally
+    public static char HighestFrequencyCharacter(string inputString)
+    {
+        var characterCounts = new Dictionary<char, int>(){ };
+        foreach (var character in inputString)
+        {
+            if (characterCounts.ContainsKey(character)) {
+                characterCounts[character]++;
+            } else { 
+                characterCounts[character] = 1;
+            }
+        }
+        var highestCount = 0;
+        var highestChar = ' ';
+        foreach (var keyValuePair in characterCounts)
+        {
+            if(keyValuePair.Value > highestCount)
+            {
+                highestCount = keyValuePair.Value;
+                highestChar = keyValuePair.Key;
+            }
+        }   
+        return highestChar;
+    }
+
+    public static Random dice = new Random();
+    public static int RollDice()
+    {
+        return dice.Next(1, 7);
+    }
 }

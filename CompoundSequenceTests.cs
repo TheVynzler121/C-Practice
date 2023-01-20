@@ -137,4 +137,33 @@ public class CompundSequenceTests
 
         Assert.That(actual, Is.EquivalentTo(output));
     }
+
+    [TestCase( "1113asdfladfj4451311111234340afljl111;g511111231113dfadffjlh21", '1')]
+    [TestCase( "331", '3')]
+    [TestCase( "3144444", '4')]
+    [TestCase("aaaaaa114j88", 'a')]
+    public void Test_HighestFrequencyCharacter(string input, char output)
+    {
+        var actual = CompundSequenceAbstractions.HighestFrequencyCharacter(input);
+
+        Assert.That(actual, Is.EqualTo(output));
+    }
+
+    // rules we can break:
+    // can have: loops, conditionals, data structures, any number of asserts
+    // can call RollDice as many times as you want
+    // must prove reasonably that the dice isn't weighted
+    [Test]
+    public void Test_IsDiceWeighted()
+    {
+        
+        var actual = CompundSequenceAbstractions.RollDice();
+
+        var rollDictionary = new Dictionary<int, int>();
+        foreach (var roll in ???)
+        {
+            
+        }
+        Console.WriteLine(actual);
+    }
 }
