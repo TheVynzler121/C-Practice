@@ -156,6 +156,8 @@ public class CompundSequenceTests
     [Test]
     public void Test_IsDiceWeighted()
     {
+        // need a var to store the roll results
+        // need to store and count those results
         
         var actual = CompundSequenceAbstractions.RollDice();
 
