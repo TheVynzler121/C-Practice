@@ -157,15 +157,39 @@ public class CompundSequenceTests
     public void Test_IsDiceWeighted()
     {
         // need a var to store the roll results
-        // need to store and count those results
         
-        var actual = CompundSequenceAbstractions.RollDice();
+        var rolls = new List<int>();
+        var timesWeAreRolling = 5000000;
 
-        var rollDictionary = new Dictionary<int, int>();
-        foreach (var roll in ???)
+        for (int x = 0; x < timesWeAreRolling; x++)
         {
-            
+            rolls.Add(CompundSequenceAbstractions.RollDice());           
         }
-        Console.WriteLine(actual);
+      
+        // need to store and count those results
+        var rollCounts = new Dictionary<int, int>();
+        foreach (var roll in rolls)
+        {
+            if(rollCounts.ContainsKey(roll))
+            {
+                rollCounts[roll]++;
+            }
+            else
+            {
+                rollCounts[roll] = 1;
+            }
+        }
+        CompundSequenceAbstractions.PrintDictionary(rollCounts);
+        var averageRollCount = timesWeAreRolling/6;
+        var graceZone = averageRollCount * 0.1;
+        foreach (var roll in rollCounts)
+        {
+            var tenPercentOver = averageRollCount + graceZone;
+            var tenPercentUnder = averageRollCount - graceZone;
+            if(roll.Value > tenPercentOver || roll.Value < tenPercentUnder)
+            {
+                Assert.Fail($"{roll.Value} was not {averageRollCount}");
+            } 
+        }
     }
 }

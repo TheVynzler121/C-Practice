@@ -77,7 +77,7 @@ public class CompundSequenceAbstractions
         return itemList.Where(item => item.Name[0] == firstLetter).Select(item => item.GoldCost);
     }
 
-    public static void PrintList(IEnumerable<char> input) {
+    public static void PrintList<T>(IEnumerable<T> input) {
         Console.WriteLine("[");
         foreach(var x in input) {
             Console.WriteLine(x);
@@ -85,7 +85,7 @@ public class CompundSequenceAbstractions
         Console.WriteLine("]");
     }
 
-    public static void PrintDictionary(Dictionary<char, int> input) {
+    public static void PrintDictionary<T,U>(Dictionary<T, U> input) {
         Console.WriteLine("[");
         foreach(var x in input) {
             Console.WriteLine($"{x.Key} : {x.Value}");
@@ -122,6 +122,10 @@ public class CompundSequenceAbstractions
     public static Random dice = new Random();
     public static int RollDice()
     {
+        // var tenPercent = dice.Next(1, 10);
+        // if(tenPercent == 1) {
+        //     return 6;
+        // }
         return dice.Next(1, 7);
     }
 }
