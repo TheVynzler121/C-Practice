@@ -78,7 +78,7 @@ public class SequenceAbstraction
 
     public static IEnumerable<int> NumbersSmallerThan5(List<int> numbList)
     {
-        return numbList.Where(x => x < 5);
+       return numbList.Where(numb => numb < 5);
     }
 
     /*
@@ -161,12 +161,12 @@ public class SequenceAbstraction
 
     public static int CountStrings(List<string> names)
     {
-        var countedStrings = 0;
+        var x = 0;
         foreach (var name in names)
         {
-            countedStrings++;
+            x++;
         }
-        return countedStrings;
+        return x; 
     }
 
     public static string MergeStrings(List<string> words)
