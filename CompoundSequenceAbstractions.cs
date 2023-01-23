@@ -77,6 +77,16 @@ public class CompundSequenceAbstractions
         return itemList.Where(item => item.Name[0] == firstLetter).Select(item => item.GoldCost);
     }
 
+    public static string NumberOfWordsToString(IEnumerable<string> inputList)
+    {
+        var wordCount = 0;
+        foreach (var word in inputList)
+        {
+            wordCount++;
+        }
+        return $"There are {wordCount} words";
+    }
+
     public static void PrintList<T>(IEnumerable<T> input) {
         Console.WriteLine("[");
         foreach(var x in input) {

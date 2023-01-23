@@ -126,6 +126,16 @@ public class CompundSequenceTests
     }
 
     [Test]
+    public void Test_NumberOfWordsToString()
+    {
+        var input = new List<string> {"Hello", "Richard", "Today", "Dog", "Hamburger"};
+
+        var actual = CompundSequenceAbstractions.NumberOfWordsToString(input);
+
+        Assert.That(actual, Is.EqualTo("There are 5 words"));
+    }
+
+    [Test]
     public void Test_ReturnNumbersGreaterThanAverage()
     {
         var numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };

@@ -191,12 +191,12 @@ public class SequenceAbstraction
 
     public static int CountWordLengths(List<string> words)
     {
-        var lengthSum = 0;
+        var countedLengths = 0;
         foreach (var word in words)
         {
-            lengthSum = lengthSum + word.Length;
+            countedLengths = countedLengths + word.Length;
         }
-        return lengthSum;
+        return countedLengths;
     }
 
     public static bool AreAllMoreThanThreeLength(List<string> words)
