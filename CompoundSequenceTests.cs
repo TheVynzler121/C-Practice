@@ -173,7 +173,7 @@ public class CompundSequenceTests
 
         for (int x = 0; x < timesWeAreRolling; x++)
         {
-            rolls.Add(CompundSequenceAbstractions.RollDice());           
+            rolls.Add(CompundSequenceAbstractions.RollDice());        
         }
       
         // need to store and count those results

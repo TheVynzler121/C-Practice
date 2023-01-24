@@ -2,8 +2,6 @@ namespace C__Practice;
 
 public class MontyHallCode
 {
-
-
     public static Random dice = new Random();
     public static int PickDoor()
     {
