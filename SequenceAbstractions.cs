@@ -48,18 +48,26 @@ public class SequenceAbstraction
         // return xs;
     }
 
-    public static List<string> WordsLongEnough(List<string> words)
+    public static IEnumerable<string> WordsLongEnough(List<string> words)
     {
         // return words.Where(word => word.Length > 4).ToList();
-        var wordsLongEnough = new List<string>();
-        foreach (var word in words)
+        // var wordsLongEnough = new List<string>();
+        // foreach (var word in words)
+        // {
+        //     if (word.Length > 4)
+        //     {
+        //         wordsLongEnough.Add(word);
+        //     }
+        // }
+        // return wordsLongEnough;
+        return words.Aggregate(new List<string>(), (wordsLongEnough, word) =>
         {
             if (word.Length > 4)
             {
                 wordsLongEnough.Add(word);
             }
-        }
-        return wordsLongEnough;
+            return wordsLongEnough;
+        });
     }
 
     public static List<string> WordsStartWithS(List<string> words)
@@ -78,7 +86,7 @@ public class SequenceAbstraction
 
     public static IEnumerable<int> NumbersSmallerThan5(List<int> numbList)
     {
-       return numbList.Where(numb => numb < 5);
+        return numbList.Where(numb => numb < 5);
     }
 
     /*
@@ -125,7 +133,7 @@ public class SequenceAbstraction
 
     public static List<int> AddsTen(List<int> ys)
     {
-        return ys.Select(ys => ys + 10).ToList();       
+        return ys.Select(ys => ys + 10).ToList();
     }
 
     public static List<int> CountDigits(List<int> numbs)
@@ -166,7 +174,7 @@ public class SequenceAbstraction
         {
             x++;
         }
-        return x; 
+        return x;
     }
 
     public static string MergeStrings(List<string> words)
@@ -200,14 +208,65 @@ public class SequenceAbstraction
     }
 
     public static bool AreAllMoreThanThreeLength(List<string> words)
-    {       
-       foreach (var word in words)
-       {
+    {
+        // foreach (var word in words)
+        // {
+        //     if (word.Length < 3)
+        //     {
+        //         return false;
+        //     }
+        // }
+        // return true;
+        return words.Aggregate(true, (seed, word) => {
             if(word.Length < 3)
             {
-                return false;
+                seed = false;             
             }
-       }
-       return true;
+            return seed;
+        });
+    }
+
+    public static int AddEmUp(List<int> inputList)
+    {
+        // var ret = 0;
+        // foreach (var numb in inputList)
+        // {
+        //     ret += numb;
+        // }
+        // return ret;
+        return inputList.Aggregate(0, (ret, numb) =>
+        {
+            return ret + numb;
+        });
+        // 0, 5  => 0 + 5
+        // 5, 7  => 5 + 7
+        // 12,10 => 12 + 10
+        // 22, 3 => 22 + 3
+        // 25
+    }
+    public static bool IsEven(int x)
+    {
+        return x % 2 == 0;
+    }
+
+    public static int AddEvenUp(List<int> inputList)
+    {
+        // var seed = 0;
+        // foreach (var number in inputList)
+        // {
+        //     if(IsEven(number))
+        //     {
+        //         seed += number;
+        //     }
+        // }
+        // return seed;
+        return inputList.Aggregate(0, (seed, number) =>
+        {
+            if (IsEven(number))
+            {
+                return seed + number;
+            }
+            return seed;
+        });
     }
 }

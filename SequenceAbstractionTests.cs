@@ -6,11 +6,11 @@ public class SequenceAbstractionTests
 	// level 2 - compound transformations
 
 // MAP, FILTER, FOLD/REDUCE
-// FOLDS/REDUCE- take a list, return one thing (that isn't a list)
+// FOLDS/REDUCE- take a list, return one thing
 // List<T>    - T is a placeholder for the generic
-// fold/reduce - List<T> => U          Func<List<T>, U>      - always collapses the whole list into one thing
-// map         - List<T> => List<U>    Func<List<T>, List<U> - list always the same size (one shape of a list to another shape thats the same size)
-// filter      - returns the same type and keeps certain elements. (also has an if statement)
+// Aggregate (fold/reduce) - List<T> => U          Func<List<T>, U>      - always collapses the whole list into one thing
+// Select (map)         - List<T> => List<U>    Func<List<T>, List<U> - list always the same size (one shape of a list to another shape thats the same size)
+// Where (filter)      - returns the same type and keeps certain elements. (also has an if statement)
 
     [Test]
     public void Test_NumbersAreSmallerThan5() {
@@ -198,4 +198,28 @@ public class SequenceAbstractionTests
 
 	Assert.That(actual, Is.EqualTo(false));
     }
+
+	[Test]
+	public void Test_AddEmUp()
+	{
+		var input = new List<int>() {5, 7, 10, 3};
+
+		var actual = SequenceAbstraction.AddEmUp(input);
+
+		var output = 25;
+
+		Assert.That(actual, Is.EqualTo(output));
+	}
+
+	[Test]
+	public void Test_AddEvenUp()
+	{
+		var input = new List<int>() {2, 3, 6, 1, 20};
+
+		var actual = SequenceAbstraction.AddEvenUp(input);
+
+		var output = 28;
+
+		Assert.That(actual, Is.EqualTo(output));
+	}
 }

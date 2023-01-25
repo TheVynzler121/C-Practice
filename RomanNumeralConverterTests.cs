@@ -12,6 +12,10 @@ public class RomanNumeralConverterTests
     [TestCase(8, "VIII")]
     [TestCase(9, "VIIII")]
     [TestCase(10, "X")]
+    [TestCase(11, "XI")]
+    [TestCase(12, "XII")]
+    [TestCase(13, "XIII")]
+    [TestCase(14, "XIIII")]
     public void Test_NumberToNumeral(int input, string output)
     {
         var actual = RomanNumeralConverter.NumberToNumeral(input);
