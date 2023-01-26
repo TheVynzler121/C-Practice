@@ -20,26 +20,26 @@ public class RomanNumeralConverter
             {10, 'X'},
         };
         var returnString = "";
-        if(inputInt <= 4)
+        if (inputInt <= 4)
         {
-            for(var x = 0; x < inputInt; x++)
-            {              
+            for (var x = 0; x < inputInt; x++)
+            {
                 returnString += numerals[1].ToString();
             }
             return returnString;
         }
 
-        if(inputInt == 5)
+        if (inputInt == 5)
         {
             returnString += numerals[5].ToString();
             return returnString;
         }
 
-        if(inputInt <= 9)
+        if (inputInt <= 9)
         {
             returnString += numerals[5].ToString();
             var loopCount = inputInt - 5;
-            for(var x = 0; x < loopCount; x++)
+            for (var x = 0; x < loopCount; x++)
             {
                 returnString += numerals[1].ToString();
             }
@@ -62,7 +62,45 @@ public class RomanNumeralConverter
             }
             return returnString;
         }
-
         return returnString;
+    }
+
+
+    public static int RomanToArabic(string inputString)
+    {
+        // var charCount = 0;
+
+        // foreach (var character in inputString)
+        // {
+        //     if (character == 'X')
+        //     {
+        //         charCount += 10;
+        //     }
+        //     if (character == 'V')
+        //     {
+        //         charCount += 5;
+        //     }
+        //     if (character == 'I')
+        //     {
+        //         charCount++;
+        //     }           
+        // }
+
+        return inputString.Aggregate(0, (charCount, character) =>
+        {
+            if (character == 'X')
+            {
+                charCount += 10;
+            }
+            if (character == 'V')
+            {
+                charCount += 5;
+            }
+            if (character == 'I')
+            {
+                charCount++;
+            }
+            return charCount;
+        });
     }
 }
