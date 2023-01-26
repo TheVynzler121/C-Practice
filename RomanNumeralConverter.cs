@@ -68,39 +68,45 @@ public class RomanNumeralConverter
 
     public static int RomanToArabic(string inputString)
     {
-        // var charCount = 0;
-
-        // foreach (var character in inputString)
-        // {
-        //     if (character == 'X')
-        //     {
-        //         charCount += 10;
-        //     }
-        //     if (character == 'V')
-        //     {
-        //         charCount += 5;
-        //     }
-        //     if (character == 'I')
-        //     {
-        //         charCount++;
-        //     }           
-        // }
-
-        return inputString.Aggregate(0, (charCount, character) =>
+        var charCount = 0;
+        
+        var loopCount = inputString.Length;
+        for (int x = 0; x < loopCount; x++)
         {
+            var character = inputString[x];
+            var nextCharacter = ' ';
+            var nextIndex = x+1;
+            var canLookAhead = x < loopCount - 1;
+            if(canLookAhead ) {
+                nextCharacter = inputString[nextIndex];
+            } 
+            
             if (character == 'X')
             {
                 charCount += 10;
             }
+
             if (character == 'V')
             {
                 charCount += 5;
             }
-            if (character == 'I')
+
+            if(character == 'I' && nextCharacter == 'X')
+            {
+                charCount += 9;
+                x++;
+            }
+            else if (character == 'I' && nextCharacter == 'V')
+            {
+                charCount += 4;
+                x++;
+            }
+            else if (character == 'I')
             {
                 charCount++;
             }
-            return charCount;
-        });
+            
+        }
+        return charCount;
     }
 }
