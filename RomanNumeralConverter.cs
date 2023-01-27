@@ -11,57 +11,29 @@ public class RomanNumeralConverter
     // to reduce it by 50% at least
     // reduce without making any functions
     // subtraction is the trick
-    public static string NumberToNumeral(int inputInt)
+    public static string NumberToNumeral(int remainingArabicNumbers)
     {
         var numerals = new Dictionary<int, string>()
         {
-            {1, "I"},
-            {5, "V"},
+            {1000, "M"},
+            {500, "D"},
+            {100, "C"},
+            {50, "L"},
             {10, "X"},
+            {5, "V"},
+            {1, "I"},
         };
         var returnString = "";
 
-        if (inputInt <= 14)
-        {
-            returnString += numerals[10];
-            var loopCount = inputInt - 10;
-            for (int x = 0; x < loopCount; x++)
+        foreach(var arabicAndRoman in numerals) {
+            var arabicInt = arabicAndRoman.Key;
+            var romanString = arabicAndRoman.Value;
+
+            while (remainingArabicNumbers >= arabicInt)
             {
-                returnString += numerals[1];
+                returnString += romanString;
+                remainingArabicNumbers -= arabicInt;
             }
-            return returnString;
-        }
-
-        if (inputInt == 10)
-        {
-            returnString += numerals[10];
-            return returnString;
-        }
-
-        if (inputInt <= 9)
-        {
-            returnString += numerals[5];
-            var loopCount = inputInt - 5;
-            for (var x = 0; x < loopCount; x++)
-            {
-                returnString += numerals[1];
-            }
-            return returnString;
-        }
-
-        if (inputInt == 5)
-        {
-            returnString += numerals[5];
-            return returnString;
-        }
-
-        if (inputInt <= 4)
-        {
-            for (var x = 0; x < inputInt; x++)
-            {
-                returnString += numerals[1];
-            }
-            return returnString;
         }
 
         return returnString;
