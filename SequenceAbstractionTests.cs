@@ -176,7 +176,7 @@ public class SequenceAbstractionTests
     public void Test_CountWordLengths() {
 	var names = new List<string> {"flats", "are", "really", "tight"};
 
-	var actual = SequenceAbstraction.CountWordLengths(names);
+	var actual = SequenceAbstraction.CountWordLengths(names); 
 
 	Assert.That(actual, Is.EqualTo(5+3+6+5));
     }

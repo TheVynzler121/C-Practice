@@ -155,6 +155,7 @@ public class SequenceAbstraction
             xs.Add((y * y) * 2);
         }
         return xs;
+        
     }
 
     public static IEnumerable<string> IntsToStrings(List<int> inputString)
@@ -175,36 +176,40 @@ public class SequenceAbstraction
             x++;
         }
         return x;
+        // return names.Aggregate(0, (x, name) => x++);
     }
 
     public static string MergeStrings(List<string> words)
     {
-        var outputString = "";
-        foreach (var word in words)
-        {
-            outputString = outputString + word;
-        }
-        return outputString;
+        // var outputString = "";
+        // foreach (var word in words)
+        // {
+        //     outputString = outputString + word;
+        // }
+        // return outputString;
+        return words.Aggregate("", (outputString, word) => outputString += word);
     }
 
     public static string FirstLetters(List<string> inputString)
     {
-        var x = "";
-        foreach (var word in inputString)
-        {
-            x = x + word[0];
-        }
-        return x;
+        // var x = "";
+        // foreach (var word in inputString)
+        // {
+        //     x = x + word[0];
+        // }
+        // return x;
+        return inputString.Aggregate("", (x, word) => x += word[0]);
     }
 
     public static int CountWordLengths(List<string> words)
     {
-        var countedLengths = 0;
-        foreach (var word in words)
-        {
-            countedLengths = countedLengths + word.Length;
-        }
-        return countedLengths;
+        // var countedLengths = 0;
+        // foreach (var word in words)
+        // {
+        //     countedLengths = countedLengths + word.Length;
+        // }
+        // return countedLengths;
+        return words.Aggregate(0 , (countedLengths, word) => countedLengths+= word.Length);
     }
 
     public static bool AreAllMoreThanThreeLength(List<string> words)
