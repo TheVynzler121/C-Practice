@@ -10,12 +10,13 @@ public class SequenceAbstraction
 {
     public static int SumNumbers(List<int> numbs)
     {
-        var sumOfNumbs = 0;
-        foreach (var numb in numbs)
-        {
-            sumOfNumbs = sumOfNumbs + numb;
-        }
-        return sumOfNumbs;
+        // var sumOfNumbs = 0;
+        // foreach (var numb in numbs)
+        // {
+        //     sumOfNumbs = sumOfNumbs + numb;
+        // }
+        // return sumOfNumbs;
+        return numbs.Aggregate(0, (sumOfNumbs, numb) => sumOfNumbs += numb);
     }
 
     public static IEnumerable<int> GetGoldCosts(List<GameItem> costs)
@@ -25,12 +26,13 @@ public class SequenceAbstraction
 
     public static int TotalCost(List<GameItem> items)
     {
-        var totalGoldCost = 0;
-        foreach (var item in items)
-        {
-            totalGoldCost = totalGoldCost + item.GoldCost;
-        }
-        return totalGoldCost;
+        // var totalGoldCost = 0;
+        // foreach (var item in items)
+        // {
+        //     totalGoldCost = totalGoldCost + item.GoldCost;
+        // }
+        // return totalGoldCost;
+        return items.Aggregate(0, (totalGoldCost, item) => totalGoldCost += item.GoldCost);
     }
 
     public static List<int> NumbersUnder500(List<int> numbList)
@@ -154,8 +156,7 @@ public class SequenceAbstraction
         {
             xs.Add((y * y) * 2);
         }
-        return xs;
-        
+        return xs;      
     }
 
     public static IEnumerable<string> IntsToStrings(List<int> inputString)
@@ -170,13 +171,13 @@ public class SequenceAbstraction
 
     public static int CountStrings(List<string> names)
     {
-        var x = 0;
-        foreach (var name in names)
-        {
-            x++;
-        }
-        return x;
-        // return names.Aggregate(0, (x, name) => x++);
+        // var x = 0;
+        // foreach (var name in names)
+        // {
+        //     x++;
+        // }
+        // return x;
+        return names.Aggregate(0, (seed, name) => seed += 1); // why does ++ not work here?
     }
 
     public static string MergeStrings(List<string> words)
@@ -222,10 +223,12 @@ public class SequenceAbstraction
         //     }
         // }
         // return true;
-        return words.Aggregate(true, (seed, word) => {
+        return words.Aggregate(true, (seed, word) => 
+        {
             if(word.Length < 3)
             {
-                seed = false;             
+                seed = false;
+                return seed;
             }
             return seed;
         });
@@ -265,13 +268,14 @@ public class SequenceAbstraction
         //     }
         // }
         // return seed;
-        return inputList.Aggregate(0, (seed, number) =>
-        {
-            if (IsEven(number))
+       return inputList.Aggregate(0, (seed, number) => 
+       {
+            if(IsEven(number))
             {
-                return seed + number;
+                seed += number;
             }
             return seed;
-        });
+       });
+        
     }
 }
