@@ -56,6 +56,16 @@ public class RomanNumeralConverter
                 nextCharacter = inputString[nextIndex];
             }
 
+            if (character == 'C')
+            {
+                charCount += 100;
+            }
+
+            if(character == 'L')
+            {
+                charCount += 50;
+            }
+
             if (character == 'X')
             {
                 charCount += 10;
