@@ -16,7 +16,7 @@ public class SequenceAbstractionTests
     public void Test_NumbersAreSmallerThan5() {
 	var items = new List<int> {1, 55, 2, 6};
 
-	var actual = SequenceAbstraction.NumbersSmallerThan5(items);
+	var actual = SequenceAbstractions.NumbersSmallerThan5(items);
 
 	Assert.That(actual, Is.EquivalentTo(new List<int> {1, 2}));
     }
@@ -25,7 +25,7 @@ public class SequenceAbstractionTests
     public void Test_NumbersAreSmallerThan5Two() {
 	var items = new List<int> {1, 55, 2, 6, 3, 7, 4, 20};
 
-	var actual = SequenceAbstraction.NumbersSmallerThan5(items);
+	var actual = SequenceAbstractions.NumbersSmallerThan5(items);
 
 	Assert.That(actual, Is.EquivalentTo(new List<int> {1, 2, 3, 4}));
     }
@@ -34,7 +34,7 @@ public class SequenceAbstractionTests
     public void Test_WordsStartWithS() {
 	var items = new List<string> {"steve", "ta", "s", "horseface"};
 
-	var actual = SequenceAbstraction.WordsStartWithS(items);
+	var actual = SequenceAbstractions.WordsStartWithS(items);
 
 	Assert.That(actual, Is.EquivalentTo(new List<string> { "steve", "s"}));
     }
@@ -43,7 +43,7 @@ public class SequenceAbstractionTests
     public void Test_WordsLongEnough() {
 	var items = new List<string> {"steve", "sa", "s", "horseface"};
 
-	var actual = SequenceAbstraction.WordsLongEnough(items);
+	var actual = SequenceAbstractions.WordsLongEnough(items);
 
 	Assert.That(actual, Is.EquivalentTo(new List<string> { "steve", "horseface"}));
     }
@@ -52,7 +52,7 @@ public class SequenceAbstractionTests
     public void Test_GameItemsICanAfford() {
 	var items = new List<int> { 400, 800, 200 };
 
-	var actual = SequenceAbstraction.NumbersUnder500(items);
+	var actual = SequenceAbstractions.NumbersUnder500(items);
 
 	Assert.That(actual, Is.EquivalentTo(new List<int> { 400, 200 }));
     }
@@ -64,7 +64,7 @@ public class SequenceAbstractionTests
 		new GameItem { Name = "Sword Of Fire", GoldCost = 800}
 	};
 
-	var actual = SequenceAbstraction.TotalCost(items);
+	var actual = SequenceAbstractions.TotalCost(items);
 
 	Assert.That(actual, Is.EqualTo(1200));
     }
@@ -76,7 +76,7 @@ public class SequenceAbstractionTests
 		new GameItem { Name = "Sword Of Fire", GoldCost = 800}
 	};
 
-	var actual = SequenceAbstraction.GetGoldCosts(items);
+	var actual = SequenceAbstractions.GetGoldCosts(items);
 
 	Assert.That(actual, Is.EquivalentTo(new List<int> { 400, 800 }));
     }
@@ -85,7 +85,7 @@ public class SequenceAbstractionTests
     public void Test_SumOfSquares() {
 	var numbs = new List<int> {4, 5};  // (4*4)*2 , (5*5)*2
 
-	var actual = SequenceAbstraction.SumOfSquares(numbs);
+	var actual = SequenceAbstractions.SumOfSquares(numbs);
 
 	Assert.That(actual, Is.EquivalentTo(new List<int> { 32, 50 }));
     }
@@ -94,7 +94,7 @@ public class SequenceAbstractionTests
     public void Test_FirstLetterCapitalized() {
 	var numbs = new List<string> {"steve", "horseface"}; 
 
-	var actual = SequenceAbstraction.FirstLetterCapitalized(numbs);
+	var actual = SequenceAbstractions.FirstLetterCapitalized(numbs);
 
 	Assert.That(actual, Is.EquivalentTo(new List<string> { "S", "H" }));
     }
@@ -103,7 +103,7 @@ public class SequenceAbstractionTests
     public void Test_FirstLetterCapitalized2() {
 	var numbs = new List<string> {"jim", "nukedem", "honeybadger"}; 
 
-	var actual = SequenceAbstraction.FirstLetterCapitalized(numbs);
+	var actual = SequenceAbstractions.FirstLetterCapitalized(numbs);
 
 	Assert.That(actual, Is.EquivalentTo(new List<string> { "J", "N", "H" }));
 	}
@@ -112,7 +112,7 @@ public class SequenceAbstractionTests
     public void Test_CountDigits() {
 	var numbs = new List<int> { 1, 200, 12345, 24};
 
-	var actual = SequenceAbstraction.CountDigits(numbs);
+	var actual = SequenceAbstractions.CountDigits(numbs);
 
 	Assert.That(actual, Is.EquivalentTo(new List<int> {1, 3, 5, 2}));
     }
@@ -121,7 +121,7 @@ public class SequenceAbstractionTests
     public void Test_IntToString() {
 	var numbs = new List<int> { 1, 2, 3, 4};
 
-	var actual = SequenceAbstraction.IntsToStrings(numbs);
+	var actual = SequenceAbstractions.IntsToStrings(numbs);
 
 	Assert.That(actual, Is.EquivalentTo(new List<string> { "1", "2", "3", "4"}));
     }
@@ -130,7 +130,7 @@ public class SequenceAbstractionTests
     public void Test_AddsTen() {
 	var numbs = new List<int> { 1, 2, 3, 4};
 
-	var actual = SequenceAbstraction.AddsTen(numbs);
+	var actual = SequenceAbstractions.AddsTen(numbs);
 
 	Assert.That(actual, Is.EquivalentTo(new List<int> { 11, 12, 13, 14}));
     }
@@ -139,7 +139,7 @@ public class SequenceAbstractionTests
     public void Test_SumNumbers() {
 	var numbs = new List<int> { 1, 2, 3, 4};
 
-	var actual = SequenceAbstraction.SumNumbers(numbs);
+	var actual = SequenceAbstractions.SumNumbers(numbs);
 
 	Assert.That(actual, Is.EqualTo(10));
     }
@@ -148,7 +148,7 @@ public class SequenceAbstractionTests
     public void Test_CountStrings() {
 	var names = new List<string> {"Steve", "Sam", "Stephanie"};
 
-	var actual = SequenceAbstraction.CountStrings(names);
+	var actual = SequenceAbstractions.CountStrings(names);
 
 	Assert.That(actual, Is.EqualTo(3));
     }
@@ -158,7 +158,7 @@ public class SequenceAbstractionTests
     public void Test_MergeStrings() {
 	var names = new List<string> {"Steve", "was", "here"};
 
-	var actual = SequenceAbstraction.MergeStrings(names);
+	var actual = SequenceAbstractions.MergeStrings(names);
 
 	Assert.That(actual, Is.EqualTo("Stevewashere"));
     }
@@ -167,7 +167,7 @@ public class SequenceAbstractionTests
     public void Test_FirstLetters() {
 	var names = new List<string> {"flats", "are", "really", "tight"};
 
-	var actual = SequenceAbstraction.FirstLetters(names);
+	var actual = SequenceAbstractions.FirstLetters(names);
 
 	Assert.That(actual, Is.EqualTo("fart"));
     }
@@ -176,7 +176,7 @@ public class SequenceAbstractionTests
     public void Test_CountWordLengths() {
 	var names = new List<string> {"flats", "are", "really", "tight"};
 
-	var actual = SequenceAbstraction.CountWordLengths(names); 
+	var actual = SequenceAbstractions.CountWordLengths(names); 
 
 	Assert.That(actual, Is.EqualTo(5+3+6+5));
     }
@@ -185,7 +185,7 @@ public class SequenceAbstractionTests
     public void Test_AreAllMoreThanThreeCharacters() {
 	var names = new List<string> {"flats", "really", "tight"};
 
-	var actual = SequenceAbstraction.AreAllMoreThanThreeLength(names);
+	var actual = SequenceAbstractions.AreAllMoreThanThreeLength(names);
 
 	Assert.That(actual, Is.EqualTo(true));
     }
@@ -194,7 +194,7 @@ public class SequenceAbstractionTests
     public void Test_AreAllMoreThanThreeCharacters_Test2() {
 	var names = new List<string> {"flats", "ha", "tight"};
 
-	var actual = SequenceAbstraction.AreAllMoreThanThreeLength(names);
+	var actual = SequenceAbstractions.AreAllMoreThanThreeLength(names);
 
 	Assert.That(actual, Is.EqualTo(false));
     }
@@ -204,7 +204,7 @@ public class SequenceAbstractionTests
 	{
 		var input = new List<int>() {5, 7, 10, 3};
 
-		var actual = SequenceAbstraction.AddEmUp(input);
+		var actual = SequenceAbstractions.AddEmUp(input);
 
 		var output = 25;
 
@@ -216,10 +216,22 @@ public class SequenceAbstractionTests
 	{
 		var input = new List<int>() {2, 3, 6, 1, 20};
 
-		var actual = SequenceAbstraction.AddEvenUp(input);
+		var actual = SequenceAbstractions.AddEvenUp(input);
 
 		var output = 28;
 
 		Assert.That(actual, Is.EqualTo(output));
 	}
+
+	[Test]
+    public void Test_SumOfNumbersLargerThanSeven()
+    {
+        var input = new List<int> {2, 3, 1, 5, 8, 88, 9, 10, 6};
+
+        var actual = SequenceAbstractions.SumOfNumbersLargerThanSeven(input);
+
+        var output = 115;
+
+        Assert.That(actual, Is.EqualTo(output));
+    }
 }

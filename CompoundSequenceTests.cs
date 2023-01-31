@@ -113,17 +113,7 @@ public class CompundSequenceTests
         Assert.That(actual, Is.EquivalentTo(output));
     }
 
-    [Test]
-    public void Test_SumOfNumbersLargerThanSeven()
-    {
-        var input = new List<int> {2, 3, 1, 5, 8, 88, 9, 10, 6};
-
-        var actual = CompundSequenceAbstractions.SumOfNumbersLargerThanSeven(input);
-
-        var output = 115;
-
-        Assert.That(actual, Is.EqualTo(output));
-    }
+    
 
     [Test]
     public void Test_NumberOfWordsToString()

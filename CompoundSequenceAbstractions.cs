@@ -7,30 +7,11 @@ public class CompundSequenceAbstractions
 {
     public static IEnumerable<int> AddTenIfBigEnough(IEnumerable<int> numbList)
     {
-        return numbList.Where(numb => numb > 3).Select(numb => numb + 10);
+        return numbList.Where(numb => numb >= 4).Select(numb => numb += 10);
         
     }
 
-    public static int SumOfNumbersLargerThanSeven(List<int> inputNumbs)
-    {
-        // var totalSum = 0;
-        // foreach (var numb in inputNumbs)
-        // {
-        //     if (numb > 7)
-        //     {
-        //         totalSum = totalSum + numb;
-        //     }
-        // }
-        // return totalSum;
-        return inputNumbs.Aggregate(0, (totalSum, numb) => 
-        {
-            if(numb > 7)
-            {
-                totalSum += numb;
-            }
-            return totalSum;
-        });
-    }
+    
 
     public static string Capitalize(string x)
     {

@@ -53,8 +53,15 @@ public class RomanNumeralConverterTests
     [TestCase("XIX", 19)]
     [TestCase("XX", 20)]
     [TestCase("L", 50)]
+    [TestCase("XC", 90)]
+    [TestCase("XCI", 91)]
     [TestCase("C", 100)]
+    [TestCase("CIX", 109)]
     [TestCase("CX", 110)]
+    [TestCase("CXCI", 191)]
+    [TestCase("CCCXCIX", 399)]
+    [TestCase("CD", 400)]
+    [TestCase("D", 500)]
     
     public void Test_RomanToArabic(string input, int output)
     {

@@ -65,8 +65,12 @@ public class RomanNumeralConverter
             {
                 charCount += 50;
             }
-
-            if (character == 'X')
+            
+            if (character == 'X' && nextCharacter == 'C')
+            {
+                charCount += 90;
+                x++;
+            } else if (character == 'X')
             {
                 charCount += 10;
             }
@@ -75,7 +79,7 @@ public class RomanNumeralConverter
             {
                 charCount += 5;
             }
-
+            
             if (character == 'I' && nextCharacter == 'X')
             {
                 charCount += 9;

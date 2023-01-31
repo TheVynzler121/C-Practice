@@ -6,7 +6,7 @@ public class GameItem
     public int GoldCost { get; set; }
 }
 
-public class SequenceAbstraction
+public class SequenceAbstractions
 {
     public static int SumNumbers(List<int> numbs)
     {
@@ -277,5 +277,26 @@ public class SequenceAbstraction
             return seed;
        });
         
+    }
+
+    public static int SumOfNumbersLargerThanSeven(List<int> inputNumbs)
+    {
+        // var totalSum = 0;
+        // foreach (var numb in inputNumbs)
+        // {
+        //     if (numb > 7)
+        //     {
+        //         totalSum = totalSum + numb;
+        //     }
+        // }
+        // return totalSum;
+        return inputNumbs.Aggregate(0, (totalSum, numb) => 
+        {
+            if(numb > 7)
+            {
+                totalSum += numb;
+            }
+            return totalSum;
+        });
     }
 }
