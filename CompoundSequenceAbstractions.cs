@@ -13,15 +13,23 @@ public class CompundSequenceAbstractions
 
     public static int SumOfNumbersLargerThanSeven(List<int> inputNumbs)
     {
-        var totalSum = 0;
-        foreach (var numb in inputNumbs)
+        // var totalSum = 0;
+        // foreach (var numb in inputNumbs)
+        // {
+        //     if (numb > 7)
+        //     {
+        //         totalSum = totalSum + numb;
+        //     }
+        // }
+        // return totalSum;
+        return inputNumbs.Aggregate(0, (totalSum, numb) => 
         {
-            if (numb > 7)
+            if(numb > 7)
             {
-                totalSum = totalSum + numb;
+                totalSum += numb;
             }
-        }
-        return totalSum;
+            return totalSum;
+        });
     }
 
     public static string Capitalize(string x)
@@ -54,7 +62,7 @@ public class CompundSequenceAbstractions
     // List<T> is-a IEnumerable<T>
     public static IEnumerable<string> ItemsICanAfford(IEnumerable<GameItem> items, int budget)
     {
-        return items.Where(item => item.GoldCost < budget).Select(item => item.Name);
+        return items.Where(item => item.GoldCost <= budget).Select(item => item.Name);
     }
 
     public static string GetFirstWord(string sentence)
