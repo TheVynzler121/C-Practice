@@ -2,7 +2,6 @@ namespace C__Practice;
 
 public class RomanNumeralConverter
 {
-
     // right now the whole function goes small -> large
     // but each new digit goes large -> small
     // perhaps the whole function could just go large -> small?
@@ -15,17 +14,18 @@ public class RomanNumeralConverter
     {
         var numerals = new Dictionary<int, string>()
         {
-            {1000, "M"},
-            {500, "D"},
-            {100, "C"},
-            {50, "L"},
-            {10, "X"},
-            {5, "V"},
-            {1, "I"},
+            { 1000, "M" },
+            { 500, "D" },
+            { 100, "C" },
+            { 50, "L" },
+            { 10, "X" },
+            { 5, "V" },
+            { 1, "I" },
         };
         var returnString = "";
 
-        foreach(var arabicAndRoman in numerals) {
+        foreach (var arabicAndRoman in numerals)
+        {
             var arabicInt = arabicAndRoman.Key;
             var romanString = arabicAndRoman.Value;
 
@@ -56,21 +56,32 @@ public class RomanNumeralConverter
                 nextCharacter = inputString[nextIndex];
             }
 
-            if (character == 'C')
+            if (character == 'D')
+            {
+                charCount += 500;
+            }
+
+            if (character == 'C' && nextCharacter == 'D')
+            {
+                charCount += 400;
+                x++;
+            }
+            else if (character == 'C')
             {
                 charCount += 100;
             }
 
-            if(character == 'L')
+            if (character == 'L')
             {
                 charCount += 50;
             }
-            
+
             if (character == 'X' && nextCharacter == 'C')
             {
                 charCount += 90;
                 x++;
-            } else if (character == 'X')
+            }
+            else if (character == 'X')
             {
                 charCount += 10;
             }
@@ -79,7 +90,7 @@ public class RomanNumeralConverter
             {
                 charCount += 5;
             }
-            
+
             if (character == 'I' && nextCharacter == 'X')
             {
                 charCount += 9;
@@ -94,8 +105,8 @@ public class RomanNumeralConverter
             {
                 charCount++;
             }
-
         }
+
         return charCount;
     }
 }
