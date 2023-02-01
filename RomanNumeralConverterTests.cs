@@ -50,6 +50,7 @@ public class RomanNumeralConverterTests {
     [TestCase("XV", 15)]
     [TestCase("XIX", 19)]
     [TestCase("XX", 20)]
+    [TestCase("XL", 40)]
     [TestCase("L", 50)]
     [TestCase("XC", 90)]
     [TestCase("XCI", 91)]
@@ -60,6 +61,11 @@ public class RomanNumeralConverterTests {
     [TestCase("CCCXCIX", 399)]
     [TestCase("CD", 400)]
     [TestCase("D", 500)]
+    [TestCase("DCCCXCIX", 899)]
+    [TestCase("CM", 900)]
+    [TestCase("CMXCIX", 999)]
+    [TestCase("M", 1000)]
+    [TestCase("MI", 1001)]
     public void Test_RomanToArabic(string input, int output) {
         Assert.That(RomanNumeralConverter.RomanToArabic(input), Is.EqualTo(output));
     }

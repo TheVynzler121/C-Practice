@@ -48,11 +48,18 @@ public class RomanNumeralConverter {
                 nextCharacter = inputString[nextIndex];
             }
 
+            if (character == 'M') {
+                charCount += 1000;
+            }
+
             if (character == 'D') {
                 charCount += 500;
             }
 
-            if (character == 'C' && nextCharacter == 'D') {
+            if (character == 'C' && nextCharacter == 'M') {
+                charCount += 900;
+                x++;
+            } else if (character == 'C' && nextCharacter == 'D') {
                 charCount += 400;
                 x++;
             } else if (character == 'C') {
@@ -65,6 +72,9 @@ public class RomanNumeralConverter {
 
             if (character == 'X' && nextCharacter == 'C') {
                 charCount += 90;
+                x++;
+            } else if (character == 'X' && nextCharacter == 'L') {
+                charCount += 40;
                 x++;
             } else if (character == 'X') {
                 charCount += 10;
