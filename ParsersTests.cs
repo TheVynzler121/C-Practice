@@ -9,18 +9,14 @@
 
 namespace C__Practice;
 
-public class ParsersTests
-{
-
-
+public class ParsersTests {
     [Test]
-    public void Test_parseHand()
-    {
+    public void Test_parseHand() {
         var inputString = "3D 4H 7C TS 2D";
 
         var hand = Parsers.parseHand(inputString).ToList();
 
-        
+
         var firstCard = hand[0];
         Assert.That(firstCard.Face, Is.EqualTo(3));
         Assert.That(firstCard.Suit, Is.EqualTo((false, false)));
@@ -31,8 +27,7 @@ public class ParsersTests
     }
 
     [Test]
-    public void Test_parseCard()
-    {
+    public void Test_parseCard() {
         var inputString = "3D";
 
         var card = Parsers.parseCard(inputString);
@@ -42,8 +37,7 @@ public class ParsersTests
     }
 
     [Test]
-    public void Test_parseCard2()
-    {
+    public void Test_parseCard2() {
         var inputString = "QH";
 
         var card = Parsers.parseCard(inputString);
@@ -52,11 +46,9 @@ public class ParsersTests
         Assert.That(card.Suit, Is.EqualTo((true, true)));
     }
 
-    
 
     [Test]
-    public void Test_parseSuit()
-    {
+    public void Test_parseSuit() {
         Assert.That(Parsers.parseSuit("4H"), Is.EqualTo((true, true)));
         Assert.That(Parsers.parseSuit("5S"), Is.EqualTo((true, false)));
         Assert.That(Parsers.parseSuit("6C"), Is.EqualTo((false, true)));
@@ -64,8 +56,7 @@ public class ParsersTests
     }
 
     [Test]
-    public void Test_tuplePractice()
-    {
+    public void Test_tuplePractice() {
         var t1 = (1, 3);
         var t2 = (2, 1);
 
@@ -81,13 +72,12 @@ public class ParsersTests
     }
 
     [Test]
-    public void Test_handSplitter()
-    {
+    public void Test_handSplitter() {
         var inputString = "4D 3H 2S TD QC";
 
         var cardStrings = Parsers.handSplitter(inputString);
 
-        Assert.That(cardStrings, Is.EquivalentTo(new List<string>() { "4D", "3H", "2S", "TD", "QC" }));
+        Assert.That(cardStrings, Is.EquivalentTo(new List<string> { "4D", "3H", "2S", "TD", "QC" }));
     }
 
     [TestCase("4D", 4)]
@@ -98,11 +88,9 @@ public class ParsersTests
     [TestCase("QD", 12)]
     [TestCase("KD", 13)]
     [TestCase("AD", 14)]
-    public void Test_parseFace(string inputString, int expected)
-    {
+    public void Test_parseFace(string inputString, int expected) {
         var face = Parsers.parseFace(inputString);
 
         Assert.That(face, Is.EqualTo(expected));
     }
-
 }

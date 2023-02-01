@@ -1,11 +1,8 @@
 namespace C__Practice;
 
-public class FormattersTests
-{
-
+public class FormattersTests {
     [Test]
-    public void Test_formatFace()
-    {
+    public void Test_formatFace() {
         var input = 11;
 
         var faceString = Formatters.formatFace(input);
@@ -14,8 +11,7 @@ public class FormattersTests
     }
 
     [Test]
-    public void Test_printCard3D()
-    {
+    public void Test_printCard3D() {
         var inputString = Parsers.parseCard("3D");
 
         var card = Formatters.printCard(inputString);
@@ -24,8 +20,7 @@ public class FormattersTests
     }
 
     [Test]
-    public void Test_printCard()
-    {
+    public void Test_printCard() {
         var inputString = Parsers.parseCard("QH");
 
         var card = Formatters.printCard(inputString);
@@ -34,8 +29,7 @@ public class FormattersTests
     }
 
     [Test]
-    public void Test_canFormatASuit()
-    {
+    public void Test_canFormatASuit() {
         var hearts = (true, true);
         var spades = (true, false);
         var clubs = (false, true);

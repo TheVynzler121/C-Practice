@@ -1,7 +1,6 @@
 namespace C__Practice;
 
-public class RomanNumeralConverterTests
-{
+public class RomanNumeralConverterTests {
     [TestCase(1, "I")]
     [TestCase(2, "II")]
     [TestCase(3, "III")]
@@ -34,8 +33,7 @@ public class RomanNumeralConverterTests
     [TestCase(300, "CCC")]
     [TestCase(400, "CCCC")]
     [TestCase(499, "CCCCLXXXXVIIII")]
-    public void Test_NumberToNumeral(int input, string output)
-    {
+    public void Test_NumberToNumeral(int input, string output) {
         var actual = RomanNumeralConverter.NumberToNumeral(input);
 
         Assert.That(actual, Is.EqualTo(output));
@@ -62,10 +60,7 @@ public class RomanNumeralConverterTests
     [TestCase("CCCXCIX", 399)]
     [TestCase("CD", 400)]
     [TestCase("D", 500)]
-    
-    public void Test_RomanToArabic(string input, int output)
-    {
+    public void Test_RomanToArabic(string input, int output) {
         Assert.That(RomanNumeralConverter.RomanToArabic(input), Is.EqualTo(output));
     }
-
 }
