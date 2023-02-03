@@ -193,7 +193,7 @@ public class SequenceAbstractions {
         return words.Aggregate(0, (countedLengths, word) => countedLengths += word.Length);
     }
 
-    public static bool AreAllMoreThanThreeLength(List<string> words) {
+    public static bool AreAllMoreThanThreeLength(List<string> wordList) {
         // foreach (var word in words)
         // {
         //     if (word.Length < 3)
@@ -202,14 +202,13 @@ public class SequenceAbstractions {
         //     }
         // }
         // return true;
-        return words.Aggregate(true, (seed, word) => {
-            if (word.Length < 3) {
-                seed = false;
-                return seed;
-            }
-
+       return wordList.Aggregate(true, (seed, word) => {
+        if(word.Length < 3) {
+            seed = false;
             return seed;
-        });
+        }
+        return seed;
+       });
     }
 
     public static int AddEmUp(List<int> inputList) {
