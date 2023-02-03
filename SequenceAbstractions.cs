@@ -143,6 +143,7 @@ public class SequenceAbstractions {
         }
 
         return xs;
+       
     }
 
     public static IEnumerable<string> IntsToStrings(List<int> inputString) {
@@ -190,7 +191,7 @@ public class SequenceAbstractions {
         //     countedLengths = countedLengths + word.Length;
         // }
         // return countedLengths;
-        return words.Aggregate(0, (countedLengths, word) => countedLengths += word.Length);
+        return words.Aggregate(0, (countedLength, word) => countedLength += word.Length);
     }
 
     public static bool AreAllMoreThanThreeLength(List<string> wordList) {
