@@ -137,17 +137,17 @@ public class SequenceAbstractions {
     }
 
     public static List<int> SumOfSquares(List<int> ys) {
-        var xs = new List<int>();
-        foreach (var y in ys) {
-            xs.Add(y * y * 2);
-        }
+        // var xs = new List<int>();
+        // foreach (var y in ys) {
+        //     xs.Add(y * y * 2);
+        // }
 
-        return xs;
-       
+        // return xs;
+       return ys.Aggregate(new List<int>(), (seedList, y) => {seedList.Add(y * y * 2); return seedList;});
     }
 
     public static IEnumerable<string> IntsToStrings(List<int> inputString) {
-        return inputString.Select(x => x.ToString());
+        return inputString.Select(number => number.ToString());
     }
 
     public static IEnumerable<string> FirstLetterCapitalized(List<string> inputList) {
@@ -219,7 +219,7 @@ public class SequenceAbstractions {
         //     ret += numb;
         // }
         // return ret;
-        return inputList.Aggregate(0, (ret, numb) => { return ret + numb; });
+        return inputList.Aggregate(0, (seed, number) => { return seed += number; });
         // 0, 5  => 0 + 5
         // 5, 7  => 5 + 7
         // 12,10 => 12 + 10
@@ -260,12 +260,10 @@ public class SequenceAbstractions {
         //     }
         // }
         // return totalSum;
-        return inputNumbs.Aggregate(0, (totalSum, numb) => {
-            if (numb > 7) {
-                totalSum += numb;
-            }
-
-            return totalSum;
-        });
+       return inputNumbs.Aggregate(0, (totalSum, number) => 
+       {if(number > 7){
+        totalSum += number;
+       }
+       return totalSum;});
     }
 }
