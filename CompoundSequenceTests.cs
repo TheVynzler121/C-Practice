@@ -21,6 +21,25 @@ public class CompundSequenceTests {
     }
 
     [Test]
+    public void Test_FirstWordIfStartsWithA() {
+        var items = new List<GameItem> {
+            new() { GoldCost = 200, Name = "Scream'n Sword" },
+            new() { GoldCost = 700, Name = "TFragile Hammer" },
+            new() { GoldCost = 8000, Name = "Apple Launcher" },
+            new() { GoldCost = 700, Name = "Fragile Hammer" },
+            new() { GoldCost = 100, Name = "Top of Whoop Ass" },
+            new() { GoldCost = 2000, Name = "Alpha Protocol Knife"},
+            new() { GoldCost = 70, Name = "Another Hammer" },
+        };
+
+        var actual = CompundSequenceAbstractions.FirstWordIfStartsWith(items, 'A');
+
+        var output = new List<string> { "Apple", "Alpha", "Another"};
+
+        Assert.That(actual, Is.EquivalentTo(output));
+    }
+
+    [Test]
     public void Test_FirstWordIfStartsWithS() {
         var items = new List<GameItem> {
             new() { GoldCost = 200, Name = "Scream'n Sword" },

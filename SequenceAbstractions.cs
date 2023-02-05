@@ -1,12 +1,15 @@
 namespace C__Practice;
 
-public class GameItem {
+public class GameItem
+{
     public string Name { get; set; }
     public int GoldCost { get; set; }
 }
 
-public class SequenceAbstractions {
-    public static int SumNumbers(List<int> numbs) {
+public class SequenceAbstractions
+{
+    public static int SumNumbers(List<int> numbs)
+    {
         // var sumOfNumbs = 0;
         // foreach (var numb in numbs)
         // {
@@ -16,11 +19,13 @@ public class SequenceAbstractions {
         return numbs.Aggregate(0, (sumOfNumbs, numb) => sumOfNumbs += numb);
     }
 
-    public static IEnumerable<int> GetGoldCosts(List<GameItem> costs) {
+    public static IEnumerable<int> GetGoldCosts(List<GameItem> costs)
+    {
         return costs.Select(x => x.GoldCost);
     }
 
-    public static int TotalCost(List<GameItem> items) {
+    public static int TotalCost(List<GameItem> items)
+    {
         // var totalGoldCost = 0;
         // foreach (var item in items)
         // {
@@ -30,7 +35,8 @@ public class SequenceAbstractions {
         return items.Aggregate(0, (totalGoldCost, item) => totalGoldCost += item.GoldCost);
     }
 
-    public static List<int> NumbersUnder500(List<int> numbList) {
+    public static List<int> NumbersUnder500(List<int> numbList)
+    {
         return numbList.Where(numb => numb < 500).ToList();
         // var xs = new List<int>();
         // foreach (var y in ys)
@@ -43,7 +49,8 @@ public class SequenceAbstractions {
         // return xs;
     }
 
-    public static IEnumerable<string> WordsLongEnough(List<string> words) {
+    public static IEnumerable<string> WordsLongEnough(List<string> wordList)
+    {
         // return words.Where(word => word.Length > 4).ToList();
         // var wordsLongEnough = new List<string>();
         // foreach (var word in words)
@@ -54,16 +61,16 @@ public class SequenceAbstractions {
         //     }
         // }
         // return wordsLongEnough;
-        return words.Aggregate(new List<string>(), (wordsLongEnough, word) => {
+        return wordList.Aggregate(new List<string>(), (wordsLongerThanFour, word) => {
             if (word.Length > 4) {
-                wordsLongEnough.Add(word);
+                wordsLongerThanFour.Add(word);
             }
-
-            return wordsLongEnough;
+            return wordsLongerThanFour;
         });
     }
 
-    public static List<string> WordsStartWithS(List<string> words) {
+    public static List<string> WordsStartWithS(List<string> words)
+    {
         return words.Where(words => words[0] == 's').ToList();
         // var sWords = new List<string>();
         // foreach (var word in words)
@@ -76,7 +83,8 @@ public class SequenceAbstractions {
         // return sWords;
     }
 
-    public static IEnumerable<int> NumbersSmallerThan5(List<int> numbList) {
+    public static IEnumerable<int> NumbersSmallerThan5(List<int> numbList)
+    {
         return numbList.Where(numb => numb < 5);
     }
 
@@ -122,11 +130,13 @@ public class SequenceAbstractions {
     }
     */
 
-    public static List<int> AddsTen(List<int> ys) {
+    public static List<int> AddsTen(List<int> ys)
+    {
         return ys.Select(ys => ys + 10).ToList();
     }
 
-    public static List<int> CountDigits(List<int> numbs) {
+    public static List<int> CountDigits(List<int> numbs)
+    {
         return numbs.Select(numb => numb.ToString().Length).ToList();
         // var countedList = new List<int>();
         // foreach (var numb in numbs)
@@ -136,25 +146,29 @@ public class SequenceAbstractions {
         // return countedList;
     }
 
-    public static List<int> SumOfSquares(List<int> ys) {
+    public static List<int> SumOfSquares(List<int> ys)
+    {
         // var xs = new List<int>();
         // foreach (var y in ys) {
         //     xs.Add(y * y * 2);
         // }
 
         // return xs;
-       return ys.Aggregate(new List<int>(), (seedList, y) => {seedList.Add(y * y * 2); return seedList;});
+        return ys.Aggregate(new List<int>(), (seedList, y) => { seedList.Add(y * y * 2); return seedList; });
     }
 
-    public static IEnumerable<string> IntsToStrings(List<int> inputString) {
+    public static IEnumerable<string> IntsToStrings(List<int> inputString)
+    {
         return inputString.Select(number => number.ToString());
     }
 
-    public static IEnumerable<string> FirstLetterCapitalized(List<string> inputList) {
+    public static IEnumerable<string> FirstLetterCapitalized(List<string> inputList)
+    {
         return inputList.Select(x => x[0].ToString().ToUpper());
     }
 
-    public static int CountStrings(List<string> names) {
+    public static int CountStrings(List<string> names)
+    {
         // var x = 0;
         // foreach (var name in names)
         // {
@@ -164,7 +178,8 @@ public class SequenceAbstractions {
         return names.Aggregate(0, (seed, name) => seed += 1); // why does ++ not work here?
     }
 
-    public static string MergeStrings(List<string> words) {
+    public static string MergeStrings(List<string> words)
+    {
         // var outputString = "";
         // foreach (var word in words)
         // {
@@ -174,7 +189,8 @@ public class SequenceAbstractions {
         return words.Aggregate("", (outputString, word) => outputString += word);
     }
 
-    public static string FirstLetters(List<string> inputString) {
+    public static string FirstLetters(List<string> inputString)
+    {
         // var x = "";
         // foreach (var word in inputString)
         // {
@@ -184,17 +200,19 @@ public class SequenceAbstractions {
         return inputString.Aggregate("", (x, word) => x += word[0]);
     }
 
-    public static int CountWordLengths(List<string> words) {
+    public static int CountWordLengths(List<string> wordList)
+    {
         // var countedLengths = 0;
         // foreach (var word in words)
         // {
         //     countedLengths = countedLengths + word.Length;
         // }
         // return countedLengths;
-        return words.Aggregate(0, (countedLength, word) => countedLength += word.Length);
+        return wordList.Aggregate(0, (countedLength, word) => countedLength += word.Length);
     }
 
-    public static bool AreAllMoreThanThreeLength(List<string> wordList) {
+    public static bool AreAllMoreThanThreeLength(List<string> wordList)
+    {
         // foreach (var word in words)
         // {
         //     if (word.Length < 3)
@@ -203,16 +221,19 @@ public class SequenceAbstractions {
         //     }
         // }
         // return true;
-       return wordList.Aggregate(true, (seed, word) => {
-        if(word.Length < 3) {
-            seed = false;
+        return wordList.Aggregate(true, (seed, word) =>
+        {
+            if (word.Length < 3)
+            {
+                seed = false;
+                return seed;
+            }
             return seed;
-        }
-        return seed;
-       });
+        });
     }
 
-    public static int AddEmUp(List<int> inputList) {
+    public static int AddEmUp(List<int> inputList)
+    {
         // var ret = 0;
         // foreach (var numb in inputList)
         // {
@@ -227,11 +248,13 @@ public class SequenceAbstractions {
         // 25
     }
 
-    public static bool IsEven(int x) {
+    public static bool IsEven(int x)
+    {
         return x % 2 == 0;
     }
 
-    public static int AddEvenUp(List<int> inputList) {
+    public static int AddEvenUp(List<int> inputList)
+    {
         // var seed = 0;
         // foreach (var number in inputList)
         // {
@@ -241,8 +264,10 @@ public class SequenceAbstractions {
         //     }
         // }
         // return seed;
-        return inputList.Aggregate(0, (seed, number) => {
-            if (IsEven(number)) {
+        return inputList.Aggregate(0, (seed, number) =>
+        {
+            if (IsEven(number))
+            {
                 seed += number;
             }
 
@@ -250,7 +275,8 @@ public class SequenceAbstractions {
         });
     }
 
-    public static int SumOfNumbersLargerThanSeven(List<int> inputNumbs) {
+    public static int SumOfNumbersLargerThanSeven(List<int> inputNumbs)
+    {
         // var totalSum = 0;
         // foreach (var numb in inputNumbs)
         // {
@@ -260,10 +286,13 @@ public class SequenceAbstractions {
         //     }
         // }
         // return totalSum;
-       return inputNumbs.Aggregate(0, (totalSum, number) => 
-       {if(number > 7){
-        totalSum += number;
-       }
-       return totalSum;});
+        return inputNumbs.Aggregate(0, (totalSum, number) =>
+        {
+            if (number > 7)
+            {
+                totalSum += number;
+            }
+            return totalSum;
+        });
     }
 }
