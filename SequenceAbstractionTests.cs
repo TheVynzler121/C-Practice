@@ -230,4 +230,19 @@ public class SequenceAbstractionTests {
 
         Assert.That(actual, Is.EqualTo(output));
     }
+
+    [TestCase("success", true)]
+    [TestCase("test", false)]
+    [TestCase("tess", true)]
+    [TestCase("abcdeff", true)]
+    public void Test_ConsecutiveDuplicates(string input, bool output) {
+        // "abcde" -> false
+        // "abccde" -> true
+        // "a" -> false
+        // "" -> false
+        // "aa" -> true
+        var actual = SequenceAbstractions.ConsecutiveDuplicates(input);
+
+        Assert.That(actual, Is.EqualTo(output));  
+    }
 }
