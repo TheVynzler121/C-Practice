@@ -69,9 +69,9 @@ public class SequenceAbstractions
         });
     }
 
-    public static List<string> WordsStartWithS(List<string> words)
+    public static List<string> WordsStartWithS(List<string> inputList)
     {
-        return words.Where(words => words[0] == 's').ToList();
+        return inputList.Where(word => word[0] == 's').ToList();
         // var sWords = new List<string>();
         // foreach (var word in words)
         // {
@@ -164,7 +164,7 @@ public class SequenceAbstractions
 
     public static IEnumerable<string> FirstLetterCapitalized(List<string> inputList)
     {
-        return inputList.Select(x => x[0].ToString().ToUpper());
+        return inputList.Select(word => word[0].ToString().ToUpper());
     }
 
     public static int CountStrings(List<string> names)
@@ -208,7 +208,7 @@ public class SequenceAbstractions
         //     countedLengths = countedLengths + word.Length;
         // }
         // return countedLengths;
-        return wordList.Aggregate(0, (countedLength, word) => countedLength += word.Length);
+        return wordList.Aggregate(0, (countSeed, word) => countSeed += word.Length);
     }
 
     public static bool AreAllMoreThanThreeLength(List<string> wordList)
