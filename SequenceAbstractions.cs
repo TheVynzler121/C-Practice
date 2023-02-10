@@ -19,9 +19,9 @@ public class SequenceAbstractions
         return numbs.Aggregate(0, (sumOfNumbs, numb) => sumOfNumbs += numb);
     }
 
-    public static IEnumerable<int> GetGoldCosts(List<GameItem> costs)
+    public static List<int> GetGoldCosts(List<GameItem> costs)
     {
-        return costs.Select(x => x.GoldCost);
+        return costs.Select(item => item.GoldCost).ToList();
     }
 
     public static int TotalCost(List<GameItem> items)
@@ -83,9 +83,9 @@ public class SequenceAbstractions
         // return sWords;
     }
 
-    public static IEnumerable<int> NumbersSmallerThan5(List<int> numbList)
+    public static List<int> NumbersSmallerThan5(List<int> numberList)
     {
-        return numbList.Where(numb => numb < 5);
+        return numberList.Where(number => number < 5).ToList();
     }
 
     /*
@@ -186,7 +186,7 @@ public class SequenceAbstractions
         //     outputString = outputString + word;
         // }
         // return outputString;
-        return words.Aggregate("", (outputString, word) => outputString += word);
+        return words.Aggregate("", (wordSeed, word) => wordSeed += word);
     }
 
     public static string FirstLetters(List<string> inputString)

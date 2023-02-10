@@ -33,12 +33,11 @@ public class InterviewPractice
     }
 
     public static List<string> ReverseString(List<string> input){
-        var output = new List<string>(){};
-
-        foreach (var character in input)
+        var stringListSeed = new List<string>();
+        foreach (var letter in input)
         {
-            output.Insert(0, character);
+            stringListSeed.Insert(0, letter);
         }
-        return output;
+        return stringListSeed;
     }
 }

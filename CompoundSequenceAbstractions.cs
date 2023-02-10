@@ -46,7 +46,7 @@ public class CompundSequenceAbstractions {
     }
 
     public static IEnumerable<string> NumbersLargerThanFiveToString(List<int> numberList) {
-        return numberList.Where(number => number > 5).Select(number => number.ToString());
+       return numberList.Where(numb => numb > 5).Select(numb => numb.ToString());
     }
 
     public static IEnumerable<int> GoldCostIfStartsWithS(IEnumerable<GameItem> itemsList, char firstLetter) {
