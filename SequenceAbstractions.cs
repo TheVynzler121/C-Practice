@@ -24,7 +24,7 @@ public class SequenceAbstractions
         return costs.Select(item => item.GoldCost).ToList();
     }
 
-    public static int TotalCost(List<GameItem> items)
+    public static int TotalCost(List<GameItem> itemList)
     {
         // var totalGoldCost = 0;
         // foreach (var item in items)
@@ -32,7 +32,7 @@ public class SequenceAbstractions
         //     totalGoldCost = totalGoldCost + item.GoldCost;
         // }
         // return totalGoldCost;
-        return items.Aggregate(0, (totalGoldCost, item) => totalGoldCost += item.GoldCost);
+        return itemList.Aggregate(0, (goldSeed, item) => goldSeed += item.GoldCost);
     }
 
     public static List<int> NumbersUnder500(List<int> numbList)
@@ -69,9 +69,9 @@ public class SequenceAbstractions
         });
     }
 
-    public static List<string> WordsStartWithS(List<string> inputList)
+    public static List<string> WordsStartWithS(List<string> wordList)
     {
-        return inputList.Where(word => word[0] == 's').ToList();
+        return wordList.Where(word => word[0] == 's').ToList();
         // var sWords = new List<string>();
         // foreach (var word in words)
         // {
@@ -162,9 +162,9 @@ public class SequenceAbstractions
         return inputString.Select(number => number.ToString());
     }
 
-    public static IEnumerable<string> FirstLetterCapitalized(List<string> inputList)
+    public static IEnumerable<string> FirstLetterCapitalized(List<string> wordList)
     {
-        return inputList.Select(word => word[0].ToString().ToUpper());
+        return wordList.Select(word => word[0].ToString().ToUpper());
     }
 
     public static int CountStrings(List<string> names)
