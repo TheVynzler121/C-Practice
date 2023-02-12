@@ -83,9 +83,9 @@ public class SequenceAbstractions
         // return sWords;
     }
 
-    public static List<int> NumbersSmallerThan5(List<int> numberList)
+    public static List<int> NumbersSmallerThan5(List<int> inputList)
     {
-        return numberList.Where(number => number < 5).ToList();
+        return inputList.Where(numb => numb < 5).ToList();
     }
 
     /*
@@ -162,9 +162,9 @@ public class SequenceAbstractions
         return inputString.Select(number => number.ToString());
     }
 
-    public static IEnumerable<string> FirstLetterCapitalized(List<string> wordList)
+    public static IEnumerable<string> FirstLetterCapitalized(List<string> inputList)
     {
-        return wordList.Select(word => word[0].ToString().ToUpper());
+        return inputList.Select(word => word[0].ToString().ToUpper());
     }
 
     public static int CountStrings(List<string> names)
@@ -197,7 +197,7 @@ public class SequenceAbstractions
         //     x = x + word[0];
         // }
         // return x;
-        return inputString.Aggregate("", (x, word) => x += word[0]);
+        return inputString.Aggregate("", (stringSeed, letter) => stringSeed += letter[0]);
     }
 
     public static int CountWordLengths(List<string> wordList)
