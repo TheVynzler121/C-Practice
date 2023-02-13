@@ -41,8 +41,8 @@ public class CompundSequenceAbstractions {
         return sentence.Split(' ')[0];
     }
 
-    public static IEnumerable<string> FirstWordIfStartsWith(IEnumerable<GameItem> itemsList, char firstLetter) {
-        return itemsList.Where(item => item.Name[0] == firstLetter).Select(item => GetFirstWord(item.Name));
+    public static IEnumerable<string> FirstWordIfStartsWith(IEnumerable<GameItem> inputList, char firstLetter) {
+        return inputList.Where(name => name.Name[0] == firstLetter).Select(name => GetFirstWord(name.Name));
     }
 
     public static IEnumerable<string> NumbersLargerThanFiveToString(List<int> numberList) {

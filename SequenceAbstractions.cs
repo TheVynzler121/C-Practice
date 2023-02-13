@@ -146,7 +146,7 @@ public class SequenceAbstractions
         // return countedList;
     }
 
-    public static List<int> SumOfSquares(List<int> ys)
+    public static List<int> SumOfSquares(List<int> inputList)
     {
         // var xs = new List<int>();
         // foreach (var y in ys) {
@@ -154,7 +154,7 @@ public class SequenceAbstractions
         // }
 
         // return xs;
-        return ys.Aggregate(new List<int>(), (seedList, y) => { seedList.Add(y * y * 2); return seedList; });
+        return inputList.Aggregate(new List<int>(), (seedList, number) => {seedList.Add(number * number * 2); return seedList;});
     }
 
     public static IEnumerable<string> IntsToStrings(List<int> inputString)
