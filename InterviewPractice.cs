@@ -30,14 +30,14 @@ public class InterviewPractice
         // return false;
     }
 
-    public static IEnumerable<string> ReverseString(List<string> letterList){
-        var seedList = new List<string>();
+    public static IEnumerable<string> ReverseString(List<string> inputList){
+        var listSeed = new List<string>();
 
-        foreach (var letter in letterList)
+        foreach (var letter in inputList)
         {
-            seedList.Insert(0, letter);
+            listSeed.Insert(0, letter);
         }
 
-        return seedList;
+        return listSeed;
     }
 }

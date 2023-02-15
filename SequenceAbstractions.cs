@@ -189,7 +189,7 @@ public class SequenceAbstractions
         return words.Aggregate("", (wordSeed, word) => wordSeed += word);
     }
 
-    public static string FirstLetters(List<string> inputString)
+    public static string FirstLetters(List<string> stringList)
     {
         // var x = "";
         // foreach (var word in inputString)
@@ -197,7 +197,7 @@ public class SequenceAbstractions
         //     x = x + word[0];
         // }
         // return x;
-        return inputString.Aggregate("", (stringSeed, letter) => stringSeed += letter[0]);
+        return stringList.Aggregate("", (stringSeed, wordInList) => stringSeed += wordInList[0]);
     }
 
     public static int CountWordLengths(List<string> wordList)
