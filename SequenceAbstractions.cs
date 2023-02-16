@@ -178,26 +178,20 @@ public class SequenceAbstractions
         return names.Aggregate(0, (seed, name) => seed += 1); // why does ++ not work here?
     }
 
-    public static string MergeStrings(List<string> words)
+    public static string MergeStrings(List<string> wordList)
     {
-        // var outputString = "";
-        // foreach (var word in words)
-        // {
-        //     outputString = outputString + word;
-        // }
-        // return outputString;
-        return words.Aggregate("", (wordSeed, word) => wordSeed += word);
+        var wordSeed = "";
+        foreach (var word in wordList)
+        {
+            wordSeed += word;
+        }
+        return wordSeed;
     }
 
-    public static string FirstLetters(List<string> stringList)
+    public static string FirstLetters(List<string> wordList)
     {
-        // var x = "";
-        // foreach (var word in inputString)
-        // {
-        //     x = x + word[0];
-        // }
-        // return x;
-        return stringList.Aggregate("", (stringSeed, wordInList) => stringSeed += wordInList[0]);
+        
+        return wordList.Aggregate("", (letterSeed, word) => letterSeed += word[0]);
     }
 
     public static int CountWordLengths(List<string> wordList)

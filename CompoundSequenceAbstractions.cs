@@ -45,8 +45,8 @@ public class CompundSequenceAbstractions {
         return inputList.Where(name => name.Name[0] == firstLetter).Select(name => GetFirstWord(name.Name));
     }
 
-    public static IEnumerable<string> NumbersLargerThanFiveToString(List<int> numberList) {
-       return numberList.Where(numb => numb > 5).Select(numb => numb.ToString());
+    public static IEnumerable<string> NumbersLargerThanFiveToString(List<int> numbList) {
+       return numbList.Where(numb => numb > 5).Select(numb => numb.ToString());
     }
 
     public static IEnumerable<int> GoldCostIfStartsWithS(IEnumerable<GameItem> itemsList, char firstLetter) {
