@@ -162,9 +162,9 @@ public class SequenceAbstractions
         return inputString.Select(number => number.ToString());
     }
 
-    public static IEnumerable<string> FirstLetterCapitalized(List<string> inputList)
+    public static List<string> FirstLetterCapitalized(List<string> wordList)
     {
-        return inputList.Select(word => word[0].ToString().ToUpper());
+        return wordList.Select(word => word[0].ToString().ToUpper()).ToList();
     }
 
     public static int CountStrings(List<string> names)
@@ -211,7 +211,7 @@ public class SequenceAbstractions
         return wordList.Aggregate(0, (countSeed, word) => countSeed += word.Length);
     }
 
-    public static bool AreAllMoreThanThreeLength(List<string> wordList)
+    public static bool AreAllMoreThanThreeLength(List<string> inputList)
     {
         // foreach (var word in words)
         // {
@@ -221,15 +221,13 @@ public class SequenceAbstractions
         //     }
         // }
         // return true;
-        return wordList.Aggregate(true, (seed, word) =>
-        {
-            if (word.Length < 3)
-            {
-                seed = false;
-                return seed;
+        return inputList.Aggregate(true, (seedBool, inputWord) => {
+            if(inputWord.Length < 3){
+                seedBool = false;
+                return seedBool;
             }
-            return seed;
-        });
+            return seedBool;
+            });
     }
 
     public static int AddEmUp(List<int> inputList)

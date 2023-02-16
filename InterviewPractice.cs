@@ -3,13 +3,13 @@ namespace C__Practice;
 public class InterviewPractice
 {
     public static bool ConsecutiveDuplicates(string input){
-        var prevChar = ' ';
+        var previousLetter = ' ';
         foreach (var letter in input)
         {
-            if(letter == prevChar){
+            if(previousLetter == letter){
                 return true;
             }
-            prevChar = letter;
+            previousLetter = letter;
         }
         return false;
 
