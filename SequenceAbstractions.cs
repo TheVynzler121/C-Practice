@@ -224,7 +224,7 @@ public class SequenceAbstractions
             });
     }
 
-    public static int AddEmUp(List<int> inputList)
+    public static int AddEmUp(List<int> numberList)
     {
         // var ret = 0;
         // foreach (var numb in inputList)
@@ -232,7 +232,7 @@ public class SequenceAbstractions
         //     ret += numb;
         // }
         // return ret;
-        return inputList.Aggregate(0, (seed, number) => { return seed += number; });
+        return numberList.Aggregate(0, (intSeed, number) => number += intSeed);
         // 0, 5  => 0 + 5
         // 5, 7  => 5 + 7
         // 12,10 => 12 + 10

@@ -5,8 +5,8 @@ namespace C__Practice;
 public class CompundSequenceAbstractions {
     public static Random dice = new();
 
-    public static IEnumerable<int> AddTenIfBigEnough(IEnumerable<int> numberList) {
-        return numberList.Where(number => number >= 4).Select(number => number + 10); 
+    public static IEnumerable<int> AddTenIfBigEnough(IEnumerable<int> numbList) {
+        return numbList.Where(numb => numb >= 4).Select(numb => numb += 10);
     }
 
 
