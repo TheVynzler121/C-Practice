@@ -33,8 +33,8 @@ public class CompundSequenceAbstractions {
     }
 
     // List<T> is-a IEnumerable<T>
-    public static IEnumerable<string> ItemsICanAfford(IEnumerable<GameItem> inputList, int budget) {
-        return inputList.Where(gameItem => gameItem.GoldCost < budget).Select(gameItem => gameItem.Name);
+    public static IEnumerable<string> ItemsICanAfford(IEnumerable<GameItem> itemList, int budget) {
+        return itemList.Where(item => item.GoldCost < budget).Select(item => item.Name);
     }
 
     public static string GetFirstWord(string sentence) {

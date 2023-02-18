@@ -180,18 +180,17 @@ public class SequenceAbstractions
 
     public static string MergeStrings(List<string> wordList)
     {
-        var wordSeed = "";
-        foreach (var word in wordList)
-        {
-            wordSeed += word;
-        }
-        return wordSeed;
+        return wordList.Aggregate("", (stringSeed, word) => stringSeed += word);
     }
 
-    public static string FirstLetters(List<string> wordList)
+    public static string FirstLetters(List<string> inputStrings)
     {
-        
-        return wordList.Aggregate("", (letterSeed, word) => letterSeed += word[0]);
+        var stringSeed = "";
+        foreach (var word in inputStrings)
+        {
+            stringSeed += word[0];
+        }
+        return stringSeed;
     }
 
     public static int CountWordLengths(List<string> wordList)

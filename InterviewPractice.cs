@@ -31,13 +31,15 @@ public class InterviewPractice
     }
 
     public static IEnumerable<string> ReverseString(List<string> inputList){
-        var listSeed = new List<string>();
+        // var listSeed = new List<string>();
 
-        foreach (var letter in inputList)
-        {
-            listSeed.Insert(0, letter);
-        }
+        // foreach (var letter in inputList)
+        // {
+        //     listSeed.Insert(0, letter);
+        // }
 
-        return listSeed;
+        // return listSeed;
+
+        return inputList.Aggregate(new List<string>(), (listSeed, letter) => {listSeed.Insert(0, letter); return listSeed;});
     }
 }
