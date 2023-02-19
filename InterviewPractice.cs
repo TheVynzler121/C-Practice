@@ -42,4 +42,22 @@ public class InterviewPractice
 
         return inputList.Aggregate(new List<string>(), (listSeed, letter) => {listSeed.Insert(0, letter); return listSeed;});
     }
+
+    public static IEnumerable<int> TwoSum(List<int> inputList, int inputTarget){
+        var seedList = new List<int>();
+        var listLength = inputList.Count;
+
+        for (int i = 0; i < listLength; i++)
+        {
+            for (int j = i + 1; j < listLength; j++)
+            {
+                if(inputList[i] + inputList[j] == inputTarget){
+                    seedList.Add(i);
+                    seedList.Add(j);
+                }
+            }
+        }
+
+        return seedList;
+    }
 }

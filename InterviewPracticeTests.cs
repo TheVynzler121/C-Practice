@@ -38,4 +38,16 @@ public class InterviewPracticeTests {
 
         Assert.That(actual, Is.EqualTo(output));
     }
+
+    [Test]
+    public void Test_TwoSum(){
+        var input = new List<int>() {2,7,11,15};
+        var target = 9;
+
+        var actual = InterviewPractice.TwoSum(input, target);
+
+        var output = new List<int>() {0, 1};
+
+        Assert.That(actual, Is.EqualTo(output));
+    }
 }
