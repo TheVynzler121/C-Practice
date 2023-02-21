@@ -61,8 +61,10 @@ public class SequenceAbstractions
         //     }
         // }
         // return wordsLongEnough;
-        return wordList.Aggregate(new List<string>(), (wordsLongerThanFour, word) => {
-            if (word.Length > 4) {
+        return wordList.Aggregate(new List<string>(), (wordsLongerThanFour, word) =>
+        {
+            if (word.Length > 4)
+            {
                 wordsLongerThanFour.Add(word);
             }
             return wordsLongerThanFour;
@@ -154,7 +156,7 @@ public class SequenceAbstractions
         // }
 
         // return xs;
-        return inputList.Aggregate(new List<int>(), (seedList, number) => {seedList.Add(number * number * 2); return seedList;});
+        return inputList.Aggregate(new List<int>(), (seedList, number) => { seedList.Add(number * number * 2); return seedList; });
     }
 
     public static IEnumerable<string> IntsToStrings(List<int> inputString)
@@ -193,18 +195,13 @@ public class SequenceAbstractions
         return stringSeed;
     }
 
-    public static int CountWordLengths(List<string> wordList)
+    public static int CountWordLengths(List<string> inputList)
     {
-        // var countedLengths = 0;
-        // foreach (var word in words)
-        // {
-        //     countedLengths = countedLengths + word.Length;
-        // }
-        // return countedLengths;
-        return wordList.Aggregate(0, (countSeed, word) => countSeed += word.Length);
+
+        return inputList.Aggregate(0, (seedInt, wordInList) => seedInt += wordInList.Length);
     }
 
-    public static bool AreAllMoreThanThreeLength(List<string> inputList)
+    public static bool AreAllMoreThanThreeLength(List<string> wordList)
     {
         // foreach (var word in words)
         // {
@@ -214,13 +211,15 @@ public class SequenceAbstractions
         //     }
         // }
         // return true;
-        return inputList.Aggregate(true, (seedBool, inputWord) => {
-            if(inputWord.Length < 3){
+        return wordList.Aggregate(true, (seedBool, wordInList) =>
+        {
+            if (wordInList.Length < 3)
+            {
                 seedBool = false;
                 return seedBool;
             }
             return seedBool;
-            });
+        });
     }
 
     public static int AddEmUp(List<int> numberList)
@@ -285,5 +284,5 @@ public class SequenceAbstractions
             }
             return totalSum;
         });
-    } 
+    }
 }
