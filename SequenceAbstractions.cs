@@ -156,7 +156,10 @@ public class SequenceAbstractions
         // }
 
         // return xs;
-        return inputList.Aggregate(new List<int>(), (seedList, number) => { seedList.Add(number * number * 2); return seedList; });
+        return inputList.Aggregate(new List<int>(), (seedForList, numberInList) => 
+        {seedForList.Add(numberInList * numberInList * 2); 
+        return seedForList;
+        });
     }
 
     public static IEnumerable<string> IntsToStrings(List<int> inputString)

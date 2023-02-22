@@ -15,14 +15,7 @@ public class CompundSequenceAbstractions {
     }
 
     public static IEnumerable<string> NamesStartingWithR(IEnumerable<string> nameList) {
-        var outputList = new List<string>();
-        foreach (var x in nameList) {
-            if (x[0] == 'r') {
-                outputList.Add(Capitalize(x));
-            }
-        }
-
-        return outputList;
+        return nameList.Where(name => name[0] == 'r').Select(name => Capitalize(name));
     }
 
     // LINQ - helper functions for sequence abstractions
@@ -49,8 +42,8 @@ public class CompundSequenceAbstractions {
        return numbList.Where(numb => numb > 5).Select(numb => numb.ToString());
     }
 
-    public static List<int> GoldCostIfStartsWithS(IEnumerable<GameItem> inputList, char firstLetter) {
-        return inputList.Where(item => item.Name[0] == firstLetter).Select(item => item.GoldCost).ToList(); 
+    public static IEnumerable<int> GoldCostIfStartsWith(List<GameItem> gameItemList, char startingLetter){
+        return gameItemList.Where(gameItem => gameItem.Name[0] == startingLetter).Select(gameItem => gameItem.GoldCost);
     }
 
     public static string NumberOfWordsToString(IEnumerable<string> inputList) {

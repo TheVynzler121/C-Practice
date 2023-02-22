@@ -56,7 +56,7 @@ public class CompundSequenceTests {
 
 
     [Test]
-    public void Test_GoldCostIfStartsWithS() {
+    public void Test_GoldCostIfStartsWith() {
         var items = new List<GameItem> {
             new() { GoldCost = 200, Name = "Scream'n Sword" },
             new() { GoldCost = 700, Name = "Fragile Hammer" },
@@ -64,9 +64,26 @@ public class CompundSequenceTests {
             new() { GoldCost = 4000, Name = "Sphere of Power" }
         };
 
-        var actual = CompundSequenceAbstractions.GoldCostIfStartsWithS(items, 'S');
+        var actual = CompundSequenceAbstractions.GoldCostIfStartsWith(items, 'S');
 
         var output = new List<int> { 200, 4000 };
+
+        Assert.That(actual, Is.EquivalentTo(output));
+    }
+
+    [Test]
+    public void Test_GoldCostIfStartsWith2() {
+        var items = new List<GameItem> {
+            new() { GoldCost = 200, Name = "Scream'n Sword" },
+            new() { GoldCost = 700, Name = "Agile Hammer" },
+            new() { GoldCost = 100, Name = "Can of Whoop Ass" },
+            new() { GoldCost = 4000, Name = "Sphere of Power" },
+            new() { GoldCost = 350, Name = "Abundant Ale"}
+        };
+
+        var actual = CompundSequenceAbstractions.GoldCostIfStartsWith(items, 'A');
+
+        var output = new List<int> { 700, 350 };
 
         Assert.That(actual, Is.EquivalentTo(output));
     }
