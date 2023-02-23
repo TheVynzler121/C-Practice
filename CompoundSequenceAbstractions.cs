@@ -26,8 +26,8 @@ public class CompundSequenceAbstractions {
     }
 
     // List<T> is-a IEnumerable<T>
-    public static IEnumerable<string> ItemsICanAfford(IEnumerable<GameItem> itemList, int budget) {
-        return itemList.Where(item => item.GoldCost < budget).Select(item => item.Name);
+    public static IEnumerable<string> ItemsICanAfford(IEnumerable<GameItem> gameItemList, int budget) {
+        return gameItemList.Where(item => item.GoldCost < budget).Select(item => item.Name);
     }
 
     public static string GetFirstWord(string sentence) {
@@ -38,8 +38,8 @@ public class CompundSequenceAbstractions {
         return inputList.Where(name => name.Name[0] == firstLetter).Select(name => GetFirstWord(name.Name));
     }
 
-    public static IEnumerable<string> NumbersLargerThanFiveToString(List<int> numbList) {
-       return numbList.Where(numb => numb > 5).Select(numb => numb.ToString());
+    public static IEnumerable<string> NumbersLargerThanFiveToString(List<int> numberList) {
+       return numberList.Where(number => number > 5).Select(number => number.ToString());
     }
 
     public static IEnumerable<int> GoldCostIfStartsWith(List<GameItem> gameItemList, char startingLetter){
