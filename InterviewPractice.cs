@@ -31,12 +31,12 @@ public class InterviewPractice
     }
 
     public static IEnumerable<string> ReverseString(List<string> inputList){
-        var stringSeed = new List<string>();
+        var listSeed = new List<string>();
         foreach (var letter in inputList)
         {
-            stringSeed.Insert(0, letter);
+            listSeed.Insert(0, letter.ToString());
         }
-        return stringSeed;
+        return listSeed;
     }
 // just use for loops when doing leetcode
     public static IEnumerable<int> TwoSum(List<int> inputList, int inputTarget){
