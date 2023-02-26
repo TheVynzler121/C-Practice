@@ -200,12 +200,7 @@ public class SequenceAbstractions
 
     public static int CountWordLengths(List<string> inputList)
     {
-        var intSeed = 0;
-        foreach (var word in inputList)
-        {
-            intSeed += word.Length;
-        }
-        return intSeed;
+        return inputList.Aggregate(0, (seedInt, wordInList) => seedInt += wordInList.Length);
     }
 
     public static bool AreAllMoreThanThreeLength(List<string> wordList)

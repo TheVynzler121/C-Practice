@@ -42,8 +42,8 @@ public class CompundSequenceAbstractions {
        return numberList.Where(number => number > 5).Select(number => number.ToString());
     }
 
-    public static IEnumerable<int> GoldCostIfStartsWith(List<GameItem> gameItemList, char startingLetter){
-        return gameItemList.Where(gameItem => gameItem.Name[0] == startingLetter).Select(gameItem => gameItem.GoldCost);
+    public static IEnumerable<int> GoldCostIfStartsWith(List<GameItem> itemList, char startingLetter){
+        return itemList.Where(gameItem => gameItem.Name[0] == startingLetter).Select(gameItem => gameItem.GoldCost);
     }
 
     public static string NumberOfWordsToString(IEnumerable<string> inputList) {
