@@ -9,13 +9,7 @@ public class GameItem
 public class SequenceAbstractions
 {
     public static int SumNumbers(List<int> numbs)
-    {
-        // var sumOfNumbs = 0;
-        // foreach (var numb in numbs)
-        // {
-        //     sumOfNumbs = sumOfNumbs + numb;
-        // }
-        // return sumOfNumbs;
+    {      
         return numbs.Aggregate(0, (sumOfNumbs, numb) => sumOfNumbs += numb);
     }
 
@@ -26,41 +20,16 @@ public class SequenceAbstractions
 
     public static int TotalCost(List<GameItem> itemList)
     {
-        // var totalGoldCost = 0;
-        // foreach (var item in items)
-        // {
-        //     totalGoldCost = totalGoldCost + item.GoldCost;
-        // }
-        // return totalGoldCost;
         return itemList.Aggregate(0, (goldSeed, item) => goldSeed += item.GoldCost);
     }
 
     public static List<int> NumbersUnder500(List<int> numbList)
     {
-        return numbList.Where(numb => numb < 500).ToList();
-        // var xs = new List<int>();
-        // foreach (var y in ys)
-        // {
-        //     if(y < 500) {
-        //         xs.Add(y);
-        //     }
-        // }
-
-        // return xs;
+        return numbList.Where(numb => numb < 500).ToList();     
     }
 
     public static IEnumerable<string> WordsLongEnough(List<string> wordList)
-    {
-        // return words.Where(word => word.Length > 4).ToList();
-        // var wordsLongEnough = new List<string>();
-        // foreach (var word in words)
-        // {
-        //     if (word.Length > 4)
-        //     {
-        //         wordsLongEnough.Add(word);
-        //     }
-        // }
-        // return wordsLongEnough;
+    {       
         return wordList.Aggregate(new List<string>(), (wordsLongerThanFour, word) =>
         {
             if (word.Length > 4)
@@ -73,16 +42,15 @@ public class SequenceAbstractions
 
     public static List<string> WordsStartWithS(List<string> wordList)
     {
-        return wordList.Where(word => word[0] == 's').ToList();
-        // var sWords = new List<string>();
-        // foreach (var word in words)
-        // {
-        //     if(word[0] == 's')
-        //     {
-        //         sWords.Add(word);
-        //     }
-        // }
-        // return sWords;
+        var seedForList = new List<string>();
+        foreach (var word in wordList)
+        {
+            if(word[0] == 's'){
+                seedForList.Add(word);
+            }
+        }
+        return seedForList;
+        // return wordList.Where(word => word[0] == 's').ToList();       
     }
 
     public static List<int> NumbersSmallerThan5(List<int> inputList)
@@ -139,23 +107,11 @@ public class SequenceAbstractions
 
     public static List<int> CountDigits(List<int> numbs)
     {
-        return numbs.Select(numb => numb.ToString().Length).ToList();
-        // var countedList = new List<int>();
-        // foreach (var numb in numbs)
-        // {
-        //     countedList.Add(numb.ToString().Length);
-        // }
-        // return countedList;
+        return numbs.Select(numb => numb.ToString().Length).ToList();     
     }
 
     public static List<int> SumOfSquares(List<int> inputList)
-    {
-        // var xs = new List<int>();
-        // foreach (var y in ys) {
-        //     xs.Add(y * y * 2);
-        // }
-
-        // return xs;
+    {       
         return inputList.Aggregate(new List<int>(), (seedForList, numberInList) => 
         {seedForList.Add(numberInList * numberInList * 2); 
         return seedForList;
@@ -174,23 +130,13 @@ public class SequenceAbstractions
 
     public static int CountStrings(List<string> names)
     {
-        // var x = 0;
-        // foreach (var name in names)
-        // {
-        //     x++;
-        // }
-        // return x;
+        
         return names.Aggregate(0, (seed, name) => seed += 1); // why does ++ not work here?
     }
 
     public static string MergeStrings(List<string> wordList)
     {
-        var wordSeed = "";
-        foreach (var word in wordList)
-        {
-            wordSeed += word;
-        }
-        return wordSeed;
+        return wordList.Aggregate("", (stringSeed, word) => stringSeed += word);
     }
 
     public static string FirstLetters(List<string> wordList)
@@ -204,15 +150,7 @@ public class SequenceAbstractions
     }
 
     public static bool AreAllMoreThanThreeLength(List<string> wordList)
-    {
-        // foreach (var word in words)
-        // {
-        //     if (word.Length < 3)
-        //     {
-        //         return false;
-        //     }
-        // }
-        // return true;
+    {       
         return wordList.Aggregate(true, (seedBool, wordInList) =>
         {
             if (wordInList.Length < 3)
@@ -225,19 +163,8 @@ public class SequenceAbstractions
     }
 
     public static int AddEmUp(List<int> numberList)
-    {
-        // var ret = 0;
-        // foreach (var numb in inputList)
-        // {
-        //     ret += numb;
-        // }
-        // return ret;
-        return numberList.Aggregate(0, (intSeed, number) => number += intSeed);
-        // 0, 5  => 0 + 5
-        // 5, 7  => 5 + 7
-        // 12,10 => 12 + 10
-        // 22, 3 => 22 + 3
-        // 25
+    {        
+        return numberList.Aggregate(0, (intSeed, number) => number += intSeed);      
     }
 
     public static bool IsEven(int x)
@@ -246,38 +173,19 @@ public class SequenceAbstractions
     }
 
     public static int AddEvenUp(List<int> inputList)
-    {
-        // var seed = 0;
-        // foreach (var number in inputList)
-        // {
-        //     if(IsEven(number))
-        //     {
-        //         seed += number;
-        //     }
-        // }
-        // return seed;
+    {      
         return inputList.Aggregate(0, (seed, number) =>
         {
             if (IsEven(number))
             {
                 seed += number;
             }
-
             return seed;
         });
     }
 
     public static int SumOfNumbersLargerThanSeven(List<int> inputNumbs)
-    {
-        // var totalSum = 0;
-        // foreach (var numb in inputNumbs)
-        // {
-        //     if (numb > 7)
-        //     {
-        //         totalSum = totalSum + numb;
-        //     }
-        // }
-        // return totalSum;
+    {       
         return inputNumbs.Aggregate(0, (totalSum, number) =>
         {
             if (number > 7)
