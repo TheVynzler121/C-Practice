@@ -146,7 +146,12 @@ public class SequenceAbstractions
 
     public static int CountWordLengths(List<string> inputList)
     {
-        return inputList.Aggregate(0, (seedInt, wordInList) => seedInt += wordInList.Length);
+        var seedInt = 0;
+        foreach (var word in inputList)
+        {
+            seedInt += word.Length;
+        }
+        return seedInt;
     }
 
     public static bool AreAllMoreThanThreeLength(List<string> wordList)
@@ -186,13 +191,13 @@ public class SequenceAbstractions
 
     public static int SumOfNumbersLargerThanSeven(List<int> inputNumbs)
     {       
-        return inputNumbs.Aggregate(0, (totalSum, number) =>
+        var seedInt = 0;
+        foreach (var numb in inputNumbs)
         {
-            if (number > 7)
-            {
-                totalSum += number;
+            if(numb >= 7){
+                seedInt += numb;
             }
-            return totalSum;
-        });
+        }
+        return seedInt;
     }
 }
