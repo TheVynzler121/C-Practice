@@ -141,7 +141,12 @@ public class SequenceAbstractions
 
     public static string FirstLetters(List<string> wordList)
     {
-        return wordList.Aggregate("", (letterSeed, word) => letterSeed += word[0]);
+        var letterSeed = "";
+        foreach (var word in wordList)
+        {
+            letterSeed += word[0];
+        }
+        return letterSeed;
     }
 
     public static int CountWordLengths(List<string> inputList)

@@ -26,8 +26,8 @@ public class CompundSequenceAbstractions {
     }
 
     // List<T> is-a IEnumerable<T>
-    public static IEnumerable<string> ItemsICanAfford(IEnumerable<GameItem> gameItemList, int budget) {
-        return gameItemList.Where(item => item.GoldCost < budget).Select(item => item.Name);
+    public static IEnumerable<string> ItemsICanAfford(IEnumerable<GameItem> itemList, int budget) {
+        return itemList.Where(item => item.GoldCost < budget).Select(item => item.Name);
     }
 
     public static string GetFirstWord(string sentence) {
