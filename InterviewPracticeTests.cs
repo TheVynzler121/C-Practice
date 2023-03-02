@@ -50,12 +50,34 @@ public class InterviewPracticeTests {
 
         Assert.That(actual, Is.EqualTo(output));
     }
+    [Test]
+    public void Test_TwoSum2(){
+        var input = new List<int>() {3,2,4};
+        var target = 6;
+
+        var actual = InterviewPractice.TwoSum(input, target);
+
+        var output = new List<int>() {1, 2};
+
+        Assert.That(actual, Is.EqualTo(output));
+    }
 
     [TestCase("leetcode", 0)]
     [TestCase("loveleetcode", 2)]
     [TestCase("aabb", -1)]
     public void Test_FirstNonrepeatingChar(string input, int output){
         var actual = InterviewPractice.FirstNonrepeatingChar(input);
+
+        Assert.That(actual, Is.EqualTo(output));
+    }
+
+    [Test]
+    public void Test_PlusOne(){
+        var input = new List<int>() {1,2,3};
+
+        var actual = InterviewPractice.PlusOne(input);
+
+        var output = new List<int>() {1,2,4};
 
         Assert.That(actual, Is.EqualTo(output));
     }

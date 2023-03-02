@@ -25,25 +25,21 @@ public class InterviewPractice
        }
        return seedlist;
     }
-    // just use for loops when doing leetcode
+    // just use "for loops" when doing leetcode
     public static IEnumerable<int> TwoSum(List<int> inputList, int inputTarget)
     {
-        var seedList = new List<int>();
-        var listLength = inputList.Count;
-
-        for (int i = 0; i < listLength; i++)
+        var listSeed = new List<int>();
+        for (int currentIndex = 0; currentIndex < inputList.Count; currentIndex++)
         {
-            for (int j = i + 1; j < listLength; j++)
+            for (int nextIndex = currentIndex + 1; nextIndex < inputList.Count; nextIndex++)
             {
-                if (inputList[i] + inputList[j] == inputTarget)
-                {
-                    seedList.Add(i);
-                    seedList.Add(j);
+                if(inputList[currentIndex] + inputList[nextIndex] == inputTarget){
+                    listSeed.Add(currentIndex);
+                    listSeed.Add(nextIndex);
                 }
             }
         }
-
-        return seedList;
+        return listSeed;
     }
 
     public static int FirstNonrepeatingChar(string inputString)
@@ -67,5 +63,15 @@ public class InterviewPractice
             }
         }
         return -1;
+    }
+
+    public static IEnumerable<int> PlusOne(List<int> digits){
+        var listSeed = new List<int>();
+        
+        // foreach (var numb in digits)
+        // {
+        //     if(numb[])
+        // }
+        return listSeed;
     }
 }
