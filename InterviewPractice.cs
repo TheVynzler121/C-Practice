@@ -4,26 +4,27 @@ public class InterviewPractice
 {
     public static bool ConsecutiveDuplicates(string input)
     {
-        var previousLetter = ' ';
+        var prevCharacter = ' ';
+        var outputBool = false;
         foreach (var letter in input)
         {
-            if (previousLetter == letter)
-            {
-                return true;
+            if(letter == prevCharacter){
+                outputBool = true;
+                return outputBool;
             }
-            previousLetter = letter;
+            prevCharacter = letter;
         }
-        return false;
+        return outputBool;
     }
 
     public static IEnumerable<string> ReverseString(List<string> inputList)
     {
-       var seedlist = new List<string>();
+       var listOfReversedLetters = new List<string>();
        foreach (var letter in inputList)
        {
-            seedlist.Insert(0, letter);
+            listOfReversedLetters.Insert(0, letter);
        }
-       return seedlist;
+       return listOfReversedLetters;
     }
     // just use "for loops" when doing leetcode
     public static IEnumerable<int> TwoSum(List<int> inputList, int inputTarget)
@@ -66,12 +67,16 @@ public class InterviewPractice
     }
 
     public static IEnumerable<int> PlusOne(List<int> digits){
-        var listSeed = new List<int>();
-        
-        // foreach (var numb in digits)
-        // {
-        //     if(numb[])
-        // }
-        return listSeed;
+        for (int i = digits.Count - 1; i >= 0; i--)
+        {
+            if(digits[i] == 9){
+                digits[i] = 0;
+            } else {
+                digits[i]++;
+                return digits;
+            }
+        }
+        var firstOne = new List<int>() {1};
+        return firstOne.Concat(digits);
     }
 }
