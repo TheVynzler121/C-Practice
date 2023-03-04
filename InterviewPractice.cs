@@ -79,4 +79,24 @@ public class InterviewPractice
         var firstOne = new List<int>() {1};
         return firstOne.Concat(digits);
     }
+
+    public static int SingleNumber(List<int> input){
+        var intDictionary = new Dictionary<int, int>();
+        for (int i = 0; i < input.Count; i++)
+        {
+            var currentIndex = input[i];
+            if(intDictionary.ContainsKey(currentIndex)){
+                intDictionary[currentIndex]++;
+            } else {
+                intDictionary[currentIndex] = 1;
+            }
+        }
+        foreach (var keyValuePair in intDictionary)
+        {
+            if(keyValuePair.Value == 1){
+                return keyValuePair.Key;
+            }
+        }
+        return 0;
+    }
 }

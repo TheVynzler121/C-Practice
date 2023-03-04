@@ -81,4 +81,37 @@ public class InterviewPracticeTests {
 
         Assert.That(actual, Is.EqualTo(output));
     }
+
+    [Test]
+    public void Test_SingleNumber(){
+        var input = new List<int>() {2,2,1};
+
+        var actual = InterviewPractice.SingleNumber(input);
+
+        var output = 1;
+
+        Assert.That(actual, Is.EqualTo(output));
+    }
+
+    [Test]
+    public void Test_SingleNumber2(){
+        var input = new List<int>() {4,1,2,1,2};
+
+        var actual = InterviewPractice.SingleNumber(input);
+
+        var output = 4;
+
+        Assert.That(actual, Is.EqualTo(output));
+    }
+
+    [Test]
+    public void Test_SingleNumber3(){
+        var input = new List<int>() {1};
+
+        var actual = InterviewPractice.SingleNumber(input);
+
+        var output = 1;
+
+        Assert.That(actual, Is.EqualTo(output));
+    }
 }
