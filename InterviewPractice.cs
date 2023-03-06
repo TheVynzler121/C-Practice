@@ -81,22 +81,23 @@ public class InterviewPractice
     }
 
     public static int SingleNumber(List<int> input){
-        var intDictionary = new Dictionary<int, int>();
-        for (int i = 0; i < input.Count; i++)
+        var countSeed = new Dictionary<int, int>();
+        foreach (var number in input)
         {
-            var currentIndex = input[i];
-            if(intDictionary.ContainsKey(currentIndex)){
-                intDictionary[currentIndex]++;
+            if(countSeed.ContainsKey(number)){
+                countSeed[number]++;
             } else {
-                intDictionary[currentIndex] = 1;
+                countSeed[number] = 1;
             }
         }
-        foreach (var keyValuePair in intDictionary)
+
+        var uniqueNumber = 0;
+        foreach (var keyValuePair in countSeed)
         {
             if(keyValuePair.Value == 1){
-                return keyValuePair.Key;
+                uniqueNumber = keyValuePair.Key;
             }
         }
-        return 0;
+        return uniqueNumber;
     }
 }
