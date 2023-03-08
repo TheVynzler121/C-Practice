@@ -30,19 +30,19 @@ public class InterviewPractice
     // just use "for loops" when doing leetcode
     public static IEnumerable<int> TwoSum(List<int> inputList, int inputTarget)
     {
-        var listSeed = new List<int>();
-        for (int currentIndex = 0; currentIndex < inputList.Count; currentIndex++)
+        var retList = new List<int>();
+        var loopCount = inputList.Count;
+        for (int i = 0; i < loopCount; i++)
         {
-            for (int nextIndex = currentIndex + 1; nextIndex < inputList.Count; nextIndex++)
+            for (int j = i + 1; j < loopCount; j++)
             {
-                if (inputList[currentIndex] + inputList[nextIndex] == inputTarget)
-                {
-                    listSeed.Add(currentIndex);
-                    listSeed.Add(nextIndex);
+                if(inputList[i] + inputList[j] == inputTarget){
+                    retList.Add(i);
+                    retList.Add(j);
                 }
             }
         }
-        return listSeed;
+        return retList;
     }
 
     public static void PrintList<T>(IEnumerable<T> input)
