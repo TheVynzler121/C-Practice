@@ -36,7 +36,8 @@ public class InterviewPractice
         {
             for (int j = i + 1; j < loopCount; j++)
             {
-                if(inputList[i] + inputList[j] == inputTarget){
+                if (inputList[i] + inputList[j] == inputTarget)
+                {
                     retList.Add(i);
                     retList.Add(j);
                 }
@@ -141,26 +142,27 @@ public class InterviewPractice
 
     public static int SingleNumber(List<int> input)
     {
-        var numberCounts = new Dictionary<int, int>();
+        var countingDictionary = new Dictionary<int, int>();
+
         foreach (var number in input)
         {
-            if (numberCounts.ContainsKey(number))
+            if (countingDictionary.ContainsKey(number))
             {
-                numberCounts[number]++;
+                countingDictionary[number]++;
             }
             else
             {
-                numberCounts[number] = 1;
+                countingDictionary[number] = 1;
             }
         }
-        var intToReturn = 0;
-        foreach (var keyValuePair in numberCounts)
+        var retInt = 0;
+        foreach (var number in countingDictionary)
         {
-            if (keyValuePair.Value == 1)
+            if (number.Value == 1)
             {
-                intToReturn = keyValuePair.Key;
+                retInt = number.Key;
             }
         }
-        return intToReturn;
+        return retInt;
     }
 }
