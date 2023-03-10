@@ -4,28 +4,25 @@ public class InterviewPractice
 {
     public static bool ConsecutiveDuplicates(string input)
     {
-        var prevCharacter = ' ';
-        var outputBool = false;
-        foreach (var letter in input)
+        var prevChar = ' ';
+        foreach (var currentCharacter in input)
         {
-            if (letter == prevCharacter)
-            {
-                outputBool = true;
-                return outputBool;
+            if(currentCharacter == prevChar){
+                return true;
             }
-            prevCharacter = letter;
+            prevChar = currentCharacter;
         }
-        return outputBool;
+        return false;
     }
 
     public static IEnumerable<string> ReverseString(List<string> inputList)
     {
-        var listSeed = new List<string>();
-        foreach (var index in inputList)
-        {
-            listSeed.Insert(0, index);
-        }
-        return listSeed;
+       var reversedString = new List<string>();
+       foreach (var character in inputList)
+       {
+            reversedString.Insert(0, character);
+       }
+       return reversedString;
     }
     // just use "for loops" when doing leetcode
     public static IEnumerable<int> TwoSum(List<int> inputList, int inputTarget)

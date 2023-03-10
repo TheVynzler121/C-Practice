@@ -120,7 +120,12 @@ public class SequenceAbstractions
 
     public static IEnumerable<string> IntsToStrings(List<int> inputString)
     {
-        return inputString.Select(number => number.ToString());
+        var retList = new List<string>();
+        foreach (var number in inputString)
+        {
+            retList.Add(number.ToString());
+        }
+        return retList;
     }
 
     public static List<string> FirstLetterCapitalized(List<string> wordList)
