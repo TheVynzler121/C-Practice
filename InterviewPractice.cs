@@ -162,4 +162,25 @@ public class InterviewPractice
         }
         return retInt;
     }
+
+    public static bool ContainsDuplicates(List<int> input){
+        var countingDictionary = new Dictionary<int, int>();
+        foreach (var number in input)
+        {
+            if(countingDictionary.ContainsKey(number)){
+                countingDictionary[number]++;
+            } else {
+                countingDictionary[number] = 1;
+            }
+        }
+        foreach (var keyValuePair in countingDictionary)
+        {
+            if(keyValuePair.Value >= 2){
+                return true;
+            }
+        }
+        return false;
+    }
+
+   
 }
