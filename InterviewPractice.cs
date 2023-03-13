@@ -139,47 +139,45 @@ public class InterviewPractice
 
     public static int SingleNumber(List<int> input)
     {
-        var countingDictionary = new Dictionary<int, int>();
-
+        var countDict = new Dictionary<int, int>();
         foreach (var number in input)
         {
-            if (countingDictionary.ContainsKey(number))
-            {
-                countingDictionary[number]++;
-            }
-            else
-            {
-                countingDictionary[number] = 1;
+            if(countDict.ContainsKey(number)){
+                countDict[number]++;
+            }else{
+                countDict[number] = 1;
             }
         }
-        var retInt = 0;
-        foreach (var number in countingDictionary)
+
+        var retNumber = 0;
+        foreach (var keyValuePair in countDict)
         {
-            if (number.Value == 1)
-            {
-                retInt = number.Key;
+            if(keyValuePair.Value == 1){
+                retNumber = keyValuePair.Key;
             }
         }
-        return retInt;
+        return retNumber;
     }
 
     public static bool ContainsDuplicates(List<int> input){
-        var countingDictionary = new Dictionary<int, int>();
+        var countDict = new Dictionary<int, int>();
         foreach (var number in input)
         {
-            if(countingDictionary.ContainsKey(number)){
-                countingDictionary[number]++;
+            if(countDict.ContainsKey(number)){
+                countDict[number]++;
             } else {
-                countingDictionary[number] = 1;
+                countDict[number] = 1;
             }
         }
-        foreach (var keyValuePair in countingDictionary)
+        var retBool = false;
+        foreach (var keyValuePair in countDict)
         {
             if(keyValuePair.Value >= 2){
-                return true;
+                retBool = true;
+                return retBool;
             }
         }
-        return false;
+        return retBool;
     }
 
    
