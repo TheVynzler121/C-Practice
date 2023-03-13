@@ -6,6 +6,7 @@ public class InterviewPracticeTests
     [TestCase("test", false)]
     [TestCase("tess", true)]
     [TestCase("abcdeff", true)]
+    [TestCase("lpla", false)]
     public void Test_ConsecutiveDuplicates(string input, bool output)
     {
         // "abcde" -> false

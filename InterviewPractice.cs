@@ -7,15 +7,13 @@ public class InterviewPractice
         var nextChar = ' ';
         var currentChar = ' ';
         var loopCount = input.Length;
-        for (int i = 0; i < loopCount; i++)
+        for (int i = 0; i < loopCount - 1; i++)
         {
-            for (int j = i + 1; j < loopCount; j++)
+            currentChar = input[i];
+            nextChar = input[i + 1];
+            if (currentChar == nextChar)
             {
-                currentChar = input[i];
-                if(currentChar == nextChar){
-                    return true;
-                }
-                nextChar = input[j];            
+                return true;
             }
         }
         return false;
@@ -23,31 +21,32 @@ public class InterviewPractice
 
     public static IEnumerable<string> ReverseString(List<string> inputList)
     {
-       var revStringList = new List<string>();
-       var loopCount = inputList.Count;
-       for (int i = 0; i < loopCount; i++)
-       {
+        var revStringList = new List<string>();
+        var loopCount = inputList.Count;
+        for (int i = 0; i < loopCount; i++)
+        {
             var currChar = inputList[i];
             revStringList.Insert(0, inputList[i]);
-       }
-       return revStringList;
+        }
+        return revStringList;
     }
     // just use "for loops" when doing leetcode
     public static IEnumerable<int> TwoSum(List<int> inputList, int inputTarget)
     {
-       var retList = new List<int>();
-       var loopCount = inputList.Count;
-       for (int i = 0; i < loopCount; i++)
-       {
+        var retList = new List<int>();
+        var loopCount = inputList.Count;
+        for (int i = 0; i < loopCount; i++)
+        {
             for (int j = i + 1; j < loopCount; j++)
             {
-                if(inputList[i] + inputList[j] == inputTarget){
+                if (inputList[i] + inputList[j] == inputTarget)
+                {
                     retList.Add(i);
                     retList.Add(j);
                 }
             }
-       }
-       return retList;
+        }
+        return retList;
     }
 
     public static void PrintList<T>(IEnumerable<T> input)
@@ -149,9 +148,12 @@ public class InterviewPractice
         var countDict = new Dictionary<int, int>();
         foreach (var number in input)
         {
-            if(countDict.ContainsKey(number)){
+            if (countDict.ContainsKey(number))
+            {
                 countDict[number]++;
-            }else{
+            }
+            else
+            {
                 countDict[number] = 1;
             }
         }
@@ -159,27 +161,33 @@ public class InterviewPractice
         var retNumber = 0;
         foreach (var keyValuePair in countDict)
         {
-            if(keyValuePair.Value == 1){
+            if (keyValuePair.Value == 1)
+            {
                 retNumber = keyValuePair.Key;
             }
         }
         return retNumber;
     }
 
-    public static bool ContainsDuplicates(List<int> input){
+    public static bool ContainsDuplicates(List<int> input)
+    {
         var countDict = new Dictionary<int, int>();
         foreach (var number in input)
         {
-            if(countDict.ContainsKey(number)){
+            if (countDict.ContainsKey(number))
+            {
                 countDict[number]++;
-            } else {
+            }
+            else
+            {
                 countDict[number] = 1;
             }
         }
         var retBool = false;
         foreach (var keyValuePair in countDict)
         {
-            if(keyValuePair.Value >= 2){
+            if (keyValuePair.Value >= 2)
+            {
                 retBool = true;
                 return retBool;
             }
@@ -187,5 +195,5 @@ public class InterviewPractice
         return retBool;
     }
 
-   
+
 }
