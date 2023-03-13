@@ -4,43 +4,50 @@ public class InterviewPractice
 {
     public static bool ConsecutiveDuplicates(string input)
     {
-        var prevChar = ' ';
-        foreach (var currentCharacter in input)
+        var nextChar = ' ';
+        var currentChar = ' ';
+        var loopCount = input.Length;
+        for (int i = 0; i < loopCount; i++)
         {
-            if(currentCharacter == prevChar){
-                return true;
+            for (int j = i + 1; j < loopCount; j++)
+            {
+                currentChar = input[i];
+                if(currentChar == nextChar){
+                    return true;
+                }
+                nextChar = input[j];            
             }
-            prevChar = currentCharacter;
         }
         return false;
     }
 
     public static IEnumerable<string> ReverseString(List<string> inputList)
     {
-       var reversedString = new List<string>();
-       foreach (var character in inputList)
+       var revStringList = new List<string>();
+       var loopCount = inputList.Count;
+       for (int i = 0; i < loopCount; i++)
        {
-            reversedString.Insert(0, character);
+            var currChar = inputList[i];
+            revStringList.Insert(0, inputList[i]);
        }
-       return reversedString;
+       return revStringList;
     }
     // just use "for loops" when doing leetcode
     public static IEnumerable<int> TwoSum(List<int> inputList, int inputTarget)
     {
-        var retList = new List<int>();
-        var loopCount = inputList.Count;
-        for (int i = 0; i < loopCount; i++)
-        {
+       var retList = new List<int>();
+       var loopCount = inputList.Count;
+       for (int i = 0; i < loopCount; i++)
+       {
             for (int j = i + 1; j < loopCount; j++)
             {
-                if (inputList[i] + inputList[j] == inputTarget)
-                {
+                if(inputList[i] + inputList[j] == inputTarget){
                     retList.Add(i);
                     retList.Add(j);
                 }
             }
-        }
-        return retList;
+       }
+       return retList;
     }
 
     public static void PrintList<T>(IEnumerable<T> input)
