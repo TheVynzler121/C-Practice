@@ -92,6 +92,30 @@ public class InterviewPracticeTests
     }
 
     [Test]
+    public void Test_PlusOne2()
+    {
+        var input = new List<int>() {4,3,2,1};
+
+        var actual = InterviewPractice.PlusOne(input);
+
+        var output = new List<int>() {4,3,2,2};
+
+        Assert.That(actual, Is.EqualTo(output));
+    }
+
+    [Test]
+    public void Test_PlusOne3()
+    {
+        var input = new List<int>() {9};
+
+        var actual = InterviewPractice.PlusOne(input);
+
+        var output = new List<int>() {1,0};
+
+        Assert.That(actual, Is.EqualTo(output));
+    }
+
+    [Test]
     public void Test_SingleNumber()
     {
         var input = new List<int>() { 2, 2, 1 };

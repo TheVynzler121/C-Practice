@@ -4,17 +4,13 @@ public class InterviewPractice
 {
     public static bool ConsecutiveDuplicates(string input)
     {
-        var nextChar = ' ';
-        var currentChar = ' ';
-        var loopCount = input.Length;
-        for (int i = 0; i < loopCount - 1; i++)
+        var prevChar = ' ';
+        foreach (var character in input)
         {
-            currentChar = input[i];
-            nextChar = input[i + 1];
-            if (currentChar == nextChar)
-            {
+            if(character == prevChar){
                 return true;
             }
+            prevChar = character;
         }
         return false;
     }
@@ -125,22 +121,20 @@ public class InterviewPractice
         return -1;
     }
 
-    public static IEnumerable<int> PlusOne(List<int> digits)
+    public static IEnumerable<int> PlusOne(List<int> input)
     {
-        for (int i = digits.Count - 1; i >= 0; i--)
+        var loopCount = input.Count - 1;
+        for (int i = loopCount; i >= 0; i--)
         {
-            if (digits[i] == 9)
-            {
-                digits[i] = 0;
-            }
-            else
-            {
-                digits[i]++;
-                return digits;
+            if(input[i] == 9){
+                input[i] = 0;
+            } else {
+                input[i]++;
+                return input;
             }
         }
-        var firstOne = new List<int>() { 1 };
-        return firstOne.Concat(digits);
+        var carriedOne = new List<int>() {1};
+        return carriedOne.Concat(input);
     }
 
     public static int SingleNumber(List<int> input)
