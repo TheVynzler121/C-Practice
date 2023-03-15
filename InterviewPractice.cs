@@ -17,14 +17,12 @@ public class InterviewPractice
 
     public static IEnumerable<string> ReverseString(List<string> inputList)
     {
-        var revStringList = new List<string>();
-        var loopCount = inputList.Count;
-        for (int i = 0; i < loopCount; i++)
+        var returnList = new List<string>();
+        foreach (var character in inputList)
         {
-            var currChar = inputList[i];
-            revStringList.Insert(0, inputList[i]);
+            returnList.Insert(0, character);
         }
-        return revStringList;
+        return returnList;
     }
     // just use "for loops" when doing leetcode
     public static IEnumerable<int> TwoSum(List<int> inputList, int inputTarget)
@@ -121,20 +119,20 @@ public class InterviewPractice
         return -1;
     }
 
-    public static IEnumerable<int> PlusOne(List<int> input)
+    public static IEnumerable<int> PlusOne(List<int> nums)
     {
-        var loopCount = input.Count - 1;
+        var loopCount = nums.Count - 1;
         for (int i = loopCount; i >= 0; i--)
         {
-            if(input[i] == 9){
-                input[i] = 0;
+            if(nums[i] == 9){
+                nums[i] = 0;
             } else {
-                input[i]++;
-                return input;
+                nums[i]++;
+                return nums;
             }
         }
-        var carriedOne = new List<int>() {1};
-        return carriedOne.Concat(input);
+        var carriedOne = new List<int>(){1};
+        return carriedOne.Concat(nums);
     }
 
     public static int SingleNumber(List<int> input)
@@ -163,30 +161,26 @@ public class InterviewPractice
         return retNumber;
     }
 
-    public static bool ContainsDuplicates(List<int> input)
+    public static bool ContainsDuplicates(List<int> nums)
     {
-        var countDict = new Dictionary<int, int>();
-        foreach (var number in input)
+        var numsCount = new Dictionary<int, int>();
+        foreach (var num in nums)
         {
-            if (countDict.ContainsKey(number))
-            {
-                countDict[number]++;
-            }
-            else
-            {
-                countDict[number] = 1;
+            if(!numsCount.ContainsKey(num)){
+                numsCount[num] = 1;
+            } else{
+                numsCount[num]++;
             }
         }
-        var retBool = false;
-        foreach (var keyValuePair in countDict)
+        var boolToReturn = false;
+        foreach (var key in numsCount)
         {
-            if (keyValuePair.Value >= 2)
-            {
-                retBool = true;
-                return retBool;
+            if(key.Value >= 2){
+                boolToReturn = true;
+                return boolToReturn;
             }
         }
-        return retBool;
+        return boolToReturn;
     }
 
 
