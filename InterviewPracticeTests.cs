@@ -187,5 +187,26 @@ public class InterviewPracticeTests
         Assert.That(actual, Is.EqualTo(output));
     }
 
-   
+    [Test]
+    public void Test_LongestCommonPrefix(){
+        var input = new List<string>() {"flower","flow","flight"};
+
+        var actual = InterviewPractice.LongestCommonPrefix(input);
+
+        var output = "fl";
+
+        Assert.That(actual, Is.EqualTo(output));
+    }
+
+    [Test]
+    public void Test_LongestCommonPrefix2()
+    {
+        var input = new List<string>() {"dog","racecar","car"};
+
+        var actual = InterviewPractice.LongestCommonPrefix(input);
+
+        var output = "";
+
+        Assert.That(actual, Is.EqualTo(output));
+    }
 }

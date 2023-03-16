@@ -137,28 +137,25 @@ public class InterviewPractice
 
     public static int SingleNumber(List<int> input)
     {
-        var countDict = new Dictionary<int, int>();
+        var inputTally = new Dictionary<int, int>();
         foreach (var number in input)
         {
-            if (countDict.ContainsKey(number))
-            {
-                countDict[number]++;
-            }
-            else
-            {
-                countDict[number] = 1;
+            if(inputTally.ContainsKey(number)){
+                inputTally[number]++;
+            } else{ 
+                inputTally[number] = 1;
             }
         }
 
-        var retNumber = 0;
-        foreach (var keyValuePair in countDict)
+        var returnNumber = 0;
+        foreach (var keyAndValue in inputTally)
         {
-            if (keyValuePair.Value == 1)
-            {
-                retNumber = keyValuePair.Key;
+            if(keyAndValue.Value == 1){
+                returnNumber = keyAndValue.Key;
+                return returnNumber;
             }
         }
-        return retNumber;
+        return 0;
     }
 
     public static bool ContainsDuplicates(List<int> nums)
@@ -181,6 +178,18 @@ public class InterviewPractice
             }
         }
         return boolToReturn;
+    }
+
+    public static string LongestCommonPrefix(List<string> strs){
+        
+        var shortestWord = strs.OrderBy(s => s.Length).First(); //flow
+
+        for (int i = 0; i < shortestWord.Length; i++)
+        {
+            if (strs.Select(s => s[i]).Distinct().Count() > 1) return shortestWord[..i];
+        }
+
+        return shortestWord;
     }
 
 
