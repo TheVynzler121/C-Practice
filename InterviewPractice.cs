@@ -27,20 +27,19 @@ public class InterviewPractice
     // just use "for loops" when doing leetcode
     public static IEnumerable<int> TwoSum(List<int> inputList, int inputTarget)
     {
-        var retList = new List<int>();
+        var indexList = new List<int>();
         var loopCount = inputList.Count;
         for (int i = 0; i < loopCount; i++)
         {
             for (int j = i + 1; j < loopCount; j++)
             {
-                if (inputList[i] + inputList[j] == inputTarget)
-                {
-                    retList.Add(i);
-                    retList.Add(j);
+                if(inputList[i] + inputList[j] == inputTarget){
+                    indexList.Add(i);
+                    indexList.Add(j);
                 }
             }
         }
-        return retList;
+        return indexList;
     }
 
     public static void PrintList<T>(IEnumerable<T> input)
@@ -182,14 +181,29 @@ public class InterviewPractice
 
     public static string LongestCommonPrefix(List<string> strs){
         
-        var shortestWord = strs.OrderBy(s => s.Length).First(); //flow
-
-        for (int i = 0; i < shortestWord.Length; i++)
-        {
-            if (strs.Select(s => s[i]).Distinct().Count() > 1) return shortestWord[..i];
+        if(strs.Count == 1){
+            return strs[0];
         }
 
-        return shortestWord;
+        var prefixString= "";
+        
+        if(strs == null || strs.Count == 0){
+            return prefixString;
+        }
+
+        for (int i = 0; i < strs[0].Length; i++)
+        {
+            foreach (var str in strs)
+            {
+                if(i > str.Length){
+                    return prefixString;
+                } else if(strs[0][i] != str[i]){
+                    return prefixString;
+                }
+            }
+            prefixString += strs[0][i];
+        }
+        return prefixString;
     }
 
 
