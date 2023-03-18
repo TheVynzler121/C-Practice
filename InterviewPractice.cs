@@ -118,20 +118,19 @@ public class InterviewPractice
         return -1;
     }
 
-    public static IEnumerable<int> PlusOne(List<int> nums)
+    public static IEnumerable<int> PlusOne(List<int> inputNums)
     {
-        var loopCount = nums.Count - 1;
-        for (int i = loopCount; i >= 0; i--)
+        for (int i = inputNums.Count - 1; i >= 0; i--) // reverse loop through the input
         {
-            if(nums[i] == 9){
-                nums[i] = 0;
+            if(inputNums[i] == 9){ // if the current index is a 9
+                inputNums[i] = 0; // make it a 0
             } else {
-                nums[i]++;
-                return nums;
+                inputNums[i]++; // else increase the int by 1
+                return inputNums;// early out return for the list with plus one
             }
         }
-        var carriedOne = new List<int>(){1};
-        return carriedOne.Concat(nums);
+        var newOne = new List<int>(){1}; //a new list with just 1
+        return newOne.Concat(inputNums);//add the input list to the end of newOne list and return it
     }
 
     public static int SingleNumber(List<int> input)
@@ -179,32 +178,30 @@ public class InterviewPractice
         return boolToReturn;
     }
 
-    public static string LongestCommonPrefix(List<string> strs){
+    public static string LongestCommonPrefix(List<string> strs){ // why is this O(n)? because it loops through the input only once. it checks each word based off the first word.
         
-        if(strs.Count == 1){
+        if(strs.Count == 1){ // edge case of input being 1 index, return the index.
             return strs[0];
         }
 
         var prefixString= "";
         
-        if(strs == null || strs.Count == 0){
+        if(strs == null || strs.Count == 0){ // another edge case for if the input is empty, return an empty string.
             return prefixString;
         }
 
-        for (int i = 0; i < strs[0].Length; i++)
+        for (int i = 0; i < strs[0].Length; i++) // loop for the length of the first word
         {
-            foreach (var str in strs)
+            foreach (var str in strs) // for each word in the input
             {
-                if(i > str.Length){
-                    return prefixString;
-                } else if(strs[0][i] != str[i]){
-                    return prefixString;
+                if(i > str.Length){ // if the index is greater than the length of the current word
+                    return prefixString; // return the prefixString
+                } else if(strs[0][i] != str[i]){ // else if the char index of the first word is not equal to the current words char index
+                    return prefixString; //return the prefixString
                 }
             }
-            prefixString += strs[0][i];
+            prefixString += strs[0][i]; // add the first words char index to the prefixstring
         }
         return prefixString;
     }
-
-
 }
