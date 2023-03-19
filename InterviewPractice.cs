@@ -120,7 +120,7 @@ public class InterviewPractice
 
     public static IEnumerable<int> PlusOne(List<int> inputNums)
     {
-        for (int i = inputNums.Count - 1; i >= 0; i--) // reverse loop through the input
+        for (int i = inputNums.Count - 1; i >= 0; i--) // reverse loop
         {
             if(inputNums[i] == 9){ // if the current index is a 9
                 inputNums[i] = 0; // make it a 0
@@ -158,24 +158,24 @@ public class InterviewPractice
 
     public static bool ContainsDuplicates(List<int> nums)
     {
-        var numsCount = new Dictionary<int, int>();
-        foreach (var num in nums)
-        {
-            if(!numsCount.ContainsKey(num)){
-                numsCount[num] = 1;
-            } else{
-                numsCount[num]++;
+       var intCount = new Dictionary<int, int>();
+       foreach (var num in nums)
+       {
+            if(intCount.ContainsKey(num)){
+                intCount[num]++;
+            }else{
+                intCount[num] = 1;
             }
-        }
-        var boolToReturn = false;
-        foreach (var key in numsCount)
-        {
-            if(key.Value >= 2){
-                boolToReturn = true;
-                return boolToReturn;
+       }
+       var returnBool = false;
+       foreach (var Key in intCount)
+       {
+            if(Key.Value >= 2){
+                returnBool = true;
+                return returnBool;
             }
-        }
-        return boolToReturn;
+       }
+       return returnBool;
     }
 
     public static string LongestCommonPrefix(List<string> strs){ // why is this O(n)? because it loops through the input only once. it checks each word based off the first word.

@@ -20,7 +20,7 @@ public class SequenceAbstractions
 
     public static int TotalCost(List<GameItem> itemList)
     {
-        return itemList.Aggregate(0, (goldSeed, item) => goldSeed += item.GoldCost);
+        return itemList.Aggregate(0, (goldCost, item) => goldCost += item.GoldCost);
     }
 
     public static List<int> NumbersUnder500(List<int> numbList)

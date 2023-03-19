@@ -35,7 +35,7 @@ public class CompundSequenceAbstractions {
     }
 
     public static IEnumerable<string> FirstWordIfStartsWith(IEnumerable<GameItem> inputList, char firstLetter) {
-        return inputList.Where(name => name.Name[0] == firstLetter).Select(name => GetFirstWord(name.Name));
+        return inputList.Where(item => item.Name[0] == firstLetter).Select(item => GetFirstWord(item.Name));
     }
 
     public static IEnumerable<string> NumbersLargerThanFiveToString(List<int> numberList) {
