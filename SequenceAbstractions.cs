@@ -30,14 +30,12 @@ public class SequenceAbstractions
 
     public static IEnumerable<string> WordsLongEnough(List<string> wordList)
     {       
-        return wordList.Aggregate(new List<string>(), (wordsLongerThanFour, word) =>
-        {
-            if (word.Length > 4)
-            {
-                wordsLongerThanFour.Add(word);
+       return wordList.Aggregate(new List<string>(), (aggList, word) => {
+            if(word.Length >= 5){
+                aggList.Add(word);
             }
-            return wordsLongerThanFour;
-        });
+            return aggList;
+       });
     }
 
     public static List<string> WordsStartWithS(List<string> wordList)

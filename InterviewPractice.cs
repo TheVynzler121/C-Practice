@@ -120,37 +120,37 @@ public class InterviewPractice
 
     public static IEnumerable<int> PlusOne(List<int> inputNums)
     {
-        for (int i = inputNums.Count - 1; i >= 0; i--) // reverse loop
+        for (int i = inputNums.Count - 1; i >= 0; i--)
         {
-            if(inputNums[i] == 9){ // if the current index is a 9
-                inputNums[i] = 0; // make it a 0
+            if(inputNums[i] == 9){
+                inputNums[i] = 0;
             } else {
-                inputNums[i]++; // else increase the int by 1
-                return inputNums;// early out return for the list with plus one
+                inputNums[i]++;
+                return inputNums;
             }
         }
-        var newOne = new List<int>(){1}; //a new list with just 1
-        return newOne.Concat(inputNums);//add the input list to the end of newOne list and return it
+        var oneList = new List<int>(){1};
+        return oneList.Concat(inputNums);
     }
 
     public static int SingleNumber(List<int> input)
     {
-        var inputTally = new Dictionary<int, int>();
-        foreach (var number in input)
+        var intCount = new Dictionary<int, int>();
+        var loopLength = input.Count - 1;
+        foreach(var num in input)
         {
-            if(inputTally.ContainsKey(number)){
-                inputTally[number]++;
-            } else{ 
-                inputTally[number] = 1;
+            if(intCount.ContainsKey(num)){
+                intCount[num]++;
+            }else{
+                intCount[num] = 1;
             }
         }
-
-        var returnNumber = 0;
-        foreach (var keyAndValue in inputTally)
+        var returnInt = 0;
+        foreach (var key in intCount)
         {
-            if(keyAndValue.Value == 1){
-                returnNumber = keyAndValue.Key;
-                return returnNumber;
+            if(key.Value == 1){
+                returnInt = key.Key;
+                return returnInt;
             }
         }
         return 0;
