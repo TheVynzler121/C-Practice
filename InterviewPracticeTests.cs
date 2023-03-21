@@ -233,4 +233,28 @@ public class InterviewPracticeTests
 
         Assert.That(actual, Is.EqualTo(output));
     }
+
+    [Test]
+    public void Test_ValidPalindrome()
+    {
+        var input = "A man, a plan, a canal: Panama";
+
+        var actual = InterviewPractice.ValidPalindrome(input);
+
+        var output = true;
+
+        Assert.That(actual, Is.EqualTo(output));
+    }
+
+    [Test]
+    public void Test_ValidPalindrome2()
+    {
+        var input = "race a car";
+
+        var actual = InterviewPractice.ValidPalindrome(input);
+
+        var output = false;
+
+        Assert.That(actual, Is.EqualTo(output));
+    }
 }

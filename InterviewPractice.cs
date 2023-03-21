@@ -1,3 +1,6 @@
+using System;
+using System.Text;
+
 namespace C__Practice;
 
 public class InterviewPractice
@@ -203,5 +206,35 @@ public class InterviewPractice
             prefixString += strs[0][i]; // add the first words char index to the prefixstring
         }
         return prefixString;
+    }
+
+    public static bool ValidPalindrome(string input){
+        
+        if(input.Length == 1 && char.IsLetterOrDigit(input[0])){
+            return true;
+        }
+
+        var lowerCaseChars = input.ToLower().ToList();
+        StringBuilder palinString = new StringBuilder();
+        var loopLength = palinString.Length - 1;
+
+        foreach (var letter in lowerCaseChars)
+        {
+            if(char.IsLetterOrDigit(letter)){
+                palinString.Append(letter);
+            }
+        }
+
+        var rightPointer = palinString.Length - 1;
+        var leftPointer = 0;
+
+        while(rightPointer - leftPointer > 0){
+            if(palinString[rightPointer] != palinString[leftPointer]){
+                return false;
+            }
+            rightPointer -= 1;
+            leftPointer += 1;
+        }
+        return true;
     }
 }
