@@ -216,7 +216,6 @@ public class InterviewPractice
 
         var lowerCaseChars = input.ToLower().ToList();
         StringBuilder palinString = new StringBuilder();
-        var loopLength = palinString.Length - 1;
 
         foreach (var letter in lowerCaseChars)
         {
