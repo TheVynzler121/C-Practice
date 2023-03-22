@@ -10,7 +10,8 @@ public class InterviewPractice
         var prevChar = ' ';
         foreach (var character in input)
         {
-            if(character == prevChar){
+            if (character == prevChar)
+            {
                 return true;
             }
             prevChar = character;
@@ -36,7 +37,8 @@ public class InterviewPractice
         {
             for (int j = i + 1; j < loopCount; j++)
             {
-                if(inputList[i] + inputList[j] == inputTarget){
+                if (inputList[i] + inputList[j] == inputTarget)
+                {
                     indexList.Add(i);
                     indexList.Add(j);
                 }
@@ -125,14 +127,17 @@ public class InterviewPractice
     {
         for (int i = inputNums.Count - 1; i >= 0; i--)
         {
-            if(inputNums[i] == 9){
+            if (inputNums[i] == 9)
+            {
                 inputNums[i] = 0;
-            } else {
+            }
+            else
+            {
                 inputNums[i]++;
                 return inputNums;
             }
         }
-        var oneList = new List<int>(){1};
+        var oneList = new List<int>() { 1 };
         return oneList.Concat(inputNums);
     }
 
@@ -140,18 +145,22 @@ public class InterviewPractice
     {
         var intCount = new Dictionary<int, int>();
         var loopLength = input.Count - 1;
-        foreach(var num in input)
+        foreach (var num in input)
         {
-            if(intCount.ContainsKey(num)){
+            if (intCount.ContainsKey(num))
+            {
                 intCount[num]++;
-            }else{
+            }
+            else
+            {
                 intCount[num] = 1;
             }
         }
         var returnInt = 0;
         foreach (var key in intCount)
         {
-            if(key.Value == 1){
+            if (key.Value == 1)
+            {
                 returnInt = key.Key;
                 return returnInt;
             }
@@ -159,37 +168,46 @@ public class InterviewPractice
         return 0;
     }
 
-    public static bool ContainsDuplicates(List<int> nums)
+    public static bool ContainsDuplicates(List<int> numsList)
     {
-       var intCount = new Dictionary<int, int>();
-       foreach (var num in nums)
-       {
-            if(intCount.ContainsKey(num)){
-                intCount[num]++;
-            }else{
-                intCount[num] = 1;
+        var numsCount = new Dictionary<int, int>();
+        var loopLength = numsList.Count - 1;
+
+        foreach(var num in numsList) // why doesnt a for loop work here? i think i need to be more specific and increase the value of the key
+        {
+            if (numsCount.ContainsKey(num))
+            {
+                numsCount[num]++;
             }
-       }
-       var returnBool = false;
-       foreach (var Key in intCount)
-       {
-            if(Key.Value >= 2){
-                returnBool = true;
-                return returnBool;
+            else
+            {
+                numsCount[num] = 1;
             }
-       }
-       return returnBool;
+        }
+
+        foreach (var key in numsCount)
+        {
+            if (key.Value >= 2)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
-    public static string LongestCommonPrefix(List<string> strs){ // why is this O(n)? because it loops through the input only once. it checks each word based off the first word.
-        
-        if(strs.Count == 1){ // edge case of input being 1 index, return the index.
+    public static string LongestCommonPrefix(List<string> strs)
+    { // why is this O(n)? because it loops through the input only once. it checks each word based off the first word.
+
+        if (strs.Count == 1)
+        { // edge case of input being 1 index, return the index.
             return strs[0];
         }
 
-        var prefixString= "";
-        
-        if(strs == null || strs.Count == 0){ // another edge case for if the input is empty, return an empty string.
+        var prefixString = "";
+
+        if (strs == null || strs.Count == 0)
+        { // another edge case for if the input is empty, return an empty string.
             return prefixString;
         }
 
@@ -197,9 +215,12 @@ public class InterviewPractice
         {
             foreach (var str in strs) // for each word in the input
             {
-                if(i > str.Length){ // if the index is greater than the length of the current word
+                if (i > str.Length)
+                { // if the index is greater than the length of the current word
                     return prefixString; // return the prefixString
-                } else if(strs[0][i] != str[i]){ // else if the char index of the first word is not equal to the current words char index
+                }
+                else if (strs[0][i] != str[i])
+                { // else if the char index of the first word is not equal to the current words char index
                     return prefixString; //return the prefixString
                 }
             }
@@ -208,9 +229,11 @@ public class InterviewPractice
         return prefixString;
     }
 
-    public static bool ValidPalindrome(string input){
-        
-        if(input.Length == 1 && char.IsLetterOrDigit(input[0])){
+    public static bool ValidPalindrome(string input)
+    {
+
+        if (input.Length == 1 && char.IsLetterOrDigit(input[0]))
+        {
             return true;
         }
 
@@ -219,7 +242,8 @@ public class InterviewPractice
 
         foreach (var letter in lowerCaseChars)
         {
-            if(char.IsLetterOrDigit(letter)){
+            if (char.IsLetterOrDigit(letter))
+            {
                 palinString.Append(letter);
             }
         }
@@ -227,8 +251,10 @@ public class InterviewPractice
         var rightPointer = palinString.Length - 1;
         var leftPointer = 0;
 
-        while(rightPointer - leftPointer > 0){
-            if(palinString[rightPointer] != palinString[leftPointer]){
+        while (rightPointer - leftPointer > 0)
+        {
+            if (palinString[rightPointer] != palinString[leftPointer])
+            {
                 return false;
             }
             rightPointer -= 1;
