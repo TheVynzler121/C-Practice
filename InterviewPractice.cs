@@ -124,20 +124,18 @@ public class InterviewPractice
 
     public static IEnumerable<int> PlusOne(List<int> inputNums)
     {
-        for (int i = inputNums.Count - 1; i >= 0; i--)
+        var startingInt = inputNums.Count - 1;
+        for (int i = startingInt; i >= 0; i--)
         {
-            if (inputNums[i] == 9)
-            {
+            if(inputNums[i] == 9){
                 inputNums[i] = 0;
-            }
-            else
-            {
+            } else {
                 inputNums[i]++;
                 return inputNums;
             }
         }
-        var oneList = new List<int>() { 1 };
-        return oneList.Concat(inputNums);
+        var firstOne = new List<int>(){1};
+        return firstOne.Concat(inputNums);
     }
 
     public static int SingleNumber(List<int> input)
