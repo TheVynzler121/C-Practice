@@ -167,30 +167,27 @@ public class InterviewPractice
 
     public static bool ContainsDuplicates(List<int> numsList)
     {
-        var numsCount = new Dictionary<int, int>();
-        var loopLength = numsList.Count - 1;
-
-        foreach(var num in numsList) // why doesnt a for loop work here? i think i need to be more specific and increase the value of the key
+        var loopLength = numsList.Count;
+        var numCount = new Dictionary<int, int>();
+        for (int i = 0; i < loopLength; i++)
         {
-            if (numsCount.ContainsKey(num))
-            {
-                numsCount[num]++;
-            }
-            else
-            {
-                numsCount[num] = 1;
+            var currentNum = numsList[i];
+            if(!numCount.ContainsKey(currentNum)){
+                numCount[currentNum] = 1;
+            } else {
+                numCount[currentNum]++;
             }
         }
 
-        foreach (var key in numsCount)
+        var retBool = false;
+        foreach (var num in numCount)
         {
-            if (key.Value >= 2)
-            {
-                return true;
+            if(num.Value >= 2){
+                retBool = true;
+                return retBool;
             }
         }
-
-        return false;
+        return retBool;
     }
 
     public static string LongestCommonPrefix(List<string> strs)
@@ -229,33 +226,33 @@ public class InterviewPractice
     public static bool ValidPalindrome(string input)
     {
 
-        if (input.Length == 1 && char.IsLetterOrDigit(input[0]))
+        if (input.Length == 1 && char.IsLetterOrDigit(input[0])) // edge case, return true if the input is only 1 letter or digit
         {
             return true;
         }
 
-        var lowerCaseChars = input.ToLower().ToList();
-        StringBuilder palinString = new StringBuilder();
+        var lowerCaseChars = input.ToLower().ToList(); //transform the input string to lower case and turn it into a list
+        StringBuilder palinString = new StringBuilder(); //seed for building the string
 
-        foreach (var letter in lowerCaseChars)
+        foreach (var letter in lowerCaseChars) 
         {
-            if (char.IsLetterOrDigit(letter))
+            if (char.IsLetterOrDigit(letter)) // if the current letter is a letter or digit
             {
-                palinString.Append(letter);
+                palinString.Append(letter); // add that letter to the end of PalinString
             }
         }
 
-        var rightPointer = palinString.Length - 1;
-        var leftPointer = 0;
+        var rightPointer = palinString.Length - 1; //point to the last char in the palinString
+        var leftPointer = 0; // point to the first char
 
         while (rightPointer - leftPointer > 0)
         {
-            if (palinString[rightPointer] != palinString[leftPointer])
+            if (palinString[rightPointer] != palinString[leftPointer]) // if the right pointer letter is not the same as the left pointer letter
             {
                 return false;
             }
-            rightPointer -= 1;
-            leftPointer += 1;
+            rightPointer -= 1; //move right pointer to the left by one
+            leftPointer += 1; //move left pointer to the right by one
         }
         return true;
     }
