@@ -140,29 +140,26 @@ public class InterviewPractice
 
     public static int SingleNumber(List<int> input)
     {
-        var intCount = new Dictionary<int, int>();
-        var loopLength = input.Count - 1;
-        foreach (var num in input)
+        var loopLength = input.Count;
+        var numCount = new Dictionary<int, int>();
+        for (int i = 0; i < loopLength; i++)
         {
-            if (intCount.ContainsKey(num))
-            {
-                intCount[num]++;
+            var currentNum = input[i];
+            if(!numCount.ContainsKey(currentNum)){
+                numCount[currentNum] = 1;
+            } else {
+                numCount[currentNum]++;
             }
-            else
-            {
-                intCount[num] = 1;
+        } 
+
+        var retInt = 0;
+        foreach (var keyValuePair in numCount)
+        {
+            if(keyValuePair.Value == 1){
+                retInt = keyValuePair.Key;
             }
         }
-        var returnInt = 0;
-        foreach (var key in intCount)
-        {
-            if (key.Value == 1)
-            {
-                returnInt = key.Key;
-                return returnInt;
-            }
-        }
-        return 0;
+        return retInt;
     }
 
     public static bool ContainsDuplicates(List<int> numsList)
