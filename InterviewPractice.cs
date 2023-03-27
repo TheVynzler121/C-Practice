@@ -28,7 +28,7 @@ public class InterviewPractice
         }
         return returnList;
     }
-    // just use "for loops" when doing leetcode
+
     public static IEnumerable<int> TwoSum(List<int> inputList, int inputTarget)
     {  
         var retList = new List<int>();
@@ -90,7 +90,7 @@ public class InterviewPractice
         d: [10] Count=1,
     }    
     */
-    public static int FirstNonrepeatingChar(string inputString)
+    public static int FirstNonrepeatingChar(string inputString) //Need to practice this one
     {
         var allCharacterPositions = new Dictionary<char, List<int>>();
         for (int i = 0; i < inputString.Length; i++)
@@ -187,7 +187,7 @@ public class InterviewPractice
         return retBool;
     }
 
-    public static string LongestCommonPrefix(List<string> strs)
+    public static string LongestCommonPrefix(List<string> strs) //Need to practice this one
     { // why is this O(n)? because it loops through the input only once. it checks each word based off the first word.
 
         if (strs.Count == 1)
@@ -220,37 +220,36 @@ public class InterviewPractice
         return prefixString;
     }
 
-    public static bool ValidPalindrome(string input)
+    public static bool ValidPalindrome(string inputString)
     {
 
-        if (input.Length == 1 && char.IsLetterOrDigit(input[0])) // edge case, return true if the input is only 1 letter or digit
+        if (inputString.Length == 1 && char.IsLetterOrDigit(inputString[0])) // edge case, return true if the input is only 1 letter or digit
         {
             return true;
         }
 
-        var lowerCaseChars = input.ToLower().ToList(); //transform the input string to lower case and turn it into a list
-        StringBuilder palinString = new StringBuilder(); //seed for building the string
+        var lowerCaseChars = inputString.ToLower().ToList();
+        StringBuilder palinSeed = new StringBuilder();
 
-        foreach (var letter in lowerCaseChars) 
+        foreach (var lowerCaseChar in lowerCaseChars)
         {
-            if (char.IsLetterOrDigit(letter)) // if the current letter is a letter or digit
-            {
-                palinString.Append(letter); // add that letter to the end of PalinString
+            if(char.IsLetterOrDigit(lowerCaseChar)){
+                palinSeed.Append(lowerCaseChar);
             }
         }
 
-        var rightPointer = palinString.Length - 1; //point to the last char in the palinString
-        var leftPointer = 0; // point to the first char
+        var rightIndex = palinSeed.Length - 1;
+        var leftIndex = 0;
+        var retBool = true;
 
-        while (rightPointer - leftPointer > 0)
-        {
-            if (palinString[rightPointer] != palinString[leftPointer]) // if the right pointer letter is not the same as the left pointer letter
-            {
-                return false;
+        while(rightIndex - leftIndex > 0){
+            if(palinSeed[rightIndex] != palinSeed[leftIndex]){
+                retBool = false;
+                return retBool;
             }
-            rightPointer -= 1; //move right pointer to the left by one
-            leftPointer += 1; //move left pointer to the right by one
+            rightIndex -= 1;
+            leftIndex += 1;
         }
-        return true;
+        return retBool;
     }
 }
