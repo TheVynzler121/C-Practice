@@ -164,27 +164,24 @@ public class InterviewPractice
 
     public static bool ContainsDuplicates(List<int> numsList)
     {
-        var loopLength = numsList.Count;
-        var numCount = new Dictionary<int, int>();
-        for (int i = 0; i < loopLength; i++)
+        var countedNums = new Dictionary<int, int>();
+        foreach (var num in numsList)
         {
-            var currentNum = numsList[i];
-            if(!numCount.ContainsKey(currentNum)){
-                numCount[currentNum] = 1;
+            if(countedNums.ContainsKey(num)){
+                countedNums[num]++;
             } else {
-                numCount[currentNum]++;
+                countedNums[num] = 1;
             }
         }
-
-        var retBool = false;
-        foreach (var num in numCount)
+        var returnBool = false;
+        foreach (var keyAndValue in countedNums)
         {
-            if(num.Value >= 2){
-                retBool = true;
-                return retBool;
+            if(keyAndValue.Value >= 2){
+                returnBool = true;
+                return returnBool;
             }
         }
-        return retBool;
+        return returnBool;
     }
 
     public static string LongestCommonPrefix(List<string> strs) //Need to practice this one
@@ -228,28 +225,29 @@ public class InterviewPractice
             return true;
         }
 
-        var lowerCaseChars = inputString.ToLower().ToList();
-        StringBuilder palinSeed = new StringBuilder();
+        var stringToLower = inputString.ToLower().ToList();
+        StringBuilder palindromeSeed = new StringBuilder();
 
-        foreach (var lowerCaseChar in lowerCaseChars)
+        foreach (var character in stringToLower)
         {
-            if(char.IsLetterOrDigit(lowerCaseChar)){
-                palinSeed.Append(lowerCaseChar);
+            if(char.IsLetterOrDigit(character)){
+                palindromeSeed.Append(character);
             }
         }
 
-        var rightIndex = palinSeed.Length - 1;
-        var leftIndex = 0;
-        var retBool = true;
+        var pointerRight = palindromeSeed.Length - 1;
+        var pointerLeft = 0;
+        var returnBool = true;
 
-        while(rightIndex - leftIndex > 0){
-            if(palinSeed[rightIndex] != palinSeed[leftIndex]){
-                retBool = false;
-                return retBool;
+        while(pointerRight - pointerLeft > 0){
+            if(palindromeSeed[pointerRight] != palindromeSeed[pointerLeft]){
+                returnBool = false;
+                return returnBool;
             }
-            rightIndex -= 1;
-            leftIndex += 1;
+
+            pointerRight -= 1;
+            pointerLeft += 1;
         }
-        return retBool;
+        return returnBool;
     }
 }
