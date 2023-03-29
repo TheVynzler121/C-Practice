@@ -219,35 +219,34 @@ public class InterviewPractice
 
     public static bool ValidPalindrome(string inputString)
     {
-
+        
         if (inputString.Length == 1 && char.IsLetterOrDigit(inputString[0])) // edge case, return true if the input is only 1 letter or digit
         {
             return true;
         }
 
         var stringToLower = inputString.ToLower().ToList();
-        StringBuilder palindromeSeed = new StringBuilder();
+        StringBuilder palinString = new StringBuilder();
 
-        foreach (var character in stringToLower)
+        foreach (var element in stringToLower)
         {
-            if(char.IsLetterOrDigit(character)){
-                palindromeSeed.Append(character);
+            if(char.IsLetterOrDigit(element)){
+                palinString.Append(element);
             }
         }
 
-        var pointerRight = palindromeSeed.Length - 1;
+        var pointerRight = palinString.Length - 1;
         var pointerLeft = 0;
-        var returnBool = true;
-
+        var retBool = true;
         while(pointerRight - pointerLeft > 0){
-            if(palindromeSeed[pointerRight] != palindromeSeed[pointerLeft]){
-                returnBool = false;
-                return returnBool;
+            if(palinString[pointerRight] != palinString[pointerLeft]){
+                retBool = false;
+                return retBool;
             }
-
             pointerRight -= 1;
             pointerLeft += 1;
         }
-        return returnBool;
+
+        return retBool;
     }
 }
