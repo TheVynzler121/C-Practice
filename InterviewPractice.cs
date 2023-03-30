@@ -124,18 +124,18 @@ public class InterviewPractice
 
     public static IEnumerable<int> PlusOne(List<int> inputNums)
     {
-        var startingInt = inputNums.Count - 1;
-        for (int i = startingInt; i >= 0; i--)
-        {
+       var loopLength = inputNums.Count - 1;
+       for (int i = loopLength; i >= 0; i--)
+       {
             if(inputNums[i] == 9){
                 inputNums[i] = 0;
             } else {
                 inputNums[i]++;
                 return inputNums;
             }
-        }
-        var firstOne = new List<int>(){1};
-        return firstOne.Concat(inputNums);
+       }
+       var carriedOne = new List<int>(){1};
+       return carriedOne.Concat(inputNums);
     }
 
     public static int SingleNumber(List<int> input)
@@ -225,28 +225,28 @@ public class InterviewPractice
             return true;
         }
 
-        var stringToLower = inputString.ToLower().ToList();
-        StringBuilder palinString = new StringBuilder();
+        var inputToLower = inputString.ToLower().ToList();
+        StringBuilder palidromeSeed = new StringBuilder();
 
-        foreach (var element in stringToLower)
+        foreach (var element in inputToLower)
         {
             if(char.IsLetterOrDigit(element)){
-                palinString.Append(element);
+                palidromeSeed.Append(element);
             }
         }
 
-        var pointerRight = palinString.Length - 1;
-        var pointerLeft = 0;
-        var retBool = true;
-        while(pointerRight - pointerLeft > 0){
-            if(palinString[pointerRight] != palinString[pointerLeft]){
-                retBool = false;
-                return retBool;
+        var pointerR = palidromeSeed.Length - 1;
+        var pointerL = 0;
+        var returnBool = true;
+        while(pointerR - pointerL > 0){
+            if(palidromeSeed[pointerR] != palidromeSeed[pointerL]){
+                returnBool = false;
+                return returnBool;
             }
-            pointerRight -= 1;
-            pointerLeft += 1;
-        }
 
-        return retBool;
+            pointerR -= 1;
+            pointerL += 1;
+        }
+        return returnBool;
     }
 }
