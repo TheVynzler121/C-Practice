@@ -140,23 +140,23 @@ public class InterviewPractice
 
     public static int SingleNumber(List<int> input)
     {
-        var loopLength = input.Count;
         var numCount = new Dictionary<int, int>();
-        for (int i = 0; i < loopLength; i++)
+        
+        foreach (var num in input)
         {
-            var currentNum = input[i];
-            if(!numCount.ContainsKey(currentNum)){
-                numCount[currentNum] = 1;
-            } else {
-                numCount[currentNum]++;
+            if(numCount.ContainsKey(num)){
+                numCount[num]++;
+            }else{
+                numCount[num] = 1;
             }
-        } 
+        }
 
         var retInt = 0;
         foreach (var keyValuePair in numCount)
         {
             if(keyValuePair.Value == 1){
                 retInt = keyValuePair.Key;
+                return retInt;
             }
         }
         return retInt;
