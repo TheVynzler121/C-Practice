@@ -192,29 +192,28 @@ public class InterviewPractice
             return strs[0];
         }
 
-        var prefixString = "";
+        var prefixCheck = "";
 
-        if (strs == null || strs.Count == 0)
-        { // another edge case for if the input is empty, return an empty string.
-            return prefixString;
+        if(strs == null || strs.Count == 0){
+            return prefixCheck;
         }
 
-        for (int i = 0; i < strs[0].Length; i++) // loop for the length of the first word
+        var loopLength = strs[0].Length;
+        var firstWord = strs[0];
+
+        for (int i = 0; i < loopLength; i++)
         {
-            foreach (var str in strs) // for each word in the input
+            foreach (var word in strs)
             {
-                if (i > str.Length)
-                { // if the index is greater than the length of the current word
-                    return prefixString; // return the prefixString
-                }
-                else if (strs[0][i] != str[i])
-                { // else if the char index of the first word is not equal to the current words char index
-                    return prefixString; //return the prefixString
+                if(i > loopLength){
+                    return prefixCheck;
+                } else if(firstWord[i] != word[i]){
+                    return prefixCheck;
                 }
             }
-            prefixString += strs[0][i]; // add the first words char index to the prefixstring
+            prefixCheck += firstWord[i];
         }
-        return prefixString;
+        return prefixCheck;
     }
 
     public static bool ValidPalindrome(string inputString)
