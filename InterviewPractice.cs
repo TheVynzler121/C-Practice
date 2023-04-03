@@ -31,19 +31,19 @@ public class InterviewPractice
 
     public static IEnumerable<int> TwoSum(List<int> inputList, int inputTarget)
     {  
-        var retList = new List<int>();
+        var returnSeed = new List<int>();
         var loopLength = inputList.Count - 1;
         for (int i = 0; i < loopLength; i++)
         {
             for (int j = i + 1; j < loopLength; j++)
             {
                 if(inputList[i] + inputList[j] == inputTarget){
-                    retList.Add(i);
-                    retList.Add(j);
+                    returnSeed.Add(i);
+                    returnSeed.Add(j);
                 }
             }
         }
-        return retList;
+        return returnSeed;
     }
 
     public static void PrintList<T>(IEnumerable<T> input)
@@ -164,19 +164,22 @@ public class InterviewPractice
 
     public static bool ContainsDuplicates(List<int> numsList)
     {
-        var countedNums = new Dictionary<int, int>();
-        foreach (var num in numsList)
+        var countDict = new Dictionary<int, int>();
+        var loopLength = numsList.Count - 1;
+        foreach (var element in numsList)
         {
-            if(countedNums.ContainsKey(num)){
-                countedNums[num]++;
+             if(countDict.ContainsKey(element)){
+                countDict[element]++;
             } else {
-                countedNums[num] = 1;
+                countDict[element] = 1;
             }
         }
+
         var returnBool = false;
-        foreach (var keyAndValue in countedNums)
+
+        foreach (var keyValuePair in countDict)
         {
-            if(keyAndValue.Value >= 2){
+            if(keyValuePair.Value >= 2){
                 returnBool = true;
                 return returnBool;
             }
@@ -224,28 +227,28 @@ public class InterviewPractice
             return true;
         }
 
-        var inputToLowercase = inputString.ToLower().ToList();
-        StringBuilder palinString = new StringBuilder();
+        var transformedInput = inputString.ToLower().ToList();
+        StringBuilder palindromeStr = new StringBuilder();
 
-        foreach (var letter in inputToLowercase)
+        foreach (var character in transformedInput)
         {
-            if(char.IsLetterOrDigit(letter)){
-                palinString.Append(letter);
+            if(char.IsLetterOrDigit(character)){
+                palindromeStr.Append(character);
             }
         }
 
-        var rightPointer = palinString.Length - 1;
-        var leftPointer = 0;
-        var retBool = true;
+        var rPointer = palindromeStr.Length - 1;
+        var lPointer = 0;
+        var returnBool = true;
 
-        while(rightPointer - leftPointer > 0){
-            if(palinString[rightPointer] != palinString[leftPointer]){
-                retBool = false;
-                return retBool;
+        while(rPointer - lPointer > 0){
+            if(palindromeStr[rPointer] != palindromeStr[lPointer]){
+                returnBool = false;
+                return returnBool;
             }
-            rightPointer -= 1;
-            leftPointer += 1;
+            rPointer -= 1;
+            lPointer += 1;
         }
-        return retBool;
+        return returnBool;
     }
 }
