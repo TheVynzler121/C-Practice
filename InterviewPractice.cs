@@ -195,28 +195,28 @@ public class InterviewPractice
             return strs[0];
         }
 
-        var prefixCheck = "";
+        var prefixString = "";
 
-        if(strs == null || strs.Count == 0){
-            return prefixCheck;
+        if(strs.Count == 1 || strs == null){
+            return prefixString;
         }
 
-        var loopLength = strs[0].Length;
         var firstWord = strs[0];
+        var loopLength = strs[0].Length - 1;
 
         for (int i = 0; i < loopLength; i++)
         {
-            foreach (var word in strs)
+            foreach (var str in strs)
             {
-                if(i > loopLength){
-                    return prefixCheck;
-                } else if(firstWord[i] != word[i]){
-                    return prefixCheck;
+                if( i > firstWord.Length){
+                    return prefixString;
+                } else if(firstWord[i] != str[i]){
+                    return prefixString;
                 }
             }
-            prefixCheck += firstWord[i];
+            prefixString += firstWord[i];
         }
-        return prefixCheck;
+        return prefixString;
     }
 
     public static bool ValidPalindrome(string inputString)
