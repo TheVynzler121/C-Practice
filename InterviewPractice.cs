@@ -140,25 +140,27 @@ public class InterviewPractice
 
     public static int SingleNumber(List<int> input)
     {
-        var numCount = new Dictionary<int, int>();
-        
+        var numsCount = new Dictionary<int, int>();
+
         foreach (var num in input)
         {
-            if(numCount.ContainsKey(num)){
-                numCount[num]++;
-            }else{
-                numCount[num] = 1;
+            if(numsCount.ContainsKey(num)){
+                numsCount[num]++;
+            } else {
+                numsCount[num] = 1;
             }
         }
 
         var retInt = 0;
-        foreach (var keyValuePair in numCount)
+
+        foreach (var key in numsCount)
         {
-            if(keyValuePair.Value == 1){
-                retInt = keyValuePair.Key;
+            if(key.Value == 1){
+                retInt = key.Key;
                 return retInt;
             }
         }
+
         return retInt;
     }
 
@@ -227,28 +229,27 @@ public class InterviewPractice
             return true;
         }
 
-        var transformedInput = inputString.ToLower().ToList();
-        StringBuilder palindromeStr = new StringBuilder();
-
-        foreach (var character in transformedInput)
+        var stringToLower = inputString.ToLower().ToList();
+        StringBuilder palinSeed = new StringBuilder();
+        foreach (var item in stringToLower)
         {
-            if(char.IsLetterOrDigit(character)){
-                palindromeStr.Append(character);
+            if(char.IsLetterOrDigit(item)){
+                palinSeed.Append(item);
             }
         }
 
-        var rPointer = palindromeStr.Length - 1;
-        var lPointer = 0;
-        var returnBool = true;
+        var pointerR = palinSeed.Length - 1;
+        var pointerL = 0;
+        var retBool = true;
 
-        while(rPointer - lPointer > 0){
-            if(palindromeStr[rPointer] != palindromeStr[lPointer]){
-                returnBool = false;
-                return returnBool;
+        while(pointerR - pointerL > 0){
+            if(palinSeed[pointerR] != palinSeed[pointerL]){
+                retBool = false;
+                return retBool;
             }
-            rPointer -= 1;
-            lPointer += 1;
+            pointerR -= 1;
+            pointerL += 1;
         }
-        return returnBool;
+        return retBool;
     }
 }
