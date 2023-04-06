@@ -229,27 +229,28 @@ public class InterviewPractice
             return true;
         }
 
-        var stringToLower = inputString.ToLower().ToList();
-        StringBuilder palinSeed = new StringBuilder();
-        foreach (var item in stringToLower)
+        var transformedInput = inputString.ToLower().ToList();
+        StringBuilder palindromeCheck = new StringBuilder();
+
+        foreach (var element in transformedInput)
         {
-            if(char.IsLetterOrDigit(item)){
-                palinSeed.Append(item);
+            if(char.IsLetterOrDigit(element)){
+                palindromeCheck.Append(element);
             }
         }
 
-        var pointerR = palinSeed.Length - 1;
-        var pointerL = 0;
-        var retBool = true;
+        var returnBool = true;
+        var rightPointer = palindromeCheck.Length - 1;
+        var leftPointer = 0;
 
-        while(pointerR - pointerL > 0){
-            if(palinSeed[pointerR] != palinSeed[pointerL]){
-                retBool = false;
-                return retBool;
+        while(rightPointer - leftPointer > 0){
+            if(palindromeCheck[rightPointer] != palindromeCheck[leftPointer]){
+                returnBool = false;
+                return returnBool;
             }
-            pointerR -= 1;
-            pointerL += 1;
+            rightPointer -= 1;
+            leftPointer += 1;
         }
-        return retBool;
+        return returnBool;
     }
 }
