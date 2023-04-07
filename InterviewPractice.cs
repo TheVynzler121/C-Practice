@@ -197,60 +197,57 @@ public class InterviewPractice
             return strs[0];
         }
 
-        var prefixString = "";
+        var prefixSeed = "";
 
-        if(strs.Count == 1 || strs == null){
-            return prefixString;
+        if(strs.Count == 0 || strs == null){
+            return prefixSeed;
         }
 
         var firstWord = strs[0];
-        var loopLength = strs[0].Length - 1;
 
-        for (int i = 0; i < loopLength; i++)
+        for (int i = 0; i < firstWord.Length; i++)
         {
-            foreach (var str in strs)
+            foreach (var word in strs)
             {
-                if( i > firstWord.Length){
-                    return prefixString;
-                } else if(firstWord[i] != str[i]){
-                    return prefixString;
+                if(i > firstWord.Length){
+                    return prefixSeed;
+                } else if(firstWord[i] != word[i]){
+                    return prefixSeed;
                 }
             }
-            prefixString += firstWord[i];
+            prefixSeed += firstWord[i];
         }
-        return prefixString;
+
+        return prefixSeed;
     }
 
     public static bool ValidPalindrome(string inputString)
     {
-        
         if (inputString.Length == 1 && char.IsLetterOrDigit(inputString[0])) // edge case, return true if the input is only 1 letter or digit
         {
             return true;
         }
 
-        var transformedInput = inputString.ToLower().ToList();
-        StringBuilder palindromeCheck = new StringBuilder();
+        var inputToLower = inputString.ToLower().ToList();
+        StringBuilder palindromeSeed = new StringBuilder();
 
-        foreach (var element in transformedInput)
+        foreach (var character in inputToLower)
         {
-            if(char.IsLetterOrDigit(element)){
-                palindromeCheck.Append(element);
+            if(char.IsLetterOrDigit(character)){
+                palindromeSeed.Append(character);
             }
         }
 
-        var returnBool = true;
-        var rightPointer = palindromeCheck.Length - 1;
+        var rightPointer = palindromeSeed.Length - 1;
         var leftPointer = 0;
 
         while(rightPointer - leftPointer > 0){
-            if(palindromeCheck[rightPointer] != palindromeCheck[leftPointer]){
-                returnBool = false;
-                return returnBool;
+            if(palindromeSeed[rightPointer] != palindromeSeed[leftPointer]){
+                return false;
             }
             rightPointer -= 1;
             leftPointer += 1;
         }
-        return returnBool;
+        return true;
     }
 }
