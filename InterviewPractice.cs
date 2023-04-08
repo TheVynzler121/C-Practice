@@ -228,25 +228,25 @@ public class InterviewPractice
             return true;
         }
 
-        var inputToLower = inputString.ToLower().ToList();
-        StringBuilder palindromeSeed = new StringBuilder();
+        var transformedInput = inputString.ToLower().ToList();
+        StringBuilder palinString = new StringBuilder();
 
-        foreach (var character in inputToLower)
+        foreach (var letter in transformedInput)
         {
-            if(char.IsLetterOrDigit(character)){
-                palindromeSeed.Append(character);
+            if(char.IsLetterOrDigit(letter)){
+                palinString.Append(letter);
             }
         }
 
-        var rightPointer = palindromeSeed.Length - 1;
-        var leftPointer = 0;
+        var rPointer = palinString.Length - 1;
+        var lPointer = 0;
 
-        while(rightPointer - leftPointer > 0){
-            if(palindromeSeed[rightPointer] != palindromeSeed[leftPointer]){
+        while(rPointer - lPointer > 0){
+            if(palinString[rPointer] != palinString[lPointer]){
                 return false;
             }
-            rightPointer -= 1;
-            leftPointer += 1;
+            rPointer -= 1;
+            lPointer += 1;
         }
         return true;
     }
