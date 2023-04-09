@@ -197,28 +197,25 @@ public class InterviewPractice
             return strs[0];
         }
 
-        var prefixSeed = "";
+        var prefixStr = "";
 
         if(strs.Count == 0 || strs == null){
-            return prefixSeed;
+            return prefixStr;
         }
-
-        var firstWord = strs[0];
-
-        for (int i = 0; i < firstWord.Length; i++)
+        var firstStr = strs[0];
+        for (int i = 0; i < firstStr.Length; i++)
         {
-            foreach (var word in strs)
+            foreach (var str in strs)
             {
-                if(i > firstWord.Length){
-                    return prefixSeed;
-                } else if(firstWord[i] != word[i]){
-                    return prefixSeed;
+                if( i > firstStr.Length){
+                    return prefixStr;
+                } else if(firstStr[i] != str[i]){
+                    return prefixStr;
                 }
             }
-            prefixSeed += firstWord[i];
+            prefixStr += firstStr[i];
         }
-
-        return prefixSeed;
+        return prefixStr;
     }
 
     public static bool ValidPalindrome(string inputString)
