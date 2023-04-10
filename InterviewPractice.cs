@@ -30,14 +30,15 @@ public class InterviewPractice
     }
 
     public static IEnumerable<int> TwoSum(List<int> inputList, int inputTarget)
-    {  
+    {
         var returnSeed = new List<int>();
         var loopLength = inputList.Count - 1;
         for (int i = 0; i < loopLength; i++)
         {
             for (int j = i + 1; j < loopLength; j++)
             {
-                if(inputList[i] + inputList[j] == inputTarget){
+                if (inputList[i] + inputList[j] == inputTarget)
+                {
                     returnSeed.Add(i);
                     returnSeed.Add(j);
                 }
@@ -124,44 +125,51 @@ public class InterviewPractice
 
     public static IEnumerable<int> PlusOne(List<int> inputNums)
     {
-       var loopLength = inputNums.Count - 1;
-       for (int i = loopLength; i >= 0; i--)
-       {
-            if(inputNums[i] == 9){
+        var loopLength = inputNums.Count - 1;
+        for (int i = loopLength; i >= 0; i--)
+        {
+            if (inputNums[i] == 9)
+            {
                 inputNums[i] = 0;
-            } else {
+            }
+            else
+            {
                 inputNums[i]++;
                 return inputNums;
             }
-       }
-       var carriedOne = new List<int>(){1};
-       return carriedOne.Concat(inputNums);
+        }
+        var carriedOne = new List<int>() { 1 };
+        return carriedOne.Concat(inputNums);
     }
 
     public static int SingleNumber(List<int> input)
     {
-        var numsCount = new Dictionary<int, int>();
+        var countingDict = new Dictionary<int, int>();
 
         foreach (var num in input)
         {
-            if(numsCount.ContainsKey(num)){
-                numsCount[num]++;
-            } else {
-                numsCount[num] = 1;
+            if (!countingDict.ContainsKey(num))
+            {
+                countingDict[num] = 1;
+            }
+            else
+            {
+                countingDict[num]++;
             }
         }
 
-        var retInt = 0;
+        var returnInt = 0;
 
-        foreach (var key in numsCount)
+        foreach (var keyAndValue in countingDict)
         {
-            if(key.Value == 1){
-                retInt = key.Key;
-                return retInt;
+            if (keyAndValue.Value == 1)
+            {
+                returnInt = keyAndValue.Key;
+                return returnInt;
             }
         }
 
-        return retInt;
+        return returnInt;
     }
 
     public static bool ContainsDuplicates(List<int> numsList)
@@ -170,9 +178,12 @@ public class InterviewPractice
         var loopLength = numsList.Count - 1;
         foreach (var element in numsList)
         {
-             if(countDict.ContainsKey(element)){
+            if (countDict.ContainsKey(element))
+            {
                 countDict[element]++;
-            } else {
+            }
+            else
+            {
                 countDict[element] = 1;
             }
         }
@@ -181,7 +192,8 @@ public class InterviewPractice
 
         foreach (var keyValuePair in countDict)
         {
-            if(keyValuePair.Value >= 2){
+            if (keyValuePair.Value >= 2)
+            {
                 returnBool = true;
                 return returnBool;
             }
@@ -199,7 +211,8 @@ public class InterviewPractice
 
         var prefixStr = "";
 
-        if(strs.Count == 0 || strs == null){
+        if (strs.Count == 0 || strs == null)
+        {
             return prefixStr;
         }
         var firstStr = strs[0];
@@ -207,9 +220,12 @@ public class InterviewPractice
         {
             foreach (var str in strs)
             {
-                if( i > firstStr.Length){
+                if (i > firstStr.Length)
+                {
                     return prefixStr;
-                } else if(firstStr[i] != str[i]){
+                }
+                else if (firstStr[i] != str[i])
+                {
                     return prefixStr;
                 }
             }
@@ -225,25 +241,28 @@ public class InterviewPractice
             return true;
         }
 
-        var transformedInput = inputString.ToLower().ToList();
+        var inputToLowerList = inputString.ToLower().ToList();
         StringBuilder palinString = new StringBuilder();
 
-        foreach (var letter in transformedInput)
+        foreach (var item in inputToLowerList)
         {
-            if(char.IsLetterOrDigit(letter)){
-                palinString.Append(letter);
+            if (char.IsLetterOrDigit(item))
+            {
+                palinString.Append(item);
             }
         }
 
-        var rPointer = palinString.Length - 1;
-        var lPointer = 0;
+        var pointerR = palinString.Length - 1;
+        var pointerL = 0;
 
-        while(rPointer - lPointer > 0){
-            if(palinString[rPointer] != palinString[lPointer]){
+        while (pointerR - pointerL > 0)
+        {
+            if (palinString[pointerR] != palinString[pointerL])
+            {
                 return false;
             }
-            rPointer -= 1;
-            lPointer += 1;
+            pointerR -= 1;
+            pointerL += 1;
         }
         return true;
     }
