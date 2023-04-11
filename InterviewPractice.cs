@@ -175,63 +175,41 @@ public class InterviewPractice
     public static bool ContainsDuplicates(List<int> numsList)
     {
         var countDict = new Dictionary<int, int>();
-        var loopLength = numsList.Count - 1;
-        foreach (var element in numsList)
+        foreach (var num in numsList)
         {
-            if (countDict.ContainsKey(element))
-            {
-                countDict[element]++;
-            }
-            else
-            {
-                countDict[element] = 1;
+            if(!countDict.ContainsKey(num)){
+                countDict[num] = 1;
+            } else {
+                countDict[num]++;
             }
         }
-
-        var returnBool = false;
 
         foreach (var keyValuePair in countDict)
         {
-            if (keyValuePair.Value >= 2)
-            {
-                returnBool = true;
-                return returnBool;
+            if(keyValuePair.Value >= 2){
+                return true;
             }
         }
-        return returnBool;
+        return false;
     }
 
     public static string LongestCommonPrefix(List<string> strs) //Need to practice this one
     { // why is this O(n)? because it loops through the input only once. it checks each word based off the first word.
-
-        if (strs.Count == 1)
-        { // edge case of input being 1 index, return the index.
-            return strs[0];
-        }
-
-        var prefixStr = "";
-
-        if (strs.Count == 0 || strs == null)
+        var prefixCheck = "";
+        var firstIndex = strs[0];
+        for (int i = 0; i < firstIndex.Length; i++)
         {
-            return prefixStr;
-        }
-        var firstStr = strs[0];
-        for (int i = 0; i < firstStr.Length; i++)
-        {
-            foreach (var str in strs)
+            foreach (var word in strs)
             {
-                if (i > firstStr.Length)
-                {
-                    return prefixStr;
-                }
-                else if (firstStr[i] != str[i])
-                {
-                    return prefixStr;
+                if(i > firstIndex[i]){
+                    return prefixCheck;
+                } else if(firstIndex[i] != word[i]){
+                    return prefixCheck;
                 }
             }
-            prefixStr += firstStr[i];
+            prefixCheck += firstIndex[i];
         }
-        return prefixStr;
+        return prefixCheck;
     }
 
     public static bool ValidPalindrome(string inputString)
@@ -241,29 +219,29 @@ public class InterviewPractice
             return true;
         }
 
-        var inputToLowerList = inputString.ToLower().ToList();
-        StringBuilder palinString = new StringBuilder();
+        var stringTolower = inputString.ToLower().ToList();
+        StringBuilder palindromeCheck = new StringBuilder();
 
-        foreach (var item in inputToLowerList)
+        foreach (var character in stringTolower)
         {
-            if (char.IsLetterOrDigit(item))
-            {
-                palinString.Append(item);
+            if(char.IsLetterOrDigit(character)){
+                palindromeCheck.Append(character);
             }
         }
 
-        var pointerR = palinString.Length - 1;
-        var pointerL = 0;
+        var rightPoint = palindromeCheck.Length - 1;
+        var leftPoint = 0;
+        var retBool = true;
 
-        while (pointerR - pointerL > 0)
-        {
-            if (palinString[pointerR] != palinString[pointerL])
-            {
-                return false;
+        while(rightPoint - leftPoint> 0){
+            if(palindromeCheck[rightPoint] != palindromeCheck[leftPoint]){
+                retBool = false;
+                return retBool;
             }
-            pointerR -= 1;
-            pointerL += 1;
+            rightPoint -= 1;
+            leftPoint += 1;
         }
-        return true;
+
+        return retBool;
     }
 }
