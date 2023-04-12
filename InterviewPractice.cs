@@ -31,20 +31,18 @@ public class InterviewPractice
 
     public static IEnumerable<int> TwoSum(List<int> inputList, int inputTarget)
     {
-        var returnSeed = new List<int>();
-        var loopLength = inputList.Count - 1;
-        for (int i = 0; i < loopLength; i++)
+        var seedList = new List<int>();
+        for (int i = 0; i < inputList.Count; i++)
         {
-            for (int j = i + 1; j < loopLength; j++)
+            for (int j = i + 1; j < inputList.Count; j++)
             {
-                if (inputList[i] + inputList[j] == inputTarget)
-                {
-                    returnSeed.Add(i);
-                    returnSeed.Add(j);
+                if(inputList[i] + inputList[j] == inputTarget){
+                    seedList.Add(i);
+                    seedList.Add(j);
                 }
             }
         }
-        return returnSeed;
+        return seedList;
     }
 
     public static void PrintList<T>(IEnumerable<T> input)
@@ -219,29 +217,29 @@ public class InterviewPractice
             return true;
         }
 
-        var stringTolower = inputString.ToLower().ToList();
-        StringBuilder palindromeCheck = new StringBuilder();
+        var transformedInput = inputString.ToLower().ToList();
+        StringBuilder palindromeStr = new StringBuilder();
 
-        foreach (var character in stringTolower)
+        foreach (var element in transformedInput)
         {
-            if(char.IsLetterOrDigit(character)){
-                palindromeCheck.Append(character);
+            if(char.IsLetterOrDigit(element)){
+                palindromeStr.Append(element);
             }
         }
 
-        var rightPoint = palindromeCheck.Length - 1;
-        var leftPoint = 0;
         var retBool = true;
+        var rPoint = palindromeStr.Length - 1;
+        var lPoint = 0;
 
-        while(rightPoint - leftPoint> 0){
-            if(palindromeCheck[rightPoint] != palindromeCheck[leftPoint]){
+        while(rPoint - lPoint > 0){
+            if(palindromeStr[rPoint] != palindromeStr[lPoint]){
                 retBool = false;
                 return retBool;
             }
-            rightPoint -= 1;
-            leftPoint += 1;
-        }
 
+            rPoint -= 1;
+            lPoint += 1;
+        }
         return retBool;
     }
 }
