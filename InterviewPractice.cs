@@ -1,7 +1,20 @@
 using System;
 using System.Text;
+using System.Linq;
 
 namespace C__Practice;
+
+public class Weapon{
+    public string name;
+    public string weaponType;
+    public int damage;
+
+    public Weapon (string name, string weaponType, int damage){
+        this.name = name;
+        this.weaponType = weaponType;
+        this.damage = damage;
+    }
+}
 
 public class InterviewPractice
 {
@@ -142,32 +155,33 @@ public class InterviewPractice
 
     public static int SingleNumber(List<int> input)
     {
-        var countingDict = new Dictionary<int, int>();
+        return input.GroupBy(num => num).Where(numCount => numCount.Count() == 1).Select(num => num.Key).First();
+        // var countingDict = new Dictionary<int, int>();
 
-        foreach (var num in input)
-        {
-            if (!countingDict.ContainsKey(num))
-            {
-                countingDict[num] = 1;
-            }
-            else
-            {
-                countingDict[num]++;
-            }
-        }
+        // foreach (var num in input)
+        // {
+        //     if (!countingDict.ContainsKey(num))
+        //     {
+        //         countingDict[num] = 1;
+        //     }
+        //     else
+        //     {
+        //         countingDict[num]++;
+        //     }
+        // }
 
-        var returnInt = 0;
+        // var returnInt = 0;
 
-        foreach (var keyAndValue in countingDict)
-        {
-            if (keyAndValue.Value == 1)
-            {
-                returnInt = keyAndValue.Key;
-                return returnInt;
-            }
-        }
+        // foreach (var keyAndValue in countingDict)
+        // {
+        //     if (keyAndValue.Value == 1)
+        //     {
+        //         returnInt = keyAndValue.Key;
+        //         return returnInt;
+        //     }
+        // }
 
-        return returnInt;
+        // return returnInt;
     }
 
     public static bool ContainsDuplicates(List<int> numsList)
