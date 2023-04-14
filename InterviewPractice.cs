@@ -4,12 +4,14 @@ using System.Linq;
 
 namespace C__Practice;
 
-public class Weapon{
+public class Weapon
+{
     public string name;
     public string weaponType;
     public int damage;
 
-    public Weapon (string name, string weaponType, int damage){
+    public Weapon(string name, string weaponType, int damage)
+    {
         this.name = name;
         this.weaponType = weaponType;
         this.damage = damage;
@@ -49,7 +51,8 @@ public class InterviewPractice
         {
             for (int j = i + 1; j < inputList.Count; j++)
             {
-                if(inputList[i] + inputList[j] == inputTarget){
+                if (inputList[i] + inputList[j] == inputTarget)
+                {
                     seedList.Add(i);
                     seedList.Add(j);
                 }
@@ -155,7 +158,10 @@ public class InterviewPractice
 
     public static int SingleNumber(List<int> input)
     {
-        return input.GroupBy(num => num).Where(numCount => numCount.Count() == 1).Select(num => num.Key).First();
+        return input.GroupBy(num => num)
+            .Where(numCount => numCount.Count() == 1)
+            .Select(num => num.Key)
+            .First();
         // var countingDict = new Dictionary<int, int>();
 
         // foreach (var num in input)
@@ -186,42 +192,52 @@ public class InterviewPractice
 
     public static bool ContainsDuplicates(List<int> numsList)
     {
-        var countDict = new Dictionary<int, int>();
-        foreach (var num in numsList)
-        {
-            if(!countDict.ContainsKey(num)){
-                countDict[num] = 1;
-            } else {
-                countDict[num]++;
-            }
-        }
+        return numsList.GroupBy(num => num).Any(num => num.Count() > 1);
+        // var countDict = new Dictionary<int, int>();
+        // foreach (var num in numsList)
+        // {
+        //     if(!countDict.ContainsKey(num)){
+        //         countDict[num] = 1;
+        //     } else {
+        //         countDict[num]++;
+        //     }
+        // }
 
-        foreach (var keyValuePair in countDict)
-        {
-            if(keyValuePair.Value >= 2){
-                return true;
-            }
-        }
-        return false;
+        // foreach (var keyValuePair in countDict)
+        // {
+        //     if(keyValuePair.Value >= 2){
+        //         return true;
+        //     }
+        // }
+        // return false;
     }
 
     public static string LongestCommonPrefix(List<string> strs) //Need to practice this one
     { // why is this O(n)? because it loops through the input only once. it checks each word based off the first word.
-        var prefixCheck = "";
-        var firstIndex = strs[0];
-        for (int i = 0; i < firstIndex.Length; i++)
+        var shortest = strs.OrderBy(str => str.Length).First();
+
+        for (int i = 0; i < shortest.Length; i++)
         {
-            foreach (var word in strs)
-            {
-                if(i > firstIndex[i]){
-                    return prefixCheck;
-                } else if(firstIndex[i] != word[i]){
-                    return prefixCheck;
-                }
-            }
-            prefixCheck += firstIndex[i];
+            if(strs.Select(s => s[i]).Distinct().Count() > 1) return shortest[..i];
         }
-        return prefixCheck;
+
+        return shortest;
+
+        // var prefixCheck = "";
+        // var firstIndex = strs[0];
+        // for (int i = 0; i < firstIndex.Length; i++)
+        // {
+        //     foreach (var word in strs)
+        //     {
+        //         if(i > firstIndex[i]){
+        //             return prefixCheck;
+        //         } else if(firstIndex[i] != word[i]){
+        //             return prefixCheck;
+        //         }
+        //     }
+        //     prefixCheck += firstIndex[i];
+        // }
+        // return prefixCheck;
     }
 
     public static bool ValidPalindrome(string inputString)
@@ -236,7 +252,8 @@ public class InterviewPractice
 
         foreach (var element in transformedInput)
         {
-            if(char.IsLetterOrDigit(element)){
+            if (char.IsLetterOrDigit(element))
+            {
                 palindromeStr.Append(element);
             }
         }
@@ -245,8 +262,10 @@ public class InterviewPractice
         var rPoint = palindromeStr.Length - 1;
         var lPoint = 0;
 
-        while(rPoint - lPoint > 0){
-            if(palindromeStr[rPoint] != palindromeStr[lPoint]){
+        while (rPoint - lPoint > 0)
+        {
+            if (palindromeStr[rPoint] != palindromeStr[lPoint])
+            {
                 retBool = false;
                 return retBool;
             }
