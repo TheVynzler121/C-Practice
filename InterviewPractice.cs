@@ -192,7 +192,7 @@ public class InterviewPractice
 
     public static bool ContainsDuplicates(List<int> numsList)
     {
-        return numsList.GroupBy(num => num).Any(num => num.Count() > 1);
+        return numsList.GroupBy(n => n).Any(nCount => nCount.Count() > 1);
         // var countDict = new Dictionary<int, int>();
         // foreach (var num in numsList)
         // {
@@ -247,32 +247,26 @@ public class InterviewPractice
             return true;
         }
 
-        var transformedInput = inputString.ToLower().ToList();
-        StringBuilder palindromeStr = new StringBuilder();
+        var inputToLower = inputString.ToLower().ToList();
+        StringBuilder palinSeed = new StringBuilder();
 
-        foreach (var element in transformedInput)
+        foreach (var element in inputToLower)
         {
-            if (char.IsLetterOrDigit(element))
-            {
-                palindromeStr.Append(element);
+            if(char.IsLetterOrDigit(element)){
+                palinSeed.Append(element);
             }
         }
 
-        var retBool = true;
-        var rPoint = palindromeStr.Length - 1;
-        var lPoint = 0;
+        var rightPoint = palinSeed.Length - 1;
+        var leftPoint = 0;
 
-        while (rPoint - lPoint > 0)
-        {
-            if (palindromeStr[rPoint] != palindromeStr[lPoint])
-            {
-                retBool = false;
-                return retBool;
+        while(rightPoint - leftPoint > 0){
+            if(palinSeed[rightPoint] != palinSeed[leftPoint]){
+                return false;
             }
-
-            rPoint -= 1;
-            lPoint += 1;
+            rightPoint -= 1;
+            leftPoint += 1;
         }
-        return retBool;
+        return true;
     }
 }
