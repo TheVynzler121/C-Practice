@@ -156,12 +156,9 @@ public class InterviewPractice
         return carriedOne.Concat(inputNums);
     }
 
-    public static int SingleNumber(List<int> input)
+    public static int SingleNumber(List<int> inputList)
     {
-        return input.GroupBy(num => num)
-            .Where(numCount => numCount.Count() == 1)
-            .Select(num => num.Key)
-            .First();
+        return inputList.GroupBy(number => number).Where(numberCount => numberCount.Count() == 1).Select(number => number.Key).First();
         // var countingDict = new Dictionary<int, int>();
 
         // foreach (var num in input)
