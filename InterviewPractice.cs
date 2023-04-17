@@ -139,21 +139,18 @@ public class InterviewPractice
 
     public static IEnumerable<int> PlusOne(List<int> inputNums)
     {
-        var loopLength = inputNums.Count - 1;
-        for (int i = loopLength; i >= 0; i--)
+        var loopCount = inputNums.Count() - 1;
+        for (int i = loopCount; i >= 0; i--)
         {
-            if (inputNums[i] == 9)
-            {
+            if(inputNums[i] == 9){
                 inputNums[i] = 0;
-            }
-            else
-            {
+            } else {
                 inputNums[i]++;
                 return inputNums;
             }
         }
-        var carriedOne = new List<int>() { 1 };
-        return carriedOne.Concat(inputNums);
+        var newOne = new List<int>() {1};
+        return newOne.Concat(inputNums);
     }
 
     public static int SingleNumber(List<int> inputList)
@@ -244,26 +241,28 @@ public class InterviewPractice
             return true;
         }
 
-        var inputToLower = inputString.ToLower().ToList();
-        StringBuilder palinSeed = new StringBuilder();
+        var transformedInput = inputString.ToLower().ToList();
+        StringBuilder palindromeCheck = new StringBuilder();
 
-        foreach (var element in inputToLower)
+        foreach (var character in transformedInput)
         {
-            if(char.IsLetterOrDigit(element)){
-                palinSeed.Append(element);
+            if(char.IsLetterOrDigit(character)){
+                palindromeCheck.Append(character);
             }
         }
 
-        var rightPoint = palinSeed.Length - 1;
-        var leftPoint = 0;
+        var rPoint = palindromeCheck.Length - 1;
+        var lPoint = 0;
+        var returnBool = true;
 
-        while(rightPoint - leftPoint > 0){
-            if(palinSeed[rightPoint] != palinSeed[leftPoint]){
-                return false;
+        while(rPoint - lPoint > 0){
+            if(palindromeCheck[rPoint] != palindromeCheck[lPoint]){
+                returnBool = false;
+                return returnBool;
             }
-            rightPoint -= 1;
-            leftPoint += 1;
+            rPoint -= 1;
+            lPoint += 1;
         }
-        return true;
+        return returnBool;
     }
 }
