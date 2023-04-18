@@ -155,7 +155,10 @@ public class InterviewPractice
 
     public static int SingleNumber(List<int> inputList)
     {
-        return inputList.GroupBy(number => number).Where(numberCount => numberCount.Count() == 1).Select(number => number.Key).First();
+        return inputList.GroupBy(x => x)
+        .Where(x => x.Count() == 1)
+        .Select(x => x.Key)
+        .First();
         // var countingDict = new Dictionary<int, int>();
 
         // foreach (var num in input)
@@ -186,7 +189,8 @@ public class InterviewPractice
 
     public static bool ContainsDuplicates(List<int> numsList)
     {
-        return numsList.GroupBy(n => n).Any(nCount => nCount.Count() > 1);
+        return numsList.GroupBy(x => x)
+        .Any(x => x.Count() > 1);
         // var countDict = new Dictionary<int, int>();
         // foreach (var num in numsList)
         // {
@@ -206,8 +210,8 @@ public class InterviewPractice
         // return false;
     }
 
-    public static string LongestCommonPrefix(List<string> strs) //Need to practice this one
-    { // why is this O(n)? because it loops through the input only once. it checks each word based off the first word.
+    public static string LongestCommonPrefix(List<string> strs) 
+    { 
         var shortest = strs.OrderBy(str => str.Length).First();
 
         for (int i = 0; i < shortest.Length; i++)
@@ -236,33 +240,9 @@ public class InterviewPractice
 
     public static bool ValidPalindrome(string inputString)
     {
-        if (inputString.Length == 1 && char.IsLetterOrDigit(inputString[0])) // edge case, return true if the input is only 1 letter or digit
-        {
-            return true;
-        }
-
-        var transformedInput = inputString.ToLower().ToList();
-        StringBuilder palindromeCheck = new StringBuilder();
-
-        foreach (var character in transformedInput)
-        {
-            if(char.IsLetterOrDigit(character)){
-                palindromeCheck.Append(character);
-            }
-        }
-
-        var rPoint = palindromeCheck.Length - 1;
-        var lPoint = 0;
-        var returnBool = true;
-
-        while(rPoint - lPoint > 0){
-            if(palindromeCheck[rPoint] != palindromeCheck[lPoint]){
-                returnBool = false;
-                return returnBool;
-            }
-            rPoint -= 1;
-            lPoint += 1;
-        }
-        return returnBool;
+        var palinSeed = inputString.ToLower()
+        .Where(x => char.IsLetterOrDigit(x));
+        
+        return palinSeed.Reverse().SequenceEqual(palinSeed);
     }
 }
