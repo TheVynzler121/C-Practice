@@ -69,9 +69,9 @@ public class InterviewPracticeTests
         Assert.That(actual, Is.EqualTo(output));
     }
 
-    // [TestCase("leetcode", 0)]
+    [TestCase("leetcode", 0)]
     [TestCase("loveleetcode", 2)]
-    // [TestCase("aabb", -1)]
+    [TestCase("aabb", -1)]
     public void Test_FirstNonrepeatingChar(string input, int output)
     {
         var actual = InterviewPractice.FirstNonrepeatingChar(input);

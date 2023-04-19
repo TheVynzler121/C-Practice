@@ -107,34 +107,15 @@ public class InterviewPractice
     */
     public static int FirstNonrepeatingChar(string inputString) //Need to practice this one
     {
-        var allCharacterPositions = new Dictionary<char, List<int>>();
-        for (int i = 0; i < inputString.Length; i++)
-        {
-            var character = inputString[i];
-            if (!allCharacterPositions.ContainsKey(character))
-            {
-                var indexes = new List<int>() { i }; // {count: 1, firstIndex: i}
-                allCharacterPositions.Add(character, indexes);
-            }
-            else
-            {
-                var indexes = allCharacterPositions[character]; // record.count++ 
-                indexes.Add(-1);
-            }
+        var answer = 0;
+        var groupedList = inputString.GroupBy(x => x).OrderBy(x => x.Count()).First();
+        var count = inputString.Where(x => x == groupedList.Key).Count();
+        if(count == 1){
+            answer = inputString.IndexOf(groupedList.Key);
+        }else {
+            answer = -1;
         }
-
-        PrintDictionary<char, int>(allCharacterPositions);
-
-        for (int i = 0; i < inputString.Length; i++)
-        {
-            var character = inputString[i];
-            var uniqueCharacterPositions = allCharacterPositions[character];
-            if (uniqueCharacterPositions.Count == 1)
-            {
-                return uniqueCharacterPositions[0];
-            }
-        }
-        return -1;
+        return answer;
     }
 
     public static IEnumerable<int> PlusOne(List<int> inputNums)
@@ -155,10 +136,10 @@ public class InterviewPractice
 
     public static int SingleNumber(List<int> inputList)
     {
-        return inputList.GroupBy(x => x)
-        .Where(x => x.Count() == 1)
-        .Select(x => x.Key)
-        .First();
+        return inputList.GroupBy(num => num)
+            .Where(num => num.Count() == 1)
+            .Select(num => num.Key)
+            .First();
         // var countingDict = new Dictionary<int, int>();
 
         // foreach (var num in input)
