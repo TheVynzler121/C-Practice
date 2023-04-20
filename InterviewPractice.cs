@@ -107,13 +107,13 @@ public class InterviewPractice
     */
     public static int FirstNonrepeatingChar(string inputString) //Need to practice this one
     {
-        var answer = 0;
-        var groupedList = inputString.GroupBy(x => x).OrderBy(x => x.Count()).First();
-        var count = inputString.Where(x => x == groupedList.Key).Count();
+        var answer = 0; //int seed
+        var groupedList = inputString.GroupBy(x => x).OrderBy(x => x.Count()).First(); //group the input by itself, order it by its count, take the first one.
+        var count = inputString.Where(x => x == groupedList.Key).Count(); //var storing the count of each key in grouped list
         if(count == 1){
-            answer = inputString.IndexOf(groupedList.Key);
+            answer = inputString.IndexOf(groupedList.Key); //if the count is 1, set answer to the index of the grouped list key
         }else {
-            answer = -1;
+            answer = -1; //otherwise, set answer to -1
         }
         return answer;
     }
@@ -221,9 +221,8 @@ public class InterviewPractice
 
     public static bool ValidPalindrome(string inputString)
     {
-        var palinSeed = inputString.ToLower()
-        .Where(x => char.IsLetterOrDigit(x));
-        
-        return palinSeed.Reverse().SequenceEqual(palinSeed);
+        var palindromeCheck = inputString.ToLower().Where(x => char.IsLetterOrDigit(x)); //change the input to all lowercase, then filter out everything that isnt a letter or digit
+
+        return palindromeCheck.Reverse().SequenceEqual(palindromeCheck); //return true if the palinCheck is the same sequence in reverse order
     }
 }
