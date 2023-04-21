@@ -137,9 +137,9 @@ public class InterviewPractice
     public static int SingleNumber(List<int> inputList)
     {
         return inputList.GroupBy(num => num)
-            .Where(num => num.Count() == 1)
-            .Select(num => num.Key)
-            .First();
+                .Where(num => num.Count() == 1)
+                .Select(num => num.Key)
+                .First();
         // var countingDict = new Dictionary<int, int>();
 
         // foreach (var num in input)
