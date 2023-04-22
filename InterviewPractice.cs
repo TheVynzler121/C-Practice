@@ -170,8 +170,8 @@ public class InterviewPractice
 
     public static bool ContainsDuplicates(List<int> numsList)
     {
-        return numsList.GroupBy(x => x)
-        .Any(x => x.Count() > 1);
+        return numsList.GroupBy(num => num)
+                .Any(num => num.Count() >= 2);
         // var countDict = new Dictionary<int, int>();
         // foreach (var num in numsList)
         // {
