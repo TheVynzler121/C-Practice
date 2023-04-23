@@ -221,8 +221,10 @@ public class InterviewPractice
 
     public static bool ValidPalindrome(string inputString)
     {
-        var palindromeCheck = inputString.ToLower().Where(x => char.IsLetterOrDigit(x)); //change the input to all lowercase, then filter out everything that isnt a letter or digit
+        //change the input to all lowercase, then filter out everything that isnt a letter or digit
+        //return true if the palinCheck is the same sequence in reverse order
 
-        return palindromeCheck.Reverse().SequenceEqual(palindromeCheck); //return true if the palinCheck is the same sequence in reverse order
+        var palindromeSeed = inputString.ToLower().Where(x => char.IsLetterOrDigit(x));
+        return palindromeSeed.Reverse().SequenceEqual(palindromeSeed);
     }
 }
