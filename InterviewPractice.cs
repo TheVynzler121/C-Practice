@@ -120,8 +120,7 @@ public class InterviewPractice
 
     public static IEnumerable<int> PlusOne(List<int> inputNums)
     {
-        var loopCount = inputNums.Count() - 1;
-        for (int i = loopCount; i >= 0; i--)
+        for (int i = inputNums.Count - 1; i >= 0; i--)
         {
             if(inputNums[i] == 9){
                 inputNums[i] = 0;
@@ -130,16 +129,16 @@ public class InterviewPractice
                 return inputNums;
             }
         }
-        var newOne = new List<int>() {1};
-        return newOne.Concat(inputNums);
+        var firstOne = new List<int>() {1};
+        return firstOne.Concat(inputNums);
     }
 
     public static int SingleNumber(List<int> inputList)
     {
-        return inputList.GroupBy(num => num)
-                .Where(num => num.Count() == 1)
-                .Select(num => num.Key)
-                .First();
+        return inputList.GroupBy(number => number)
+        .Where(number => number.Count() == 1)
+        .Select(number => number.Key)
+        .First();
         // var countingDict = new Dictionary<int, int>();
 
         // foreach (var num in input)
