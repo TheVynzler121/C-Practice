@@ -192,14 +192,15 @@ public class InterviewPractice
 
     public static string LongestCommonPrefix(List<string> strs) 
     { 
-        var shortest = strs.OrderBy(str => str.Length).First();
+        var shortWord = strs.OrderBy(str => str.Length).First();
 
-        for (int i = 0; i < shortest.Length; i++)
+        for (int i = 0; i < shortWord.Length; i++)
         {
-            if(strs.Select(s => s[i]).Distinct().Count() > 1) return shortest[..i];
+            if(strs.Select(str => str[i]).Distinct().Count() > 1){
+                return shortWord[..i];
+            }
         }
-
-        return shortest;
+        return shortWord;
 
         // var prefixCheck = "";
         // var firstIndex = strs[0];
