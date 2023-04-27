@@ -133,61 +133,19 @@ public class InterviewPractice
         return firstOne.Concat(inputNums);
     }
 
-    public static int SingleNumber(List<int> inputList)
+    public static int SingleNumber(List<int> input)
     {
-        return inputList.GroupBy(number => number)
-        .Where(number => number.Count() == 1)
-        .Select(number => number.Key)
-        .First();
-        // var countingDict = new Dictionary<int, int>();
-
-        // foreach (var num in input)
-        // {
-        //     if (!countingDict.ContainsKey(num))
-        //     {
-        //         countingDict[num] = 1;
-        //     }
-        //     else
-        //     {
-        //         countingDict[num]++;
-        //     }
-        // }
-
-        // var returnInt = 0;
-
-        // foreach (var keyAndValue in countingDict)
-        // {
-        //     if (keyAndValue.Value == 1)
-        //     {
-        //         returnInt = keyAndValue.Key;
-        //         return returnInt;
-        //     }
-        // }
-
-        // return returnInt;
+        return input.GroupBy(x => x)
+                    .Where(x => x.Count() == 1)
+                    .Select(x => x.Key)
+                    .First();
+       
     }
 
     public static bool ContainsDuplicates(List<int> numsList)
     {
         return numsList.GroupBy(num => num)
                 .Any(num => num.Count() >= 2);
-        // var countDict = new Dictionary<int, int>();
-        // foreach (var num in numsList)
-        // {
-        //     if(!countDict.ContainsKey(num)){
-        //         countDict[num] = 1;
-        //     } else {
-        //         countDict[num]++;
-        //     }
-        // }
-
-        // foreach (var keyValuePair in countDict)
-        // {
-        //     if(keyValuePair.Value >= 2){
-        //         return true;
-        //     }
-        // }
-        // return false;
     }
 
     public static string LongestCommonPrefix(List<string> strs) 
@@ -201,22 +159,6 @@ public class InterviewPractice
             }
         }
         return shortWord;
-
-        // var prefixCheck = "";
-        // var firstIndex = strs[0];
-        // for (int i = 0; i < firstIndex.Length; i++)
-        // {
-        //     foreach (var word in strs)
-        //     {
-        //         if(i > firstIndex[i]){
-        //             return prefixCheck;
-        //         } else if(firstIndex[i] != word[i]){
-        //             return prefixCheck;
-        //         }
-        //     }
-        //     prefixCheck += firstIndex[i];
-        // }
-        // return prefixCheck;
     }
 
     public static bool ValidPalindrome(string inputString)
