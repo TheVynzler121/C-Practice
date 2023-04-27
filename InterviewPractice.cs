@@ -107,15 +107,23 @@ public class InterviewPractice
     */
     public static int FirstNonrepeatingChar(string inputString) //Need to practice this one
     {
-        var answer = 0; //int seed
-        var groupedList = inputString.GroupBy(x => x).OrderBy(x => x.Count()).First(); //group the input by itself, order it by its count, take the first one.
-        var count = inputString.Where(x => x == groupedList.Key).Count(); //var storing the count of each key in grouped list
-        if(count == 1){
-            answer = inputString.IndexOf(groupedList.Key); //if the count is 1, set answer to the index of the grouped list key
-        }else {
-            answer = -1; //otherwise, set answer to -1
+        //int seed
+        //group the input by itself, order it by its count, take the first one.
+        //var storing the count of each key in grouped list
+        //if the count is 1, set answer to the index of the grouped list key
+        //otherwise, set answer to -1
+
+        var retInt = 0;
+        var grouped = inputString.GroupBy(i => i)
+                                .OrderBy(i => i.Count())
+                                .First();
+        var groupKeys = inputString.Where(i => i == grouped.Key).Count();
+        if(groupKeys == 1){
+            retInt = inputString.IndexOf(grouped.Key);
+        } else {
+            retInt = -1;
         }
-        return answer;
+        return retInt;
     }
 
     public static IEnumerable<int> PlusOne(List<int> inputNums)
