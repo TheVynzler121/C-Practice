@@ -141,12 +141,12 @@ public class InterviewPractice
         return firstOne.Concat(inputNums);
     }
 
-    public static int SingleNumber(List<int> input)
+    public static int SingleNumber(List<int> inputList)
     {
-        return input.GroupBy(x => x)
-                    .Where(x => x.Count() == 1)
-                    .Select(x => x.Key)
-                    .First();
+        return inputList.GroupBy(num => num)
+        .Where(num => num.Count() == 1)
+        .Select(num => num.Key)
+        .First();
        
     }
 
