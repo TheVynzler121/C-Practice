@@ -173,8 +173,25 @@ public class InterviewPractice
     {
         //change the input to all lowercase, then filter out everything that isnt a letter or digit
         //return true if the palinCheck is the same sequence in reverse order
+        var inputToLower = inputString.ToLower().ToList();
+        StringBuilder palinString = new StringBuilder();
 
-        var palindromeSeed = inputString.ToLower().Where(x => char.IsLetterOrDigit(x));
-        return palindromeSeed.Reverse().SequenceEqual(palindromeSeed);
+        foreach (var element in inputToLower){
+            if(char.IsLetterOrDigit(element)){
+                palinString.Append(element);
+            }
+        }
+
+        var rPoint = palinString.Length - 1;
+        var lPoint = 0;
+
+        while(rPoint - lPoint > 0){
+            if(palinString[rPoint] != palinString[lPoint]){
+                return false;
+            }
+            rPoint -= 1;
+            lPoint += 1;
+        }
+        return true;
     }
 }
